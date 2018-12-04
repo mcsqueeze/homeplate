@@ -1,2 +1,27 @@
 <h1>Meals#show</h1>
 <p>Find me in app/views/meals/show.html.erb</p>
+
+<!-- need to display all pictures -->
+<div class="wrapper">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="product-img" style="background-image: url('<%= @meal.picture %>')">
+    </div>
+    <div class="product-info">
+      <div class="product-text">
+        <h2><%= @meal.title %></h2>
+        <p>Description: <%= @meal.description %></p>
+        <p><%= @meal.price %></p>
+        <p>%= @meal.category</p>
+      </div>
+      <div class="buttons">
+          <%= link_to 'Order this meal', user_order_path, {:method => :create, :class => "btn btn-primary"} %>
+          <%= link_to 'Back to Meals', meals_path, { :class => "btn btn-primary"} %>
+          <%= link_to 'Delete', meal_path, {:method  => :delete, :class => "btn btn-primary"} %>
+      </div>
+    </div>
+    </div>
+  </div>
+</div>
+
+

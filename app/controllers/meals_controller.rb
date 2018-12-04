@@ -3,6 +3,10 @@ class MealsController < ApplicationController
   end
 
   def show
+    @meal = Meal.find(params[:id])
+    skip_authorization
+
+
   end
 
   def new
@@ -18,5 +22,11 @@ class MealsController < ApplicationController
   end
 
   def destroy
+  end
+
+  private
+
+  def meal_params
+    params.require(:meal).permit(:title, :picture, :description, :price, :category)
   end
 end
