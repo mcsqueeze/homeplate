@@ -13,9 +13,13 @@ require 'date'
 u1 = User.create(email: "margaux@gmail.com", password: "margaux", usertype: "cook")
 m1 = Meal.create(title: "Couscous", user: User.first, description: "Delicious, savory chicken couscous with tfaya", category: "main course", price: 50)
 p1 = Picture.new
+p1_2 = Picture.new
 p1.meal = m1
+p1_2.meal = m1
 p1.remote_url_url = "https://res.cloudinary.com/homeplate/image/upload/v1543920319/originalmoroccanfood57-600x398-64.jpg"
 p1.save
+p1_2.remote_url_url = "https://res.cloudinary.com/homeplate/image/upload/v1543920340/3360437195_4ea3d4441e.jpg"
+p1_2.save
 d1 = Date.new(2018,12,1)
 d2 = Date.new(2018,12,2)
 Order.create(pickuptime: d1, user: User.first)
