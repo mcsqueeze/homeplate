@@ -1,5 +1,6 @@
 class Meal < ApplicationRecord
   belongs_to :user
+  has_many :pictures
   monetize :price_cents
 
   validates :title, presence: true
