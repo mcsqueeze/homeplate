@@ -2,5 +2,7 @@
 <p>Find me in app/views/users/show.html.erb</p>
 
 <%= @user.username  %>
-<%= @user.photo  %>
+
+<%= cl_image_tag @user.photo %>
+
 <%= @user.usertype  %>
