@@ -13,6 +13,8 @@
         <p>Description: <%= @meal.description %></p>
         <p><%= @meal.price %></p>
         <p>%= @meal.category</p>
+        <p>Amount: <%= humanized_money_with_symbol(@meal.price) %></p>
+
       </div>
       <div class="buttons">
           <%= link_to 'Order this meal', user_order_path, {:method => :create, :class => "btn btn-primary"} %>
@@ -22,6 +24,13 @@
     </div>
     </div>
   </div>
+</div>
+
+<div>
+<%= form_tag orders_path do %>
+  <%= hidden_field_tag 'meal_id', @meal.id %>
+  <%= submit_tag 'Purchase', class: 'btn btn-primary' %>
+<% end %>
 </div>
 
 
