@@ -8,7 +8,23 @@
 </div>
 
 
+<div class="container">
+  <div class="row">
+    <h1>meals</h1>
+    <% @meals.each do |meal| %>
+      <div class="col-sm-6 col-md-4">
+        <div class="thumbnail">
+          <div class="caption">
+            <h3><%= link_to meal.title, meal_path(meal) %></h3>
+            <p><%= meal.category %></p>
+            <p>Price: <%= humanized_money_with_symbol(meal.price) %></p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
 
-<!-- <p>Amount: <%= humanized_money_with_symbol(meal.price) %></p>
- -->
+
+
 
