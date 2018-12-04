@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_04_123606) do
+ActiveRecord::Schema.define(version: 2018_12_04_133713) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,7 +20,9 @@ ActiveRecord::Schema.define(version: 2018_12_04_123606) do
     t.bigint "meal_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "order_id"
     t.index ["meal_id"], name: "index_items_on_meal_id"
+    t.index ["order_id"], name: "index_items_on_order_id"
   end
 
   create_table "meals", force: :cascade do |t|
@@ -39,14 +41,12 @@ ActiveRecord::Schema.define(version: 2018_12_04_123606) do
 
   create_table "orders", force: :cascade do |t|
     t.bigint "user_id"
-    t.bigint "item_id"
     t.datetime "pickuptime"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.jsonb "payment"
     t.integer "amount_cents", default: 0, null: false
     t.string "state"
-    t.index ["item_id"], name: "index_orders_on_item_id"
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
@@ -96,8 +96,8 @@ ActiveRecord::Schema.define(version: 2018_12_04_123606) do
   end
 
   add_foreign_key "items", "meals"
+  add_foreign_key "items", "orders"
   add_foreign_key "meals", "users"
-  add_foreign_key "orders", "items"
   add_foreign_key "orders", "users"
   add_foreign_key "payments", "orders"
   add_foreign_key "pictures", "meals"
