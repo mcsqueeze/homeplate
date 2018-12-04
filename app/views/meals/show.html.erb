@@ -12,12 +12,42 @@
         <h2><%= @meal.title %></h2>
         <p>Description: <%= @meal.description %></p>
         <p><%= @meal.price %></p>
-        <p>%= @meal.category</p>
+        <p><%= @meal.category %></p>
         <p>Amount: <%= humanized_money_with_symbol(@meal.price) %></p>
-
       </div>
+
+    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+      <ol class="carousel-indicators">
+        <% @meal.pictures.each_with_index do |pic, n| %>
+          <li data-target='#MyCarousel' data-slide-to="#{n}" class="#{'active' if n == 0}"></li>
+        <% end %>
+      </ol>
+      <div class="carousel-inner" role="listbox">
+        <div class="item active">
+          <%= cl_image_tag (@meal.pictures.first.url) %>
+        </div>
+
+     <% @meal.pictures.drop(1).each do |pic| %>
+      <div class="item ">
+        <%= cl_image_tag(pic.url) %>
+      </div>
+    <% end %>
+
+  </div>
+<a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+
+
+
+
       <div class="buttons">
-          <%= link_to 'Order this meal', user_order_path, {:method => :create, :class => "btn btn-primary"} %>
           <%= link_to 'Back to Meals', meals_path, { :class => "btn btn-primary"} %>
           <%= link_to 'Delete', meal_path, {:method  => :delete, :class => "btn btn-primary"} %>
       </div>
@@ -27,7 +57,7 @@
 </div>
 
 <div>
-<%= form_tag orders_path do %>
+<%= form_tag user_orders_path(current_user, @order) do %>
   <%= hidden_field_tag 'meal_id', @meal.id %>
   <%= submit_tag 'Purchase', class: 'btn btn-primary' %>
 <% end %>
