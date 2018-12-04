@@ -1,27 +1,36 @@
-<h1>Meals#index</h1>
-
-<link href="https://fonts.googleapis.com/css?family=Roboto:300:400:700" rel="stylesheet">
-<div class="cards clearfix">
-  <div class="card-col-1"></div>
-  <div class="card-col-2"></div>
-  <div class="card-col-3"></div>
-</div>
-
-
-<div class="container">
-  <div class="row">
-    <h1>meals</h1>
+<div class="wrap">
+  <div class="container mt-3">
+    <div class="row">
     <% @meals.each do |meal| %>
-      <div class="col-sm-6 col-md-4">
-        <div class="thumbnail">
-          <div class="caption">
-            <h3><%= link_to meal.title, meal_path(meal) %></h3>
-            <p><%= meal.category %></p>
-            <p>Price: <%= humanized_money_with_symbol(meal.price) %></p>
-          </div>
+
+      <div class="col-xs-12 col-sm-6 col-md-4">
+
+        <div class="meal-card">
+          <div style="background-image: url('<%= cl_image_path meal.pictures.first.url.url %>');">
+
+
+            <div class="meal-card-content">
+              <div class="meal-card-title">
+              <h4><%= meal.title %></h4>
+
+              </div>
+                <p><%= meal.category %></p>
+
+              <div class="flex">
+              <p><i class="fas fa-utensils"></i>
+              Price: <%= humanized_money_with_symbol(meal.price) %>
+              </p>
+              </div>
+
+            </div>
+
+
         </div>
+
+      </div>
       </div>
     <% end %>
+    </div>
   </div>
 </div>
 
