@@ -14,6 +14,7 @@ Rails.application.routes.draw do
     resources :orders, only: [:index, :show, :create, :destroy] do
       member do
         get 'payment', to: 'payments#new'
+        post 'payment', to: 'payments#create'
         get 'confirmation', to: 'payments#confirmation'
       end
     end

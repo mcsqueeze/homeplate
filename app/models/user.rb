@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_many :reviews, dependent: :destroy
   has_many :orders, dependent: :destroy
   has_many :payments, through: :orders
+
   validates :usertype, presence: true, inclusion: { in: ["cook", "customer"]}
 
 end

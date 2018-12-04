@@ -1,2 +1,15 @@
 <h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+
+<style>
+body {
+   background-image: url('https://i.imgur.com/Z7wbfan.jpg');
+}
+</style>
+
+<%= form_tag meals_path, method: :get do %>
+  <%= text_field_tag :query,
+    params[:query],
+    class: "form-control",
+    placeholder: "find a meal nearby"
+  %>
+<% end %>
