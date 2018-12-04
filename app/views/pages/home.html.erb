@@ -2,10 +2,11 @@
 
 <style>
 body {
-   background-image: url('https://i.imgur.com/Z7wbfan.jpg');
+   background-image: url('https://i-h2.pinimg.com/564x/7c/e0/33/7ce033781db9637b447ac7c14f3d1e6e.jpg');
 }
 </style>
 
+<div class="searchbar">
 <%= form_tag meals_path, method: :get do %>
   <%= text_field_tag :query,
     params[:query],
@@ -13,3 +14,4 @@ body {
     placeholder: "find a meal nearby"
   %>
 <% end %>
+</div>
