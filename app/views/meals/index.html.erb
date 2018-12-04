@@ -11,8 +11,7 @@
 
             <div class="meal-card-content">
               <div class="meal-card-title">
-              <h4><%= meal.title %></h4>
-
+              <h4><%= link_to meal.title, meal_path(meal) %></h4>
               </div>
                 <p><%= meal.category %></p>
 
