@@ -1,6 +1,13 @@
 class MealsController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:index, :show]
+
   def index
-    @meals = Meal.all
+    if params[:query].present?
+      sql_query = "title ILIKE :query OR category ILIKE :query OR description ILIKE :query"
+      @meals = Meal.where(sql_query, query: "%#{params[:query]}%")
+    else
+      @meals = Meal.all
+    end
   end
 
   def show
