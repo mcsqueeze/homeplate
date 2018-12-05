@@ -4,6 +4,12 @@ class OrdersController < ApplicationController
 
   def show
     @order = current_user.orders.find(params[:id])
+    @prices = []
+    @order.items.each do |item|
+      @prices << item.meal.price
+      end
+    @total = @prices.sum
+
   end
 
   def create
@@ -15,6 +21,7 @@ class OrdersController < ApplicationController
 
   def destroy
   end
+
 
   private
 
