@@ -43,7 +43,7 @@ Order.create(pickuptime: d1, user: User.first)
 m4 = Meal.create(title: "Harsha", user: User.first, description: "Buttery cornbread great with honey & cheese", category: "side", price: 4)
 p4 = Picture.new
 p4.meal = m4
-p4.remote_url_url = "https://res.cloudinary.com/homeplate/image/upload/v1543920377/IMG_6816_Fotor_Fotor.jpg"
+p4.remote_url_url = "https://res.cloudinary.com/homeplate/image/upload/v1543920395/harcha.jpg"
 p4.save
 d1 = Date.new(2018,12,1)
 Order.create(pickuptime: d1, user: User.first)
