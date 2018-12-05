@@ -3,13 +3,16 @@ class ItemsController < ApplicationController
   end
 
   def create
-    @order = current_order
-    @order.user = current_user
-    @order.save
-    @item = Item.create(meal_id: params[:meal_id], order_id: @order.id)
+    order = current_order
+    order.user = current_user
+    order.save
 
-    session[:order_id] = @order.id
-    redirect_to order_path(@order)
+    meal = Meal.find(params[:meal_id])
+
+    Item.create(meal: meal, order: order, quantity: params[:quantity])
+
+    session[:order_id] = order.id
+    redirect_to order_path(order)
   end
 
   def show
