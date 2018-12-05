@@ -4,6 +4,8 @@ class ApplicationController < ActionController::Base
 
   before_action :configure_permitted_parameters, if: :devise_controller?
 
+  helper_method :current_order
+
   protected
 
   def configure_permitted_parameters
@@ -11,5 +13,13 @@ class ApplicationController < ActionController::Base
       :password_confirmation, :remember_me, :photo, :photo_cache, :remove_photo) }
     devise_parameter_sanitizer.permit(:account_update) { |u| u.permit(:username, :email, :password, :usertype,
       :password_confirmation, :current_password, :photo, :photo_cache, :remove_photo) }
+  end
+
+  def current_order
+    if !session[:order_id].nil?
+      Order.find(session[:order_id])
+    else
+      Order.new
+    end
   end
 end
