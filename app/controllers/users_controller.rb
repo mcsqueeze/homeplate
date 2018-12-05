@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
   def show
     @user = current_user
+
+
   end
 
   def change_usertype
@@ -20,3 +22,5 @@ class UsersController < ApplicationController
     params.require(:user).permit(:id)
   end
 end
+
+
