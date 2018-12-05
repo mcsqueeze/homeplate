@@ -1,5 +1,4 @@
 <%= @user.username  %>
-
 <%= @user.usertype  %>
 
 <div class="container">
@@ -12,9 +11,9 @@
         <div class="photo-left">
           <img class="photo" <%= cl_image_tag @user.photo %>
         </div>
-   <!--      <h4 class="name">@user.username</h4>
-        <p class="info">@user.info</p>
-        <p class="info">@user.email</p>
+        <h4 class="name">@user.first_name</h4>
+        <p class="info">@user.location</p>
+        <p class="info">@user.member_since</p>
         <div class="stats row">
           <div class="stat col-xs-4" style="padding-right: 50px;">
             <p class="number-stat">3,619</p>
@@ -28,19 +27,22 @@
             <p class="number-stat">38</p>
             <p class="desc-stat">Uploads</p>
           </div>
-        </div> -->
-        <p class="desc">Hi ! My name is Jane Doe. I'm a UI/UX Designer from Paris, in France. I really enjoy photography and mountains.</p>
+        </div>
+        <p class="desc"><%= @user.description %></p>
         <div class="social">
-          <i class="fa fa-facebook-square" aria-hidden="true"></i>
-          <i class="fa fa-twitter-square" aria-hidden="true"></i>
-          <i class="fa fa-pinterest-square" aria-hidden="true"></i>
-          <i class="fa fa-tumblr-square" aria-hidden="true"></i>
+          <i class="fab fa-facebook" aria-hidden="true"></i>
+          <i class="fab fa-twitter" aria-hidden="true"></i>
+          <i class="fab fa-pinterest" aria-hidden="true"></i>
+          <i class="fab fa-tumblr" aria-hidden="true"></i>
         </div>
       </div>
       <div class="right col-lg-8">
+        <div class="user-info">
+        </div>
         <ul class="nav">
           <li>Gallery</li>
           <li>About</li>
+          <li>Reviews</li>
         </ul>
         <div class="row gallery">
           <div class="col-md-4">
@@ -62,6 +64,11 @@
             <img src="https://image.noelshack.com/fichiers/2017/38/2/1505774816-photo3.jpg"/>
           </div>
         </div>
+        <div class="col-xs-12 col-sm-6">
+          <h3 class="reviews">Reviews</h3>
+        </div>
+
+
       </div>
   </main>
 </div>
