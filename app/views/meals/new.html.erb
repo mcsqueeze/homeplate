@@ -3,20 +3,37 @@
 
 
 <div class="row">
-<div class="col-sm-offset-4 col-sm-4">
-<%= simple_form_for [@meal] do |f| %>
-<% if @meal.errors.any? %>
-  <% @meal.errors.full_messages.each do |m| %>
-    <p><%= m %></p>
+
+  <div class="col-sm-offset-4 col-sm-4">
+  <%= simple_form_for [@meal] do |f| %>
+  <% if @meal.errors.any? %>
+    <% @meal.errors.full_messages.each do |m| %>
+      <p><%= m %></p>
+    <% end %>
   <% end %>
-<% end %>
-<h2>Upload a New Meal</h2>
-  <%= f.input :title %> <%= f.input :price_cents %>
-  <%= f.input :category %>
-  <%= f.input :description %>
-  <%= f.input :maxservings %>
-  <%= f.input :shelflife %>
-  <%= f.submit "submit meal", class: "btn btn-primary" %>
-<% end %>
+  <h2>Upload a New Meal</h2>
+    <%= f.input :title %> <%= f.input :price_cents %>
+    <%= f.input :category %>
+    <%= f.input :description %>
+    <%= f.input :maxservings %>
+    <%= f.input :shelflife %>
+    <%= f.submit "submit meal", class: "btn btn-primary" %>
+  <% end %>
+  </div>
+
+  <div class="col-sm-offset-4 col-sm-4">
+  <%= simple_form_for [@picture] do |p| %>
+  <% if @picture.errors.any? %>
+    <% @picture.errors.full_messages.each do |m| %>
+      <p><%= m %></p>
+    <% end %>
+  <% end %>
+  <h2>Upload a New Picture</h2>
+          <%= p.label :photo %>
+          <%= p.file_field :photo %>
+          <%= p.hidden_field :photo_cache %>
+    <%= f.submit "submit picture", class: "btn btn-primary" %>
+  <% end %>
+  </div>
 </div>
-</div>
+

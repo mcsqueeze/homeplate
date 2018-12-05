@@ -1,6 +1,6 @@
 class MealsController < ApplicationController
   def index
-    @meals=Meal.all
+    @meals = Meal.all
   end
 
   def show
@@ -11,6 +11,8 @@ class MealsController < ApplicationController
 
   def new
     @meal = Meal.new
+    @picture = Picture.new
+    @picture.meal_id = @meal.id
   end
 
   def create
