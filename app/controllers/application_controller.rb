@@ -22,4 +22,12 @@ class ApplicationController < ActionController::Base
       Order.new
     end
   end
+
+  def after_sign_in_path_for(resource)
+    meals_path
+  end
+
+  def after_sign_up_path_for(resource)
+    meals_path
+  end
 end

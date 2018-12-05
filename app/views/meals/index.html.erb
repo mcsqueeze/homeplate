@@ -1,5 +1,18 @@
 <div class="wrap">
+  <!-- Searchbar -->
+  <div class="searchbar">
+  <%= form_tag meals_path, method: :get do %>
+    <%= text_field_tag :query,
+      params[:query],
+      class: "form-control",
+      placeholder: "find a meal nearby"
+    %>
+  <% end %>
+  </div>
+
   <div class="container mt-3">
+
+    <!-- Cards -->
     <div class="row">
     <% @meals.each do |meal| %>
       <div class="col-xs-12 col-sm-6 col-md-4">
@@ -20,10 +33,7 @@
             <div class="flex">
             <div "meal-card-actions">
               <%= link_to 'Details', meal_path(meal), :class => "ml-3 text-dark" %>
-              <% if current_user.usertype == "cook" %>
-              <%= link_to 'Edit', edit_meal_path(meal), :class => "ml-3 text-dark" %>
-              <%= link_to 'Remove', meal_path(meal), method: :delete, data: { confirm: 'Are you sure?' }, :class => "ml-3 text-dark" %>
-            <% end %>
+
           </div>
         </div>
         </div>

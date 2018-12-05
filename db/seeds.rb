@@ -77,7 +77,7 @@ orders.each do |order|
 end
 
 
-User.create(email: "cook@gmail.com", password: "123456", usertype: "cook")
-User.create(email: "customer@gmail.com", password: "123456", usertype: "customer")
+User.create(email: "cook@gmail.com", password: "123456", usertype: "cook", photo: "hhttps://res.cloudinary.com/homeplate/image/upload/v1544030863/ssaunier.jpg")
+User.create(email: "customer@gmail.com", password: "123456", usertype: "customer", photo: "https://res.cloudinary.com/homeplate/image/upload/v1544030876/mcsqueeze.jpg")
 
 puts 'Finished!'
