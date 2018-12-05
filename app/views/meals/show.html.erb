@@ -44,12 +44,13 @@
       <div class="buttons">
           <%= link_to 'Back to Meals', meals_path, { :class => "btn btn-primary"} %>
           <%= link_to 'Delete', meal_path, {:method  => :delete, :class => "btn btn-primary"} %>
+          <%= link_to 'Add meal to order', meal_items_path(@meal), :class => "btn btn-primary", method: 'post' %>
+
       </div>
     </div>
     </div>
   </div>
 </div>
-
 
 
 

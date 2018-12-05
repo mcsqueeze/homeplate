@@ -1,12 +1,6 @@
 Rails.application.routes.draw do
 
-  get 'items/index'
-  get 'items/create'
-  get 'items/show'
-  get 'items/destroy'
-  get 'items/update'
-  get 'items/new'
-  get 'items/edit'
+
   patch 'users/:id/change_usertype', to: "users#change_usertype", as: :change_usertype
 
 
@@ -18,6 +12,7 @@ Rails.application.routes.draw do
   resources :meals do
     resources :pictures, only: [:create, :destroy]
     resources :reviews, only: [:create, :destroy]
+    resources :items, only: [:create]
   end
 
   resources :users, only: [:show]
