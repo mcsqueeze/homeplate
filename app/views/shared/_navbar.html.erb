@@ -9,10 +9,23 @@
 
     <% if user_signed_in? %>
 
-      <!-- Links when logged in -->
+      <!-- Links when logged in as customer-->
+      <% if current_user.usertype == "customer" %>
+      <%= link_to "Become a cook", change_usertype_path(current_user), class: "navbar-wagon-item navbar-wagon-link", method: 'patch' %>
       <%= link_to "Browse meals", "/meals", class: "navbar-wagon-item navbar-wagon-link" %>
-      <%= link_to "Become a cook", "#", class: "navbar-wagon-item navbar-wagon-link" %>
+      <% end %>
+
+      <!-- Links when logged in as cook-->
+      <% if current_user.usertype == "cook" %>
+      <%= link_to "post a new meal", "/meals/new", class: "navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to "your dashboard", "/meals", class: "navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to "back to customer mode", change_usertype_path(current_user), class: "navbar-wagon-item navbar-wagon-link", method: 'patch' %>
+
+      <% end %>
+
+      <!-- Links seen by all-->
       <%= link_to "FAQ", "/FAQ", class: "navbar-wagon-item navbar-wagon-link" %>
+      <%= current_user.usertype %>
 
       <!-- Avatar with dropdown menu -->
       <div class="navbar-wagon-item">

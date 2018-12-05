@@ -9,9 +9,17 @@ class MealsController < ApplicationController
   end
 
   def new
+    @meal = Meal.new
   end
 
   def create
+    @wmeal = meal.new(meal_params)
+    @meal.user = current_user
+    if @meal.save
+      redirect_to meals_path
+    else
+      render :new
+    end
   end
 
   def edit

@@ -20,5 +20,6 @@ Rails.application.routes.draw do
     end
   end
 
-
+  # change customer type
+  patch 'users/:id/change_usertype', to: "users#change_usertype", as: :change_usertype
 end

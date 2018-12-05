@@ -1,2 +1,22 @@
 <h1>Meals#new</h1>
 <p>Find me in app/views/meals/new.html.erb</p>
+
+
+<div class="row">
+<div class="col-sm-offset-4 col-sm-4">
+<%= simple_form_for [@meal] do |f| %>
+<% if @meal.errors.any? %>
+  <% @meal.errors.full_messages.each do |m| %>
+    <p><%= m %></p>
+  <% end %>
+<% end %>
+<h2>Upload a New Meal</h2>
+  <%= f.input :title %> <%= f.input :price_cents %>
+  <%= f.input :category %>
+  <%= f.input :description %>
+  <%= f.input :maxservings %>
+  <%= f.input :shelflife %>
+  <%= f.submit "submit meal", class: "btn btn-primary" %>
+<% end %>
+</div>
+</div>
