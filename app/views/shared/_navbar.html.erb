@@ -11,26 +11,27 @@
 
       <!-- Links when logged in as customer-->
       <% if current_user.usertype == "customer" %>
-      <%= link_to "Become a cook", change_usertype_path(current_user), class: "navbar-wagon-item navbar-wagon-link", method: 'patch' %>
-      <%= link_to "Browse meals", "/meals", class: "navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to "browse meals", "/meals", class: "navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to "become a cook", change_usertype_path(current_user), class: "navbar-wagon-item navbar-wagon-link", method: :patch %>
       <% end %>
 
       <!-- Links when logged in as cook-->
       <% if current_user.usertype == "cook" %>
       <%= link_to "post a new meal", "/meals/new", class: "navbar-wagon-item navbar-wagon-link" %>
       <%= link_to "your dashboard", "/meals", class: "navbar-wagon-item navbar-wagon-link" %>
-      <%= link_to "back to customer mode", change_usertype_path(current_user), class: "navbar-wagon-item navbar-wagon-link", method: 'patch' %>
+      <%= link_to "back to customer mode", change_usertype_path(current_user), class: "navbar-wagon-item navbar-wagon-link", method: :patch %>
 
       <% end %>
 
       <!-- Links seen by all-->
       <%= link_to "FAQ", "/FAQ", class: "navbar-wagon-item navbar-wagon-link" %>
-      <%= current_user.usertype %>
+
 
       <!-- Avatar with dropdown menu -->
       <div class="navbar-wagon-item">
         <div class="dropdown">
           <%= cl_image_tag current_user.photo, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+          <div class="badge"><%= current_user.usertype %></div>
           <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
             <li>
               <%= link_to "users/[:id]" do %>

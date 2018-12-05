@@ -7,6 +7,9 @@ Rails.application.routes.draw do
   get 'items/update'
   get 'items/new'
   get 'items/edit'
+  patch 'users/:id/change_usertype', to: "users#change_usertype", as: :change_usertype
+
+
   devise_for :users
   root to: 'pages#home'
   get 'FAQ', to: 'pages#FAQ'
@@ -25,6 +28,4 @@ Rails.application.routes.draw do
       get 'confirmation', to: 'payments#confirmation'
     end
   end
-  # change customer type
-  patch 'users/:id/change_usertype', to: "users#change_usertype", as: :change_usertype
 end
