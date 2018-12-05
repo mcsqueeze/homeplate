@@ -1,8 +1,67 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
-
 <%= @user.username  %>
 
-<%= cl_image_tag @user.photo %>
-
 <%= @user.usertype  %>
+
+<div class="container">
+  <header>
+    <i class="fa fa-bars" aria-hidden="true"></i>
+  </header>
+  <main>
+    <div class="row">
+      <div class="left col-lg-4">
+        <div class="photo-left">
+          <img class="photo" <%= cl_image_tag @user.photo %>
+        </div>
+   <!--      <h4 class="name">@user.username</h4>
+        <p class="info">@user.info</p>
+        <p class="info">@user.email</p>
+        <div class="stats row">
+          <div class="stat col-xs-4" style="padding-right: 50px;">
+            <p class="number-stat">3,619</p>
+            <p class="desc-stat">Followers</p>
+          </div>
+          <div class="stat col-xs-4">
+            <p class="number-stat">42</p>
+            <p class="desc-stat">Following</p>
+          </div>
+          <div class="stat col-xs-4" style="padding-left: 50px;">
+            <p class="number-stat">38</p>
+            <p class="desc-stat">Uploads</p>
+          </div>
+        </div> -->
+        <p class="desc">Hi ! My name is Jane Doe. I'm a UI/UX Designer from Paris, in France. I really enjoy photography and mountains.</p>
+        <div class="social">
+          <i class="fa fa-facebook-square" aria-hidden="true"></i>
+          <i class="fa fa-twitter-square" aria-hidden="true"></i>
+          <i class="fa fa-pinterest-square" aria-hidden="true"></i>
+          <i class="fa fa-tumblr-square" aria-hidden="true"></i>
+        </div>
+      </div>
+      <div class="right col-lg-8">
+        <ul class="nav">
+          <li>Gallery</li>
+          <li>About</li>
+        </ul>
+        <div class="row gallery">
+          <div class="col-md-4">
+             <img src="https://image.noelshack.com/fichiers/2017/38/2/1505774813-photo4.jpg"/>
+          </div>
+          <div class="col-md-4">
+            <img src="https://image.noelshack.com/fichiers/2017/38/2/1505774814-photo5.jpg"/>
+          </div>
+          <div class="col-md-4">
+             <img src="https://image.noelshack.com/fichiers/2017/38/2/1505774814-photo6.jpg"/>
+          </div>
+          <div class="col-md-4">
+             <img src="https://image.noelshack.com/fichiers/2017/38/2/1505774817-photo1.jpg"/>
+          </div>
+          <div class="col-md-4">
+            <img src="https://image.noelshack.com/fichiers/2017/38/2/1505774815-photo2.jpg"/>
+          </div>
+          <div class="col-md-4">
+            <img src="https://image.noelshack.com/fichiers/2017/38/2/1505774816-photo3.jpg"/>
+          </div>
+        </div>
+      </div>
+  </main>
+</div>
