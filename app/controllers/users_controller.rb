@@ -3,12 +3,6 @@ class UsersController < ApplicationController
     @user = current_user
   end
 
-  private
-
-  def user_params
-    params.require(:user).permit(:id)
-  end
-
   def change_usertype
     if current_user.usertype == "cook"
       current_user.usertype = "customer"
@@ -19,4 +13,12 @@ class UsersController < ApplicationController
     end
     redirect_back(fallback_location: root_path)
   end
+
+  private
+
+  def user_params
+    params.require(:user).permit(:id)
+  end
+
+
 end
