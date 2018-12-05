@@ -32,7 +32,7 @@ p2.save
 d1 = Date.new(2018,12,1)
 Order.create(pickuptime: d1, user: User.first)
 
-m3 = Meal.create(title: "Msimmon", user: User.first, description: "Savory, fried, traditional bread", category: "side", price: 6)
+m3 = Meal.create(title: "Msimmon", user: User.first, description: "Savory, fried, traditional bread", maxservings: 20, category: "side", price: 6)
 p3 = Picture.new
 p3.meal = m3
 p3.remote_url_url = "https://res.cloudinary.com/homeplate/image/upload/v1543920377/IMG_6816_Fotor_Fotor.jpg"
