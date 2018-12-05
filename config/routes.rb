@@ -1,5 +1,12 @@
 Rails.application.routes.draw do
 
+  get 'items/index'
+  get 'items/create'
+  get 'items/show'
+  get 'items/destroy'
+  get 'items/update'
+  get 'items/new'
+  get 'items/edit'
   devise_for :users
   root to: 'pages#home'
   get 'FAQ', to: 'pages#FAQ'
@@ -10,16 +17,14 @@ Rails.application.routes.draw do
     resources :reviews, only: [:create, :destroy]
   end
 
-  resources :users, only: [:show] do
-    resources :orders, only: [:index, :show, :create, :destroy] do
-      member do
-        get 'payment', to: 'payments#new'
-        post 'payment', to: 'payments#create'
-        get 'confirmation', to: 'payments#confirmation'
-      end
+  resources :users, only: [:show]
+  resources :orders, only: [:index, :show, :create, :destroy] do
+    member do
+      get 'payment', to: 'payments#new'
+      post 'payment', to: 'payments#create'
+      get 'confirmation', to: 'payments#confirmation'
     end
   end
-
   # change customer type
   patch 'users/:id/change_usertype', to: "users#change_usertype", as: :change_usertype
 end

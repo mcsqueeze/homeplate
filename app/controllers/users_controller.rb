@@ -1,6 +1,12 @@
 class UsersController < ApplicationController
   def show
-    @user = User.find(params[:id])
+    @user = current_user
+  end
+
+  private
+
+  def user_params
+    params.require(:user).permit(:id)
   end
 
   def change_usertype

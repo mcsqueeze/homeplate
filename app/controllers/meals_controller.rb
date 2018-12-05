@@ -6,6 +6,7 @@ class MealsController < ApplicationController
   def show
     @meal = Meal.find(params[:id])
     @order = Order.new
+    @user = current_user
   end
 
   def new
