@@ -2,14 +2,18 @@ class OrdersController < ApplicationController
   def index
   end
 
+  def new
+    @order = Order.new
+  end
+
   def show
     @order = current_user.orders.find(params[:id])
     @subtotals = []
-    @order.items.each do |item|
-      @subtotals << item.meal.price * item.quantity
+      @order.items.each do |item|
+        @subtotals << item.meal.price * item.quantity
       end
     @total = @subtotals.sum
-
+    @order = Order.update(amount: @total, state: 'pending', user: current_user)
   end
 
   def create
@@ -21,7 +25,6 @@ class OrdersController < ApplicationController
 
   def destroy
   end
-
 
   private
 

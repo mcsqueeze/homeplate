@@ -5,8 +5,7 @@ class ItemsController < ApplicationController
   def create
     order = current_order()
     if order.id.nil?
-      order.state = "pending"
-      order.save
+      order = Order.create(user: current_user, state: "pending")
     end
 
     meal = Meal.find(params[:meal_id])
@@ -18,14 +17,16 @@ class ItemsController < ApplicationController
         item.quantity += params[:quantity].to_i
         item.save
         quantity_added = true
+
       end
     end
 
     unless quantity_added
-     Item.create(meal: meal, order: order, quantity: params[:quantity])
+     new_item = Item.create(meal: meal, order: order, quantity: params[:quantity])
     end
 
     redirect_to order_path(order)
+
   end
 
   def show
