@@ -4,8 +4,6 @@ class ApplicationController < ActionController::Base
 
   before_action :configure_permitted_parameters, if: :devise_controller?
 
-
-
   protected
 
   def configure_permitted_parameters
@@ -18,7 +16,6 @@ class ApplicationController < ActionController::Base
   def current_order
     if !current_user.nil? and Order.exists?(user_id: current_user.id)
       return Order.where(user_id: current_user.id).where(state: "pending").last
-      #
     else
       return Order.new
     end

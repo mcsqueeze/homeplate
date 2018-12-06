@@ -1,9 +1,15 @@
 <h1>Your Order</h1>
   <ul>
-    <% @order.items.each do |item| %>
+    <li>Status: <%= @order.first.state %></li>
+    <% @order.first.items.each do |item| %>
     <li>Item: <%= item.meal.title %> Quantity : <%= item.quantity %> </li>
     <% end %>
   <ul>
 
   <p>Order total: <%= @total %></p>
+
+
+  <div class="buttons">
+    <%= link_to 'Proceed to payment', payment_order_path, class: "btn btn-primary" %>
+  </div>
 

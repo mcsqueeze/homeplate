@@ -23,7 +23,6 @@ class ItemsController < ApplicationController
 
     unless quantity_added
      new_item = Item.create(meal: meal, order: order, quantity: params[:quantity])
-
     end
 
     redirect_to order_path(order)

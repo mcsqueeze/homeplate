@@ -1,2 +1,9 @@
 <h1>Payments#confirmation</h1>
 <p>Find me in app/views/payments/confirmation.html.erb</p>
+
+
+Your order is <%= @order.state %>
+
+  <div class="buttons">
+    <%= link_to 'buy more food!', meals_path, class: "btn btn-primary" %>
+  </div>
