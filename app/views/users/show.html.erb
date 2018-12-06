@@ -1,22 +1,4 @@
 <div class="container">
- <div class="user-input-form">
-  <h1>Please complete your profile information</h1>
-  <%= simple_form_for(@user, as: @user, url: user_registration_path(@user), html: { method: :patch }) do |f| %>
-  <%= f.error_notification %>
-  <div class="form-inputs">
-    <%= f.input :first_name, required: true, autofocus: true %>
-    <%= f.input :last_name, required: true, ainput_html: { autocomplete: "last_name" } %>
-    <%= f.input :address, required: true, input_html: { autocomplete: "address" } %>
-    <%= f.input :phonenumber, required: true, input_html: { autocomplete: "phone number" } %>
-
-
-  </div>
-
-  <div class="form-actions">
-    <%= f.button :submit, "Update" %>
-  </div>
-<% end %>
-</div>
   <header>
     <i class="fa fa-bars" aria-hidden="true"></i>
   </header>

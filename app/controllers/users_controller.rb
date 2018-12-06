@@ -6,7 +6,7 @@ class UsersController < ApplicationController
       lng: user.longitude,
       infoWindow: { content: render_to_string(partial: "/users/map_box", locals: { user: user }) }
     }
-  end
+    end
   end
 
   def show
@@ -16,11 +16,10 @@ class UsersController < ApplicationController
   def change_usertype
     if current_user.usertype == "cook"
       current_user.usertype = "customer"
-      current_user.save
     else
       current_user.usertype = "cook"
-      current_user.save
     end
+    current_user.save
     redirect_back(fallback_location: root_path)
   end
 
@@ -30,5 +29,4 @@ class UsersController < ApplicationController
     params.require(:user).permit(:id)
   end
 end
-
 

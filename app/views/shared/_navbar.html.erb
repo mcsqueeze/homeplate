@@ -12,14 +12,14 @@
       <!-- Links when logged in as customer-->
       <% if current_user.usertype == "customer" %>
       <%= link_to "browse meals", "/meals", class: "navbar-wagon-item navbar-wagon-link" %>
-      <%= link_to "become a cook", change_usertype_path(current_user), class: "navbar-wagon-item navbar-wagon-link", method: :patch %>
+      <%= link_to "become a cook", change_usertype_path(current_user), method: :patch, class: "navbar-wagon-item navbar-wagon-link"%>
       <% end %>
 
       <!-- Links when logged in as cook-->
       <% if current_user.usertype == "cook" %>
       <%= link_to "post a new meal", "/meals/new", class: "navbar-wagon-item navbar-wagon-link" %>
       <%= link_to "your dashboard", "/meals", class: "navbar-wagon-item navbar-wagon-link" %>
-      <%= link_to "back to customer mode", change_usertype_path(current_user), class: "navbar-wagon-item navbar-wagon-link", method: :patch %>
+      <%= link_to "back to customer mode", change_usertype_path(current_user), method: :patch, class: "navbar-wagon-item navbar-wagon-link" %>
 
       <% end %>
 
