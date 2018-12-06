@@ -5,7 +5,6 @@ Meal.destroy_all
 Order.destroy_all
 User.destroy_all
 
-
 puts 'Creating meals...'
 
 require 'date'
