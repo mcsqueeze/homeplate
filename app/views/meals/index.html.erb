@@ -1,5 +1,4 @@
 <div class="wrap">
-  <!-- Searchbar -->
   <div class="searchbar">
   <%= form_tag meals_path, method: :get do %>
     <%= text_field_tag :query,
@@ -8,7 +7,9 @@
       placeholder: "find a meal nearby"
     %>
   <% end %>
+  <%= link_to 'Map View', users_path, class: "btn btn-primary" %>
   </div>
+
 
   <div class="container mt-3">
 

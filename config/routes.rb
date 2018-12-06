@@ -13,7 +13,8 @@ Rails.application.routes.draw do
     resources :items, only: [:create]
   end
 
-  # resources :users, only: [:show]
+  resources :users, only: [:show, :index]
+
   resources :orders, only: [:index, :show, :create, :destroy] do
     member do
       get 'payment', to: 'payments#new'
