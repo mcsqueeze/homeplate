@@ -5,8 +5,7 @@ class ItemsController < ApplicationController
   def create
     order = current_order()
     if order.id.nil?
-      order.state = "pending"
-      order.save
+      order = Order.create(user: current_user, state: "pending")
     end
 
     meal = Meal.find(params[:meal_id])

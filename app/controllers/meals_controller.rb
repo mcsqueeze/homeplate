@@ -8,12 +8,6 @@ class MealsController < ApplicationController
     else
       @meals = Meal.all
     end
-     @markers = @meals.map do |meal|
-    {
-      lat: meal.latitude,
-      lng: meal.longitude,
-      infoWindow: { content: render_to_string(partial: "/meals/map_box", locals: { meal: meal }) }
-    }
   end
 
   def show

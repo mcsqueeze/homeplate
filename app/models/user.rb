@@ -11,5 +11,6 @@ class User < ApplicationRecord
   has_many :payments, through: :orders
 
   validates :usertype, presence: true, inclusion: { in: ["cook", "customer"]}
-
+  geocoded_by :address
+  after_validation :geocode, if: :will_save_change_to_address?
 end
