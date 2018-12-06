@@ -4,11 +4,11 @@ class OrdersController < ApplicationController
 
   def show
     @order = current_user.orders.find(params[:id])
-    @prices = []
+    @subtotals = []
     @order.items.each do |item|
-      @prices << item.meal.price
+      @subtotals << item.meal.price * item.quantity
       end
-    @total = @prices.sum
+    @total = @subtotals.sum
 
   end
 

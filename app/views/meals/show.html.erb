@@ -42,16 +42,18 @@
 
 
       <div class="buttons">
-          <%= link_to 'Back to Meals', meals_path, { :class => "btn btn-primary"} %>
-          <%= link_to 'Delete', meal_path, {:method  => :delete, :class => "btn btn-primary"} %>
-          <%= link_to 'Add meal to order', meal_items_path(@meal), :class => "btn btn-primary", method: 'post' %>
-
+          <%= link_to 'Back to Meals', meals_path, class: "btn btn-primary" %>
       </div>
+
+      <h2>Please select number of servings:</h2>
+        <%= form_tag(meal_items_path(@meal), method: "post") do %>
+        <%= number_field_tag(:quantity, options = {max: @meal.maxservings}) %>
+        <%= submit_tag("Add to Order") %>
+      <% end %>
     </div>
     </div>
   </div>
 </div>
-
 
 
 
