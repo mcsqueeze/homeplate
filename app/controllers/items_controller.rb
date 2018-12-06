@@ -3,15 +3,28 @@ class ItemsController < ApplicationController
   end
 
   def create
-    order = current_order
-    order.user = current_user
-    order.save
+    order = current_order()
+    if order.id.nil?
+      order.state = "pending"
+      order.save
+    end
 
     meal = Meal.find(params[:meal_id])
+    #get id of current meal
+    quantity_added = false
 
-    Item.create(meal: meal, order: order, quantity: params[:quantity])
+    order.items.each do |item|
+      if item.meal_id == meal.id
+        item.quantity += params[:quantity].to_i
+        item.save
+        quantity_added = true
+      end
+    end
 
-    session[:order_id] = order.id
+    unless quantity_added
+     Item.create(meal: meal, order: order, quantity: params[:quantity])
+    end
+
     redirect_to order_path(order)
   end
 

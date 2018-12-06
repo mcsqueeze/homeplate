@@ -16,10 +16,11 @@ class ApplicationController < ActionController::Base
   end
 
   def current_order
-    if !session[:order_id].nil?
-      Order.find(session[:order_id])
+    if !current_user.nil? and Order.exists?(user_id: current_user.id)
+      return Order.where(user_id: current_user.id).where(state: "pending").last
+      #
     else
-      Order.new
+      return Order.new
     end
   end
 
