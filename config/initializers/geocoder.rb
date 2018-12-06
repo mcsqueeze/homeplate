@@ -10,8 +10,10 @@ Geocoder.configure(
   # api_key: nil,               # API key for geocoding service
   # cache: nil,                 # cache object (must respond to #[], #[]=, and #del)
   # cache_prefix: 'geocoder:',  # prefix (string) to use for all cache keys
+
   # lookup: :mapbox,
   # api_key:   ENV['MAPBOX_API_KEY'],
+
   # use_https: true,
   # Exceptions that should not be rescued by default
   # (if you want to implement custom error handling);

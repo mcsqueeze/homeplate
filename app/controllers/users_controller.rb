@@ -3,10 +3,12 @@ class UsersController < ApplicationController
     @users = User.where.not(latitude: nil, longitude: nil)
 
     @markers = @users.map do |user|
+
       {
         lat: user.latitude,
         lng: user.longitude
       }
+
     end
   end
 
@@ -17,11 +19,10 @@ class UsersController < ApplicationController
   def change_usertype
     if current_user.usertype == "cook"
       current_user.usertype = "customer"
-      current_user.save
     else
       current_user.usertype = "cook"
-      current_user.save
     end
+    current_user.save
     redirect_back(fallback_location: root_path)
   end
 
@@ -31,5 +32,4 @@ class UsersController < ApplicationController
     params.require(:user).permit(:id)
   end
 end
-
 

@@ -11,6 +11,7 @@ gem 'redis'
 
 gem 'autoprefixer-rails'
 gem 'bootstrap-sass', '~> 3.3'
+gem 'jquery-rails'
 gem 'font-awesome-sass', '~> 5.0.9'
 gem 'sassc-rails'
 gem 'simple_form'
@@ -21,7 +22,6 @@ gem 'carrierwave', '~> 1.2'
 gem 'money-rails'
 gem 'stripe'
 gem 'geocoder'
-
 
 group :development do
   gem 'web-console', '>= 3.3.0'

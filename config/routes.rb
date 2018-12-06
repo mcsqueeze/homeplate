@@ -1,10 +1,8 @@
 Rails.application.routes.draw do
-
+  devise_for :users
 
   patch 'users/:id/change_usertype', to: "users#change_usertype", as: :change_usertype
 
-
-  devise_for :users
   root to: 'pages#home'
   get 'FAQ', to: 'pages#FAQ'
 
@@ -16,6 +14,7 @@ Rails.application.routes.draw do
   end
 
   resources :users, only: [:show, :index]
+
   resources :orders, only: [:index, :show, :create, :destroy] do
     member do
       get 'payment', to: 'payments#new'

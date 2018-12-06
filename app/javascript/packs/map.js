@@ -1,3 +1,4 @@
+
 import 'mapbox-gl/dist/mapbox-gl.css'
 import mapboxgl from 'mapbox-gl/dist/mapbox-gl.js';
 
@@ -29,5 +30,6 @@ if (markers.length === 0) {
   const map = new mapboxgl.Map({
     container: 'map',
     style: 'mapbox://styles/mapbox/streets-v10'
+
   });
 }
