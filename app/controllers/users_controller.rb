@@ -1,8 +1,16 @@
 class UsersController < ApplicationController
+  def index
+    @markers = @users.map do |user|
+    {
+      lat: user.latitude,
+      lng: user.longitude,
+      infoWindow: { content: render_to_string(partial: "/users/map_box", locals: { user: user }) }
+    }
+  end
+  end
+
   def show
     @user = current_user
-
-
   end
 
   def change_usertype
