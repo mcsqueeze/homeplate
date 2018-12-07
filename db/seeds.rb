@@ -9,7 +9,7 @@ puts 'Creating meals...'
 
 require 'date'
 
-u1 = User.create(email: "margaux@gmail.com", password: "margaux", usertype: "cook", address: "4 Rue Tanger, Rabat")
+u1 = User.create(email: "margaux@gmail.com", password: "margaux", usertype: "cook", address: "42 Boulevard de la Résistance, Casablanca")
 m1 = Meal.create(title: "Couscous", user: User.first, description: "Delicious, savory chicken couscous with tfaya", maxservings: 24, category: "main course", price: 50)
 p1 = Picture.new
 p1_2 = Picture.new
