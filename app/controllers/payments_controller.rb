@@ -7,6 +7,7 @@ class PaymentsController < ApplicationController
 
   def confirmation
     @order = current_user.orders.find(params[:id])
+
   end
 
   def create
@@ -23,6 +24,13 @@ class PaymentsController < ApplicationController
     )
 
     @order.update(payment: charge.to_json, state: 'paid')
+
+    @order.items.each do |item|
+      item.meal.maxservings -= item.quantity
+      item.meal.save
+    end
+
+
     redirect_to confirmation_order_path(@order)
   rescue Stripe::CardError => e
     flash[:alert] = e.message

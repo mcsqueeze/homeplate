@@ -14,6 +14,9 @@ class MealsController < ApplicationController
     @meal = Meal.find(params[:id])
     @order = Order.new
     @user = current_user
+
+
+
   end
 
   def new
@@ -40,6 +43,21 @@ class MealsController < ApplicationController
 
   def destroy
   end
+
+  def available_quantity
+    #@quantities_bought = []
+   # @meal_ordered = Item.where("meal_id = ?", params[:meal])
+    #@meals_ordered.each do |item|
+      #@quantities_bought << item.quantity
+    #end
+    #@total_quantity_bought
+    #@quantities_bought.each do |q|
+     # @total_quantity_bought << q
+    #end
+    #@meal.maxservings -= @meal_ordered.quantity
+
+  end
+
 
   private
 
