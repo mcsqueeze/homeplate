@@ -13,6 +13,7 @@
       <% if current_user.usertype == "customer" %>
       <%= link_to "browse meals", "/meals", class: "navbar-wagon-item navbar-wagon-link" %>
       <%= link_to "Become a Cook", change_usertype_path(current_user), method: :patch, class: "navbar-wagon-item navbar-wagon-link"%>
+      <%= link_to "My Orders", orders_path(current_user), method: :get, class: "navbar-wagon-item navbar-wagon-link"%>
       <% end %>
 
       <!-- Links when logged in as cook-->
