@@ -1,6 +1,7 @@
 import 'mapbox-gl/dist/mapbox-gl.css';
 import mapboxgl from 'mapbox-gl/dist/mapbox-gl';
 
+
 const mapElement = document.getElementById('map');
 
 if (mapElement) { // only build a map if there's a div#map to inject into
@@ -11,7 +12,7 @@ if (mapElement) { // only build a map if there's a div#map to inject into
     style: 'mapbox://styles/mapbox/streets-v10'
   });
 
-  const markers = JSON.parse(mapElement.dataset.markers);
+const markers = JSON.parse(mapElement.dataset.markers);
 
   markers.forEach((marker) => {
     new mapboxgl.Marker()
