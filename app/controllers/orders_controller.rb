@@ -2,7 +2,7 @@ class OrdersController < ApplicationController
   def index
     @user = current_user
     @orders = current_user.orders
-    @total = order_total
+
   end
 
 
@@ -21,18 +21,6 @@ class OrdersController < ApplicationController
     @order
   end
 
-  def order_total
-    @order = Order.find(params[:id])
-    @subtotals = []
-      @order.items.each do |item|
-        @subtotals << item.meal.price * item.quantity
-      end
-    @total = @subtotals.sum
-    @order.update(amount: @total, state: 'pending')
-    @order
-  end
-
-  end
 
   def create
     @user = current_user
