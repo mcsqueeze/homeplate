@@ -1,0 +1,5 @@
+    <%= f.fields_for :pictures do |p| %>
+     <%= p.label :url %><br>
+     <%= p.file_field :url, multiple: true%>
+     <%= p.input :url_cache, as: :hidden %>
+   <% end %>
