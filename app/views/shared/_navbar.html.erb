@@ -18,7 +18,7 @@
       <!-- Links when logged in as cook-->
       <% if current_user.usertype == "cook" %>
       <%= link_to "Post a New Meal", "/meals/new", class: "navbar-wagon-item navbar-wagon-link" %>
-      <%= link_to "View Meals", "/meals", class: "navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to "See my meals", dashboard_path(current_user), class: "navbar-wagon-item navbar-wagon-link" %>
       <%= link_to "Back to Customer Mode", change_usertype_path(current_user), method: :patch, class: "navbar-wagon-item navbar-wagon-link" %>
 
       <% end %>

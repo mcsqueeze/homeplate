@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
   devise_for :users
 
-  patch 'users/:id/change_usertype', to: "users#change_usertype", as: :change_usertype
-
   root to: 'pages#home'
   get 'FAQ', to: 'pages#FAQ'
+  patch 'users/:id/change_usertype', to: "users#change_usertype", as: :change_usertype
+  get 'users/:id/dashboard', to: "users#dashboard", as: :dashboard
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :meals do
