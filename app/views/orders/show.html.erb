@@ -1,7 +1,7 @@
 <h1>Your Order</h1>
   <ul>
-    <li>Status: <%= @order.first.state %></li>
-    <% @order.first.items.each do |item| %>
+    <li>Status: <%= @order.state %></li>
+    <% @order.items.each do |item| %>
     <li>Item: <%= item.meal.title %> Quantity : <%= item.quantity %> </li>
     <% end %>
   <ul>
