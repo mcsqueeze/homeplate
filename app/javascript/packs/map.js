@@ -5,14 +5,19 @@ import mapboxgl from 'mapbox-gl/dist/mapbox-gl.js';
 const mapElement = document.getElementById('map');
 
 if (mapElement) { // only build a map if there's a div#map to inject into
-  const markers = JSON.parse(mapElement.dataset.markers);
+  mapboxgl.accessToken = mapElement.dataset.mapboxApiKey;
+  const map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/mapbox/streets-v10'
+
+const markers = JSON.parse(mapElement.dataset.markers);
 
   markers.forEach((marker) => {
     new mapboxgl.Marker()
       .setLngLat([marker.lng, marker.lat])
       .addTo(map);
-
-if (markers.length === 0) {
+  })
+    if (markers.length === 0) {
     map.setZoom(1);
   } else if (markers.length === 1) {
     map.setZoom(14);
@@ -24,12 +29,4 @@ if (markers.length === 0) {
     });
     map.fitBounds(bounds, { duration: 0, padding: 75 })
   }
-}
-
-  mapboxgl.accessToken = mapElement.dataset.mapboxApiKey;
-  const map = new mapboxgl.Map({
-    container: 'map',
-    style: 'mapbox://styles/mapbox/streets-v10'
-
-  });
 }

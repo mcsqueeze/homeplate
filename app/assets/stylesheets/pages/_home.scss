@@ -12,8 +12,11 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.1)), url(http://yespleaseblog.co/wp-content/uploads/2017/06/etsy.jpg);
-  background-position: center;
+  background-image: linear-gradient(to bottom, rgba(#061700, 0.5), rgba(#061700, 0.5)), url(http://yespleaseblog.co/wp-content/uploads/2017/06/etsy.jpg);
+  background-position: cover;
+
 }
 
-
+#signup-form {
+  width: 50% !important;
+}
