@@ -13,12 +13,13 @@
       <% if current_user.usertype == "customer" %>
       <%= link_to "browse meals", "/meals", class: "navbar-wagon-item navbar-wagon-link" %>
       <%= link_to "Become a Cook", change_usertype_path(current_user), method: :patch, class: "navbar-wagon-item navbar-wagon-link"%>
+      <%= link_to "My Orders", orders_path(current_user), method: :get, class: "navbar-wagon-item navbar-wagon-link"%>
       <% end %>
 
       <!-- Links when logged in as cook-->
       <% if current_user.usertype == "cook" %>
       <%= link_to "Post a New Meal", "/meals/new", class: "navbar-wagon-item navbar-wagon-link" %>
-      <%= link_to "View Meals", "/meals", class: "navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to "See my meals", dashboard_path(current_user), class: "navbar-wagon-item navbar-wagon-link" %>
       <%= link_to "Back to Customer Mode", change_usertype_path(current_user), method: :patch, class: "navbar-wagon-item navbar-wagon-link" %>
 
       <% end %>
@@ -30,7 +31,7 @@
       <!-- Avatar with dropdown menu -->
       <div class="navbar-wagon-item">
         <div class="dropdown">
-          <%= cl_image_tag current_user.photo, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+          <%= image_tag "logo.png", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
           <div class="badge"><%= current_user.usertype %></div>
           <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
             <li>

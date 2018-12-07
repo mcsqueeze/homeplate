@@ -17,11 +17,11 @@
         <% end %>
       </ol>
       <div class="carousel-inner" role="listbox">
-        <div class="item active" style="background: url(<%= cl_image_path(@meal.pictures.first.url) %>) no-repeat center center; background-size: cover; height: 100%;">
+        <div class="item active" style="background: url(<%= cl_image_path(@meal.pictures.first.url) %>) no-repeat center center; background-size: cover; height: 100%; width: 100%;">
         </div>
 
      <% @meal.pictures.drop(1).each do |pic| %>
-      <div class="item" style="background: url(<%= cl_image_path(pic.url) %>) no-repeat center center; background-size: cover; height: 100%;">
+      <div class="item" style="background: url(<%= cl_image_path(pic.url) %>) no-repeat center center; background-size: cover; height: 100%; width: 100%;">
       </div>
     <% end %>
   </div>

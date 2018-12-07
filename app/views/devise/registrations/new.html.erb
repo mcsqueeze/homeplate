@@ -19,8 +19,13 @@
                       input_html: { autocomplete: "new-password" } %>
           <%= f.input :usertype,
                       as: :radio_buttons,
+                      boolean_style: :inline,
                       collection: ['cook', 'customer'],
                       required: true %>
+          <%= f.input :address,
+                      required: false,
+                      autofocus: true ,
+                      input_html: { autocomplete: "address" }%>
           <%= f.label :photo %>
           <%= f.file_field :photo %>
           <%= f.hidden_field :photo_cache %>
@@ -37,3 +42,6 @@
   </div>
 </div>
 </div>
+
+
+

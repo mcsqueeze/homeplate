@@ -9,7 +9,7 @@ class ItemsController < ApplicationController
     end
 
     meal = Meal.find(params[:meal_id])
-    #get id of current meal
+
     quantity_added = false
 
     order.items.each do |item|

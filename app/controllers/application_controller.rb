@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
-  before_action :authenticate_user!, :current_order
+  before_action :authenticate_user!
+
 
   before_action :configure_permitted_parameters, if: :devise_controller?
 
@@ -14,7 +15,7 @@ class ApplicationController < ActionController::Base
   end
 
   def current_order
-    if !current_user.nil? and Order.exists?(user_id: current_user.id)
+    if !current_user.nil? and Order.exists?(user_id: current_user.id, state: "pending")
       return Order.where(user_id: current_user.id).where(state: "pending").last
     else
       return Order.new
@@ -28,4 +29,5 @@ class ApplicationController < ActionController::Base
   def after_sign_up_path_for(resource)
     meals_path
   end
+
 end
