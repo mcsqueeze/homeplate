@@ -18,15 +18,13 @@ class MealsController < ApplicationController
 
   def new
     @meal = Meal.new
-    @picture = Picture.new
-    @picture.meal_id = @meal.id
   end
 
   def create
-    @wmeal = meal.new(meal_params)
+    @meal = Meal.new(meal_params)
     @meal.user = current_user
     if @meal.save
-      redirect_to meals_path
+      redirect_to new_meal_picture_path(@meal)
     else
       render :new
     end
@@ -44,6 +42,6 @@ class MealsController < ApplicationController
   private
 
   def meal_params
-    params.require(:meal).permit(:title, :picture, :description, :price, :category)
+    params.require(:meal).permit(:title, :description, :price, :category, pictures_attributes: [:id, :meal_id, :url])
   end
 end
