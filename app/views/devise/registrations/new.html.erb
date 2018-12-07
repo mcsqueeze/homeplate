@@ -19,6 +19,7 @@
                       input_html: { autocomplete: "new-password" } %>
           <%= f.input :usertype,
                       as: :radio_buttons,
+                      boolean_style: :inline,
                       collection: ['cook', 'customer'],
                       required: true %>
           <%= f.label :photo %>
@@ -32,8 +33,12 @@
         </div>
       <% end %>
       <br>
-      <%= render "devise/shared/links" %>
+      <%= render "devise/shared/
+      links" %>
     </div>
   </div>
 </div>
 </div>
+
+
+
