@@ -19,6 +19,7 @@
                       input_html: { autocomplete: "new-password" } %>
           <%= f.input :usertype,
                       as: :radio_buttons,
+                      boolean_style: :inline,
                       collection: ['cook', 'customer'],
                       required: true %>
           <%= f.input :address,
@@ -41,3 +42,6 @@
   </div>
 </div>
 </div>
+
+
+

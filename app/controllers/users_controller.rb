@@ -10,6 +10,10 @@ class UsersController < ApplicationController
     end
   end
 
+  def dashboard
+    @meals = current_user.meals
+  end
+
   def show
     @user = current_user
   end
