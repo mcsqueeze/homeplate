@@ -3,8 +3,8 @@ class MealsController < ApplicationController
 
   def index
     if params[:query].present?
-      sql_query = "title ILIKE :query OR category ILIKE :query OR description ILIKE :query"
-      @meals = Meal.where(sql_query, query: "%#{params[:query]}%")
+
+      @meals = Meal.global_search(params[:query])
     else
       @meals = Meal.all
     end
@@ -15,9 +15,6 @@ class MealsController < ApplicationController
     @order = Order.new
     @customer = current_user
     @cook = @meal.user
-
-
-
   end
 
   def new
@@ -47,6 +44,6 @@ class MealsController < ApplicationController
  private
 
   def meal_params
-    params.require(:meal).permit(:title,:user,:description,:published, :price, :category, pictures_attributes: [:id, :meal_id, :url])
+    params.require(:meal).permit(:title, :user, :description, :address, :published, :price, :category, pictures_attributes: [:id, :meal_id, :url])
   end
 end

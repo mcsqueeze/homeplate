@@ -1,9 +1,19 @@
 class Meal < ApplicationRecord
   belongs_to :user
+
+  include PgSearch
+  pg_search_scope :global_search,
+    against: [:title, :description],
+    associated_against: {
+        user: [:address]
+        },
+    using: {
+      tsearch: { prefix: true }
+    }
+
   has_many :pictures
   has_many :reviews
   accepts_nested_attributes_for :pictures
-  #after_initialize :init
 
   monetize :price_cents
 
@@ -11,14 +21,5 @@ class Meal < ApplicationRecord
   validates :price, presence: true
   validates :description, presence: true, length: { minimum: 10 }
   validates :category, presence: true, inclusion: { in: ["appetizer", "main course", "dessert", "side", "other"]}
-
-# def init
-#   self.published == true if self.published.nil?
-# end
-
-# def self.published
-#   where(published: true)
-# end
-
 
 end

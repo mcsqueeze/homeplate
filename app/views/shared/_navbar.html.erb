@@ -45,10 +45,7 @@
       <div class="navbar-wagon-item">
         <div class="dropdown">
           <!-- if user uploads photo, then photo. if not, default image -->
-
-
-          <%= image_tag logo.png, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", 'data-toggle': "dropdown" %>
-
+          <%= cl_image_tag "circled-user.png", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", 'data-toggle': "dropdown" %>
           <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
 
             <li>
@@ -74,6 +71,7 @@
         <% else %>
 
           <%= cl_image_tag current_user.photo, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", 'data-toggle': "dropdown" %>
+          <div class="badge"><%= current_user.usertype %></div>
 
           <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
 
