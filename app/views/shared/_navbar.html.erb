@@ -4,8 +4,19 @@
     <%= image_tag "https://img.icons8.com/ios-glyphs/50/000000/chef-hat.png", height: 50 %>
   <% end %>
 
+      <div class="searchbar">
+  <%= form_tag meals_path, method: :get do %>
+    <%= text_field_tag :query,
+      params[:query],
+      class: "form-control",
+      placeholder: "search a city or dish (ex: chicken, casablanca...)"
+    %>
+  <% end %>
+  </div>
   <!-- Right Navigation -->
   <div class="navbar-wagon-right hidden-xs hidden-sm">
+
+
 
     <% if user_signed_in? %>
 
