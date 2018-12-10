@@ -12,6 +12,8 @@ class UsersController < ApplicationController
 
   def dashboard
     @meals = current_user.meals
+    @active_meals = current_user.meals.published
+    @inactive_meals = current_user.meals.unpublished
   end
 
   def show

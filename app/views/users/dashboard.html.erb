@@ -17,7 +17,37 @@
 
     <!-- Cards -->
     <div class="row">
-    <% @meals.each do |meal| %>
+    <h3>Current meals</h3>
+    <% if !@active_meals.nil?%>
+    <% @active_meals.each do |meal| %>
+      <div class="col-xs-12 col-sm-6 col-md-4">
+        <div class="meal-card">
+          <div class="meal-card-image" style="background-image: url('<%= cl_image_path meal.pictures.first.url.url %>');">
+          </div>
+            <div class="meal-card-content">
+              <div class="meal-card-title">
+                <h4><%= link_to meal.title, meal_path(meal), :class => "text-dark" %></h4>
+                <p><%= meal.category %></p>
+              </div>
+              <div class="flex">
+                <p><i class="fas fa-utensils"></i>
+                Price: <%= humanized_money_with_symbol(meal.price) %>
+                </p>
+              </div>
+            </div>
+            <div class="flex">
+            <div "meal-card-actions">
+              <%= link_to 'Details', meal_path(meal), :class => "ml-3 text-dark" %>
+          </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+    <% end %>
+    </div>
+<div class="row">
+    <h3>Past meals</h3>
+    <% @inactive_meals.each do |meal| %>
       <div class="col-xs-12 col-sm-6 col-md-4">
         <div class="meal-card">
           <div class="meal-card-image" style="background-image: url('<%= cl_image_path meal.pictures.first.url.url %>');">
@@ -42,5 +72,6 @@
       </div>
     <% end %>
     </div>
+
   </div>
 </div>
