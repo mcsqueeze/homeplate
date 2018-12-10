@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :meals do
     resources :pictures, only: [:new, :create, :destroy]
-    resources :reviews, only: [:create, :destroy]
+    resources :reviews, only: [:new, :create, :destroy]
     resources :items, only: [:create]
   end
 

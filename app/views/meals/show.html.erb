@@ -43,12 +43,11 @@
   </div>
 
   <div>
-  <%= link_to 'Leave a Review', meal_reviews_path(@meal), method: :post, class: "btn btn-success" %>
-
+    <%= link_to 'Leave a Review', new_meal_review_path(@meal), class: "btn btn-success" %>
   </div>
   <div class="mealreviews">
     <h2>Past Reviews of Cook</h2>
-    <% @meal.reviews.each do |review|%>
+    <% @cook.reviews.each do |review|%>
       <ul>
          <li><%=review.rating %></li>
          <li><%=review.content %></li>

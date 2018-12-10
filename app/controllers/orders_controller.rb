@@ -3,6 +3,7 @@ class OrdersController < ApplicationController
     @user = current_user
     @orders = current_user.orders
 
+
   end
 
 
@@ -41,6 +42,7 @@ class OrdersController < ApplicationController
         redirect_to order_path(@order)
       end
   end
+
 
   private
 

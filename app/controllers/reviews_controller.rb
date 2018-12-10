@@ -5,15 +5,19 @@ class ReviewsController < ApplicationController
 
   def new
     @review = Review.new
+    @meal = Meal.find(params[:meal_id])
   end
 
   def create
 
-    @review = Review.create(review_params)
+    @review = Review.new(review_params)
     @review.user = current_user
-    @review.meal = Meal.find(params[:meal_id])
+    @meal = Meal.find(params[:meal_id])
+    @review.meal = @meal
+    @review.cook = @meal.user
+    @review.save
     flash[:success] = "You have successfully submitted your review!"
-    #redirect_to meals_path
+    redirect_to meals_path
 
 
   end
@@ -24,7 +28,7 @@ class ReviewsController < ApplicationController
   private
 
   def review_params
-    params.require(:review).permit(:rating,:content,:meal,:user)
+    params.require(:review).permit(:rating,:content)
   end
 end
 

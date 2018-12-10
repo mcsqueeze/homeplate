@@ -43,24 +43,10 @@ class MealsController < ApplicationController
   def destroy
   end
 
-  def available_quantity
-    #@quantities_bought = []
-   # @meal_ordered = Item.where("meal_id = ?", params[:meal])
-    #@meals_ordered.each do |item|
-      #@quantities_bought << item.quantity
-    #end
-    #@total_quantity_bought
-    #@quantities_bought.each do |q|
-     # @total_quantity_bought << q
-    #end
-    #@meal.maxservings -= @meal_ordered.quantity
 
-  end
-
-
-  private
+ private
 
   def meal_params
-    params.require(:meal).permit(:title,:user,:description, :price, :category, pictures_attributes: [:id, :meal_id, :url])
+    params.require(:meal).permit(:title,:user,:description,:published, :price, :category, pictures_attributes: [:id, :meal_id, :url])
   end
 end
