@@ -10,7 +10,7 @@
         <% order.items.each do |item| %>
 
         <p> <%= link_to item.meal.title, meal_path(item.meal) %>  Quantity: <%=item.quantity %> </p>
-        <p>Cook: <%= link_to item.meal.user.username, user_path(item.meal.user) %> <%= link_to "Leave this cook a review", new_meal_review_path(item.meal)  %></p>
+        <p>Cook: <%= link_to item.meal.user.username, client_path(item.meal.user) %> <%= link_to "Leave this cook a review", new_meal_review_path(item.meal)  %></p>
         <p> Sub-total <%= humanized_money_with_symbol(item.meal.price * item.quantity) %></p>
         <% end %>
         <p>Order total: <%= humanized_money_with_symbol(order.amount_cents/100)  %></p>

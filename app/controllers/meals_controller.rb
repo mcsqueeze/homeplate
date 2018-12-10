@@ -1,12 +1,12 @@
 class MealsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
+  after_action :authorize_meal, only: [:new, :create, :edit, :update, :destroy, :dashboard ]
 
   def index
     if params[:query].present?
-
-      @meals = Meal.global_search(params[:query])
+      @meals = policy_scope(Meal).global_search(params[:query])
     else
-      @meals = Meal.all
+      @meals = policy_scope(Meal).order(created_at: :desc)
     end
   end
 
@@ -23,6 +23,7 @@ class MealsController < ApplicationController
 
   def create
     @meal = Meal.new(meal_params)
+
     @meal.user = current_user
     if @meal.save
       redirect_to new_meal_picture_path(@meal)
@@ -40,10 +41,16 @@ class MealsController < ApplicationController
   def destroy
   end
 
+  def dashboard
+  end
 
  private
 
   def meal_params
     params.require(:meal).permit(:title, :user, :description, :address, :published, :price, :category, pictures_attributes: [:id, :meal_id, :url])
+  end
+
+  def authorize_meal
+    authorize @meal
   end
 end
