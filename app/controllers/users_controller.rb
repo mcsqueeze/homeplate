@@ -16,6 +16,7 @@ class UsersController < ApplicationController
 
   def show
     @user = current_user
+    @meals = current_user.meals
   end
 
   def change_usertype

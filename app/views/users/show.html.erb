@@ -1,74 +1,54 @@
 <div class="container">
-  <header>
-    <i class="fa fa-bars" aria-hidden="true"></i>
-  </header>
-  <main>
-    <div class="row">
-      <div class="left col-lg-4">
-        <div class="photo-left">
-          <img class="photo" <%= cl_image_tag @user.photo %>
-        </div>
-        <h4 class="name">@user.first_name</h4>
-        <p class="info">@user.location</p>
-        <p class="info">@user.member_since</p>
-        <div class="stats row">
-          <div class="stat col-xs-4" style="padding-right: 50px;">
-            <p class="number-stat">3,619</p>
-            <p class="desc-stat">Followers</p>
-          </div>
-          <div class="stat col-xs-4">
-            <p class="number-stat">42</p>
-            <p class="desc-stat">Following</p>
-          </div>
-          <div class="stat col-xs-4" style="padding-left: 50px;">
-            <p class="number-stat">38</p>
-            <p class="desc-stat">Uploads</p>
-          </div>
-        </div>
-        <p class="desc"><%= @user.description %></p>
-        <div class="social">
-          <i class="fab fa-facebook" aria-hidden="true"></i>
-          <i class="fab fa-twitter" aria-hidden="true"></i>
-          <i class="fab fa-pinterest" aria-hidden="true"></i>
-          <i class="fab fa-tumblr" aria-hidden="true"></i>
-        </div>
-      </div>
-      <div class="right col-lg-8">
-        <div class="user-info">
-        </div>
-        <ul class="nav">
-          <li>Gallery</li>
-          <li>About</li>
-          <li>Reviews</li>
-        </ul>
-        <div class="row gallery">
-          <div class="col-md-4">
-             <img src="https://image.noelshack.com/fichiers/2017/38/2/1505774813-photo4.jpg"/>
-          </div>
-          <div class="col-md-4">
-            <img src="https://image.noelshack.com/fichiers/2017/38/2/1505774814-photo5.jpg"/>
-          </div>
-          <div class="col-md-4">
-             <img src="https://image.noelshack.com/fichiers/2017/38/2/1505774814-photo6.jpg"/>
-          </div>
-          <div class="col-md-4">
-             <img src="https://image.noelshack.com/fichiers/2017/38/2/1505774817-photo1.jpg"/>
-          </div>
-          <div class="col-md-4">
-            <img src="https://image.noelshack.com/fichiers/2017/38/2/1505774815-photo2.jpg"/>
-          </div>
-          <div class="col-md-4">
-            <img src="https://image.noelshack.com/fichiers/2017/38/2/1505774816-photo3.jpg"/>
-          </div>
-        </div>
-        <div class="col-xs-12 col-sm-12">
-          <h3 class="About">About</h3>
-          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. </p>
-        </div>
-        <div class="col-xs-12 col-sm-12">
-          <h3 class="reviews">Reviews</h3>
-        </div>
 
+<h1>Your profile</h1>
+  <div class="row profilerow">
+  <!-- User info -->
+   <div class="profileleft col-xs-6 col-sm-6 col-md-6">
+    <h4>personal info:</h4>
+      <div>
+        <%= cl_image_tag @current_user.photo, height: 100, width: 100, crop: :fill, class: "mediumavatar", default_image: "circled-user.png" %>
       </div>
-  </main>
+      <div>
+        <ul>
+           <li>name :<%= current_user.try(:first_name) %> <%= current_user.try(:last_name) %> </li>
+           <li>birthday :<%= current_user.try(:birthday) %></li>
+           <li>email :<%= current_user.try(:email) %></li>
+           <li>password : ******</li>
+           <li>member since :<%= current_user.created_at.strftime("%d/%m/%Y") %></li>
+           <li>username :<%= current_user.try(:username) %></li>
+           <li>description :<%= current_user.try(:description) %></li>
+           <li>phonenumber :<%= current_user.try(:phonenumber) %></li>
+           <li>address :<%= current_user.try(:address) %></li>
+           <li>verified ? <%= current_user.try(:verified) %></li>
+        </ul>
+    </div>
+      <div>
+          <%= link_to 'Update profile', edit_user_registration_path, class: "btn btn-success" %>
+      </div>
+   </div>
+
+  <!-- Cards -->
+  <div class="profileright col-xs-6 col-sm-6 col-md-6">
+    <h4>your meals:</h4>
+    <% @meals.each do |meal| %>
+      <div class="col-xs-2 col-sm-3 col-md-3">
+        <div class="small-meal-card">
+          <div class="small-meal-card-image" style="background-image: url('<%= cl_image_path meal.pictures.first.url.url %>');">
+          </div>
+            <div class="small-meal-card-content">
+              <div class="meal-card-title">
+                <h4><%= link_to meal.title, meal_path(meal), :class => "text-dark" %></h4>
+                <p><%= meal.category %></p>
+              </div>
+              <div class="flex">
+                <p><i class="fas fa-utensils"></i>
+                Price: <%= humanized_money_with_symbol(meal.price) %>
+                </p>
+              </div>
+            </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+ </div>
 </div>
