@@ -1,4 +1,5 @@
 puts 'Cleaning database...'
+Review.destroy_all
 Item.destroy_all
 Picture.destroy_all
 Meal.destroy_all
@@ -9,9 +10,9 @@ puts 'Creating meals...'
 
 require 'date'
 
-u1 = User.create(email: "margaux@gmail.com", password: "margaux", usertype: "cook", address: "42 Boulevard de la Résistance, Casablanca")
-u2 = User.create(email: "anna@gmail.com", password: "margaux", usertype: "cook", address: "12 Rue Arfoud, Rabat")
-u3 = User.create(email: "gabriele@gmail.com", password: "margaux", usertype: "cook", address: "4 Rue Tanger, Rabat")
+u1 = User.create(email: "margaux@gmail.com", username: "margaux", password: "margaux", usertype: "cook", address: "42 Boulevard de la Résistance, Casablanca")
+u2 = User.create(email: "anna@gmail.com", username: "anna", password: "margaux", usertype: "cook", address: "12 Rue Arfoud, Rabat")
+u3 = User.create(email: "gabriele@gmail.com", username: "gabriele", password: "margaux", usertype: "cook", address: "4 Rue Tanger, Rabat")
 
 # Customer
 u4 = User.create(email: "hanae@gmail.com", password: "margaux", usertype: "customer")
@@ -29,7 +30,7 @@ d1 = Date.new(2018,12,1)
 d2 = Date.new(2018,12,2)
 Order.create(pickuptime: d1, user: u4)
 
-m2 = Meal.create(title: "Rfissa", user: u1, description: "Scrumptous chicken with msimmon and helba", maxservings: 12, category: "main course", price: 45)
+m2 = Meal.create(title: "Rfissa", user: u2, description: "Scrumptous chicken with msimmon and helba", maxservings: 12, category: "main course", price: 45)
 p2 = Picture.new
 p2.meal = m2
 p2.remote_url_url = "https://res.cloudinary.com/homeplate/image/upload/v1543920340/3360437195_4ea3d4441e.jpg"
