@@ -10,7 +10,7 @@ puts 'Creating meals...'
 require 'date'
 
 u1 = User.create(email: "margaux@gmail.com", password: "margaux", usertype: "cook", address: "42 Boulevard de la Résistance, Casablanca")
-m1 = Meal.create(title: "Couscous", user: User.first, description: "Delicious, savory chicken couscous with tfaya", maxservings: 24, category: "main course", price: 50)
+m1 = Meal.create(title: "Couscous", user: u1, description: "Delicious, savory chicken couscous with tfaya", maxservings: 24, category: "main course", price: 50)
 p1 = Picture.new
 p1_2 = Picture.new
 p1.meal = m1
@@ -23,7 +23,8 @@ d1 = Date.new(2018,12,1)
 d2 = Date.new(2018,12,2)
 Order.create(pickuptime: d1, user: User.first)
 
-m2 = Meal.create(title: "Rfissa", user: User.first, description: "Scrumptous chicken with msimmon and helba", maxservings: 12, category: "main course", price: 45)
+u2 = User.create(email: "maria@gmail.com", password: "123456", usertype: "cook", address: "42 mountbatten, Casablanca")
+m2 = Meal.create(title: "Rfissa", user: u2, description: "Scrumptous chicken with msimmon and helba", maxservings: 12, category: "main course", price: 45)
 p2 = Picture.new
 p2.meal = m2
 p2.remote_url_url = "https://res.cloudinary.com/homeplate/image/upload/v1543920340/3360437195_4ea3d4441e.jpg"

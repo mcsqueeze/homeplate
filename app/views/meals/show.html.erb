@@ -39,6 +39,21 @@
         <p>Category:   <%= @meal.category %></p>
         <p>Available servings:   <%= @meal.maxservings %></p>
         <p>Price per portion:    <%= humanized_money_with_symbol(@meal.price) %></p>
+        <%= link_to 'View Cook Profile', user_path(@cook), class: "btn btn-success" %>
+  </div>
+
+  <div>
+  <%= link_to 'Leave a Review', meal_reviews_path(@meal), method: :post, class: "btn btn-success" %>
+
+  </div>
+  <div class="mealreviews">
+    <h2>Past Reviews of Cook</h2>
+    <% @meal.reviews.each do |review|%>
+      <ul>
+         <li><%=review.rating %></li>
+         <li><%=review.content %></li>
+      </ul>
+    <% end %>
   </div>
         <div>
          <h2>Please select number of servings:</h2>

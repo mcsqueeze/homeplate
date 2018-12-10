@@ -13,7 +13,8 @@ class MealsController < ApplicationController
   def show
     @meal = Meal.find(params[:id])
     @order = Order.new
-    @user = current_user
+    @customer = current_user
+    @cook = @meal.user
 
 
 
@@ -60,6 +61,6 @@ class MealsController < ApplicationController
   private
 
   def meal_params
-    params.require(:meal).permit(:title, :description, :price, :category, pictures_attributes: [:id, :meal_id, :url])
+    params.require(:meal).permit(:title,:user,:description, :price, :category, pictures_attributes: [:id, :meal_id, :url])
   end
 end
