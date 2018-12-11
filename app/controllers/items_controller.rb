@@ -13,23 +13,24 @@ class ItemsController < ApplicationController
     quantity_added = false
 
     order.items.each do |item|
+      authorize item
       if item.meal_id == meal.id
         item.quantity += params[:quantity].to_i
         item.save
         quantity_added = true
-
       end
     end
 
     unless quantity_added
-     new_item = Item.create(meal: meal, order: order, quantity: params[:quantity])
+      new_item = Item.create(meal: meal, order: order, quantity: params[:quantity])
+            authorize new_item
     end
 
     redirect_to order_path(order)
-
   end
 
   def show
+    authorize @item
   end
 
   def destroy
@@ -48,6 +49,6 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:quantity, :meal_id)
+    params.require(:item).permit(:quantity, :meal_id, :state)
   end
 end

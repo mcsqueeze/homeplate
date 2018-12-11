@@ -1,17 +1,16 @@
 class MealsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
-  after_action :authorize_meal, only: [:new, :create, :edit, :update, :destroy, :dashboard ]
+  after_action :authorize_meal, only: [:new, :create, :edit, :update, :destroy, :dashboard, :show ]
 
   def index
     if params[:query].present?
-      @meals = policy_scope(Meal).global_search(params[:query])
+      @meals = policy_scope(Meal).published.global_search(params[:query])
     else
-      @meals = policy_scope(Meal).order(created_at: :desc)
+      @meals = policy_scope(Meal).published.order(created_at: :desc)
     end
   end
 
   def show
-
     @meal = Meal.find(params[:id])
     @order = Order.new
     @customer = current_user
