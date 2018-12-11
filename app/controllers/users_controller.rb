@@ -28,10 +28,4 @@ class UsersController < ApplicationController
     current_user.save
     redirect_back(fallback_location: root_path)
   end
-
-  private
-
-  def user_params
-    params.require(:user).permit(:id)
-  end
 end

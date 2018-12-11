@@ -5,10 +5,9 @@
 
 #carousel-homepage {
   height: calc(100vh - 70px);
-  margin-bottom: 0;
-
-
+  margin: 0;
 }
+
 
 .carousel-inner {
   height: 100%;
@@ -16,10 +15,18 @@
 
 }
 
-.item {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.carousel-caption-topleft {
+  position: relative;
+  padding-top: 5px;
+  margin-left: 25px;
   color: white;
-  font-size: 40px;
-  }
+}
+
+.carousel-caption-topleft-black {
+  color: black;
+  position: relative;
+  padding-top: 5px;
+  margin-left: 25px;
+  font-weight: strong;
+}
+
