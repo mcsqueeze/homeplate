@@ -1,5 +1,5 @@
 class ClientsController < ApplicationController
-  after_action :authorize_user, only: [:index]
+  after_action :authorize_user, only: [:index, :show]
 
   def index
     @users = User.where.not(latitude: nil, longitude: nil)
@@ -20,6 +20,7 @@ class ClientsController < ApplicationController
 
   def show
     @meals = current_user.meals
+    @user = current_user
   end
 
   def change_usertype
