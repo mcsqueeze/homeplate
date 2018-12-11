@@ -7,6 +7,9 @@
   <br>
     <% if @meal.published == false %>
       <h3>This meal is not currently available</h3>
+      <% if current_user == @meal.user %>
+        <button>Publish!</button>
+      <% end %>
     <%end %>
   <br>
   <br>
@@ -67,6 +70,11 @@
         </div>
       <br>
       <br>
+      <div>
+        <% if current_user == @cook %>
+          <%= link_to @meal.published ? "Unpublish" : "Publish", publish_meal_path(@meal), method: :patch, class: "btn btn-success orderbtn" %>
+        <% end %>
+      </div>
       <br>
       <div>
           <%= link_to 'Back to Meals', meals_path, class: "btn btn-success" %>

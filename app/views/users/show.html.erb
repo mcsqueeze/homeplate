@@ -47,8 +47,30 @@
 
   <!-- Cards -->
   <div class="profileright col-xs-6 col-sm-6 col-md-6">
-    <h4>your meals:</h4>
-    <% @meals.each do |meal| %>
+    <h4>Your past meals:</h4>
+    <% @inactive_meals.each do |meal| %>
+      <div class="col-xs-2 col-sm-3 col-md-3">
+        <div class="small-meal-card">
+          <div class="small-meal-card-image" style="background-image: url('<%= cl_image_path meal.pictures.first.url.url %>');">
+          </div>
+            <div class="small-meal-card-content">
+              <div class="meal-card-title">
+                <h4><%= link_to meal.title, meal_path(meal), :class => "text-dark" %></h4>
+                <p><%= meal.category %></p>
+              </div>
+              <div class="flex">
+                <p><i class="fas fa-utensils"></i>
+                Price: <%= humanized_money_with_symbol(meal.price) %>
+                </p>
+              </div>
+            </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <div class="profileright col-xs-6 col-sm-6 col-md-6">
+    <h4>Your current meals:</h4>
+    <% @active_meals.each do |meal| %>
       <div class="col-xs-2 col-sm-3 col-md-3">
         <div class="small-meal-card">
           <div class="small-meal-card-image" style="background-image: url('<%= cl_image_path meal.pictures.first.url.url %>');">

@@ -10,7 +10,7 @@ class UserPolicy < ApplicationPolicy
   end
 
   def dashboard?
-    record.user == user
+    user == user
   end
 
   def show?
