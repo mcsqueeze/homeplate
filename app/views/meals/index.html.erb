@@ -1,10 +1,7 @@
-<div class="backcolor">
-<div class="mealindexbackcolor">
+<div>
+<div>
 <div class="wrap">
   <div col-xs-12 col-sm-4>
-
-  <%= link_to 'Map View', users_path, class: "btn btn-success" %>
-
   <div class="container mt-3">
 
     <!-- Cards -->
@@ -16,20 +13,15 @@
           </div>
             <div class="meal-card-content">
               <div class="meal-card-title">
-                <h4><%= link_to meal.title, meal_path(meal), :class => "text-dark" %></h4>
-                <p><%= meal.category %></p>
+                <h4><%= meal.title %></h4>
+                <p> <i class="fas fa-utensils"></i> <%= meal.category %></p>
               </div>
               <div class="flex">
-                <p><i class="fas fa-utensils"></i>
-                Price: <%= humanized_money_with_symbol(meal.price) %>
+                <p>Price: <%= humanized_money_with_symbol(meal.price) %>
                 </p>
               </div>
             </div>
-            <div class="flex">
-            <div "meal-card-actions">
-          <%= link_to 'Details', meal_path(meal), :class => "ml-3 text-dark" %>
-        </div>
-          </div>
+            <%= link_to '', meal_path(meal), class: "card-link" %>
         </div>
       </div>
     <% end %>
