@@ -1,23 +1,20 @@
-class UserPolicy < ApplicationPolicy
+class PicturePolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
       scope.all
     end
   end
 
-  def index?
+  def new?
     true
   end
 
-  def dashboard?
+  def create?
     true
   end
 
-  def show?
+  def destroy?
     true
   end
 
-  def change_usertype?
-    true
-  end
 end
