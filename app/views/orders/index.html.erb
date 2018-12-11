@@ -1,5 +1,9 @@
 
+
 <div class="row">
+      <% if @orders == [] %>
+      <p> <%=  "you have no order yet" %> </p>
+      <% else %>
   <div class="col-xs-12 col-sm-6 col-md-4">
     <div class="card-order">
       <div class="card-content-order">
@@ -14,9 +18,11 @@
       <% end %>
       <p>Order total: <%= humanized_money_with_symbol(order.amount_cents/100)  %></p>
     <% end %>
+      <% end %>
     </div>
   </div>
   </div>
+
     </div>
   </div>
 </div>

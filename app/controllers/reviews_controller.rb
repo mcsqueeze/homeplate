@@ -7,6 +7,8 @@ class ReviewsController < ApplicationController
     @review = Review.new
     @meal = Meal.find(params[:meal_id])
     @cook = @meal.user
+
+    authorize @review
   end
 
   def create
@@ -20,6 +22,7 @@ class ReviewsController < ApplicationController
     flash[:success] = "You have successfully submitted your review!"
     redirect_to orders_path
 
+    authorize @review
 
   end
 

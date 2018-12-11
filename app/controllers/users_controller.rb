@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  after_action :authorize_user, only: [:show, :change_usertype]
+  after_action :authorize_user, only: [:show, :change_usertype, :dashboard]
 
   def index
     @users = policy_scope(User).where.not(latitude: nil, longitude: nil)
@@ -15,14 +15,23 @@ class UsersController < ApplicationController
 
 
   def dashboard
+    @user = current_user
     @meals = current_user.meals
-    @active_meals = Meal.published(@meals)
-    @inactive_meals = Meal.unpublished(@meals)
+
+    @active_meals = @meals.published
+    @inactive_meals = @meals.unpublished
+
   end
 
   def show
     @meals = current_user.meals
     @user = current_user
+
+    @active_meals = @meals.published
+    @inactive_meals = @meals.unpublished
+
+    @cook = User.find(params[:id])
+
   end
 
   def change_usertype

@@ -1,6 +1,6 @@
 class MealsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
-  after_action :authorize_meal, only: [:new, :create, :edit, :update, :destroy, :dashboard, :show ]
+  after_action :authorize_meal, only: [:new, :create, :edit, :update, :destroy, :dashboard, :show, :publish ]
 
   def index
     if params[:query].present?
@@ -24,7 +24,7 @@ class MealsController < ApplicationController
 
   def create
     @meal = Meal.new(meal_params)
-
+    @meal.published = true
     @meal.user = current_user
     if @meal.save
       redirect_to new_meal_picture_path(@meal)
@@ -33,9 +33,16 @@ class MealsController < ApplicationController
     end
   end
 
-  def unpublish
+  def publish
     @meal = Meal.find(params[:id])
-    @meal.published = false
+    if @meal.published
+      @meal.published = false
+    else
+      @meal.published = true
+    end
+    @meal.save
+
+    redirect_to meal_path(@meal)
   end
 
   def edit
