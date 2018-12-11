@@ -10,6 +10,7 @@ puts 'Creating meals...'
 
 require 'date'
 
+
 u1 = User.new(email: "margaux@gmail.com", username: "margaux", password: "margaux", usertype: "cook", address: "42 Boulevard de la Résistance, Casablanca")
 u1.remote_photo_url = "https://res.cloudinary.com/homeplate/image/upload/v1544030876/mcsqueeze.jpg"
 u1.save!
@@ -19,6 +20,7 @@ u2.save!
 u3 = User.new(email: "gabriele@gmail.com", username: "gabriele", password: "margaux", usertype: "cook", address: "4 Rue Tanger, Rabat")
 u3.remote_photo_url = "https://res.cloudinary.com/homeplate/image/upload/v1544030876/mcsqueeze.jpg"
 u3.save!
+
 # Customer
 
 m1 = Meal.create(title: "Couscous", user: u1, published: true, description: "Delicious, savory chicken couscous with tfaya", maxservings: 24, category: "main course", price: 50)
