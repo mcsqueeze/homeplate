@@ -31,7 +31,7 @@ class UsersController < ApplicationController
       current_user.usertype = "cook"
     end
     current_user.save
-    redirect_back(fallback_location: root_path)
+    redirect_to root_path
   end
 
   private
