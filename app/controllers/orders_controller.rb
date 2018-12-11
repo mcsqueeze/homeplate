@@ -1,7 +1,9 @@
 class OrdersController < ApplicationController
+  after_action :authorize_order, only: [:new, :show, :create, :destroy, :index]
   def index
     @user = current_user
-    @orders = current_user.orders
+    #@orders = current_user.orders
+    @orders = policy_scope(Order)
   end
 
 
@@ -46,5 +48,9 @@ class OrdersController < ApplicationController
 
   def order_params
     params.require(:order).permit(:meal_id, :url)
+  end
+
+  def authorize_order
+   authorize @order
   end
 end

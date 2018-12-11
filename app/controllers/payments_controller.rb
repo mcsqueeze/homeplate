@@ -3,10 +3,13 @@ class PaymentsController < ApplicationController
 
   def new
     @order = current_user.orders.find(params[:id])
+    authorize @order
   end
 
   def confirmation
     @order = current_user.orders.find(params[:id])
+    authorize @order
+
 
   end
 
@@ -24,7 +27,7 @@ class PaymentsController < ApplicationController
     )
 
     @order.update(payment: charge.to_json, state: 'paid')
-
+    authorize @order
     @order.items.each do |item|
       item.meal.maxservings -= item.quantity
       item.meal.save
@@ -35,6 +38,7 @@ class PaymentsController < ApplicationController
   rescue Stripe::CardError => e
     flash[:alert] = e.message
     redirect_to new_order_payment_path(@order)
+
   end
 
   private
