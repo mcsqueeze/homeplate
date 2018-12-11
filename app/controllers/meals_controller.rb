@@ -24,7 +24,7 @@ class MealsController < ApplicationController
 
   def create
     @meal = Meal.new(meal_params)
-
+    @meal.published = true
     @meal.user = current_user
     if @meal.save
       redirect_to new_meal_picture_path(@meal)

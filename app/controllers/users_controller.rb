@@ -17,15 +17,21 @@ class UsersController < ApplicationController
   def dashboard
     @user = current_user
     @meals = current_user.meals
+
     @active_meals = @meals.published
     @inactive_meals = @meals.unpublished
+
   end
 
   def show
     @meals = current_user.meals
     @user = current_user
+
     @active_meals = @meals.published
     @inactive_meals = @meals.unpublished
+
+    @cook = User.find(params[:id])
+
   end
 
   def change_usertype

@@ -4,6 +4,7 @@ class PicturesController < ApplicationController
   def new
     @picture = Picture.new
     @picture.meal = @meal
+    authorize @picture
   end
 
   def create
@@ -11,13 +12,15 @@ class PicturesController < ApplicationController
     @picture.meal = @meal
 
     if @picture.save
-      redirect_to meal_path(@meal)
+      redirect_to dashboard_path(current_user)
     else
       render :new
     end
+    authorize @picture
   end
 
   def destroy
+    authorize @picture
   end
 
   private
