@@ -2,17 +2,8 @@
 <div class="mealindexbackcolor">
 <div class="wrap">
   <div col-xs-12 col-sm-4>
-  <div class="searchbar">
-  <%= form_tag meals_path, method: :get do %>
-    <%= text_field_tag :query,
-      params[:query],
-      class: "form-control",
-      placeholder: "find a meal nearby"%>
-  <% end %>
+
   <%= link_to 'Map View', clients_path, class: "btn btn-success" %>
-  </div>
-
-
 
   <div class="container mt-3">
 
@@ -36,7 +27,7 @@
             </div>
             <div class="flex">
             <div "meal-card-actions">
- <%= link_to 'Details', meal_path(meal), :class => "ml-3 text-dark" %>
+          <%= link_to 'Details', meal_path(meal), :class => "ml-3 text-dark" %>
         </div>
           </div>
         </div>

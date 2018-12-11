@@ -5,6 +5,9 @@
   <br>
   <br>
   <br>
+    <% if @meal.published == false %>
+      <h3>This meal is not currently available</h3>
+    <%end %>
   <br>
   <br>
   <h2><%= @meal.title %></h2>
@@ -42,12 +45,9 @@
         <%= link_to 'View Cook Profile', client_path(@cook), class: "btn btn-success" %>
   </div>
 
-  <div>
-    <%= link_to 'Leave a Review', new_meal_review_path(@meal), class: "btn btn-success" %>
-  </div>
   <div class="mealreviews">
-    <h2>Past Reviews of Cook</h2>
-    <% @cook.reviews.each do |review|%>
+    <h2><%= "#{@cook.username.capitalize}'s past reviews"  %></h2>
+    <% @cook.cook_reviews.each do |review|%>
       <ul>
          <li><%=review.rating %></li>
          <li><%=review.content %></li>
@@ -59,6 +59,7 @@
        </div>
             <div>
             <%= form_tag(meal_items_path(@meal), method: "post") do %>
+
             <%= number_field_tag(:quantity, options = {max: @meal.maxservings}) %>
             <%= submit_tag("Add to Order", class: "btn btn-success orderbtn") %>
           <% end %>

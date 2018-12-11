@@ -5,16 +5,19 @@ class MealsController < ApplicationController
   def index
     if params[:query].present?
       @meals = policy_scope(Meal).global_search(params[:query])
+      @meals = @meals.where(published: true)
     else
       @meals = policy_scope(Meal).order(created_at: :desc)
     end
   end
 
   def show
+
     @meal = Meal.find(params[:id])
     @order = Order.new
     @customer = current_user
     @cook = @meal.user
+    @item = Item.new
   end
 
   def new
@@ -32,6 +35,11 @@ class MealsController < ApplicationController
     end
   end
 
+  def unpublish
+    @meal = Meal.find(params[:id])
+    @meal.published = false
+  end
+
   def edit
   end
 
@@ -39,6 +47,7 @@ class MealsController < ApplicationController
   end
 
   def destroy
+    #let's not delete meals, just unpublish
   end
 
   def dashboard

@@ -6,6 +6,7 @@ class ReviewsController < ApplicationController
   def new
     @review = Review.new
     @meal = Meal.find(params[:meal_id])
+    @cook = @meal.user
   end
 
   def create
@@ -17,7 +18,7 @@ class ReviewsController < ApplicationController
     @review.cook = @meal.user
     @review.save
     flash[:success] = "You have successfully submitted your review!"
-    redirect_to meals_path
+    redirect_to orders_path
 
 
   end

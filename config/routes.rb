@@ -16,6 +16,7 @@ Rails.application.routes.draw do
 
   resources :clients, only: [:show, :index]
 
+
   resources :orders, only: [:index, :show, :create, :destroy] do
     member do
       get 'payment', to: 'payments#new'
