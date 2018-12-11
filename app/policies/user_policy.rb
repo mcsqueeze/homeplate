@@ -1,23 +1,23 @@
-class ClientPolicy < ApplicationPolicy
+class UserPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
       scope.all
     end
   end
 
-  def index
+  def index?
     true
   end
 
-  def dashboard
+  def dashboard?
     record.user == user
   end
 
-  def show
+  def show?
     true
   end
 
-  def change_usertype
+  def change_usertype?
     true
   end
 end
