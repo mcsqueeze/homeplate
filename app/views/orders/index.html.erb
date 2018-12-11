@@ -1,21 +1,22 @@
 
-
-<div class="container mt-3">
-  <h1>My orders</h1>
-    <div class="row">
-      <% @orders.each do |order| %>
-    <div class="col-xs-12 col-sm-6 col-md-4">
-      <div class="meal-card">
-        <p>Date: <%= order.updated_at %></p>
-        <% order.items.each do |item| %>
-
-        <p> <%= link_to item.meal.title, meal_path(item.meal) %>  Quantity: <%=item.quantity %> </p>
-        <p>Cook: <%= link_to item.meal.user.username, profile_path(item.meal.user) %> <%= link_to "Leave this cook a review", new_meal_review_path(item.meal)  %></p>
-        <p> Sub-total <%= humanized_money_with_symbol(item.meal.price * item.quantity) %></p>
-        <% end %>
-        <p>Order total: <%= humanized_money_with_symbol(order.amount_cents/100)  %></p>
+<div class="row">
+  <div class="col-xs-12 col-sm-6 col-md-4">
+    <div class="card-order">
+      <div class="card-content-order">
+    <h1>My Orders</h1>
+    <% @orders.each do |order| %>
+    <div class="meal-card-order">
+      <p>Date: <%= order.updated_at %></p>
+      <% order.items.each do |item| %>
+      <p> <%= link_to item.meal.title, meal_path(item.meal) %>  Quantity: <%=item.quantity %> </p>
+      <p>Cook: <%= link_to item.meal.user.username, profile_path(item.meal.user) %> <%= link_to "Leave this cook a review", new_meal_review_path(item.meal)  %></p>
+      <p> Sub-total <%= humanized_money_with_symbol(item.meal.price * item.quantity) %></p>
       <% end %>
-      </div>
+      <p>Order total: <%= humanized_money_with_symbol(order.amount_cents/100)  %></p>
+    <% end %>
     </div>
+  </div>
+  </div>
     </div>
+  </div>
 </div>

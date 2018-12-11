@@ -1,9 +1,7 @@
-
 <div class="banner_index">
-  <div class=container>
-<div class="row">
-
-  <div class="col-sm-offset-4 col-sm-4">
+<div class="container">
+<div class="row newmealbackground">
+<div class="col-xs-12 col-sm-offset-4 col-sm-4">
   <%= simple_form_for(@meal) do |f| %>
   <% if @meal.errors.any? %>
     <% @meal.errors.full_messages.each do |m| %>
@@ -14,13 +12,16 @@
     <%= f.input :title %> <%= f.input :price_cents %>
     <%= f.input :category %>
     <%= f.input :description %>
-    <%= f.input :maxservings %>
-    <%= f.input :shelflife %>
-    <%= f.submit "submit meal", class: "btn btn-primary" %>
+    <%= f.input :maxservings, label: 'Max Servings' %>
+    <%= f.input :shelflife, label: 'Shelf Life (Days)' %>
+    <br>
+    <%= f.submit "Submit Meal", class: "btn btn-success" %>
   <% end %>
-  </div>
-  </div>
-  </div>
+  <br>
+</div>
+</div>
+</div>
+</div>
 
 
 
