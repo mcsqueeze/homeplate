@@ -23,7 +23,7 @@ u3.save!
 
 # Customer
 
-m1 = Meal.create!(title: "Couscous", user: u1, published: true, description: "Delicious, savory chicken couscous with tfaya", maxservings: 24, category: "main course", price: 50)
+m1 = Meal.create!(title: "Couscous", user: u1, published: false, description: "Delicious, savory chicken couscous with tfaya", maxservings: 24, category: "main course", price: 50)
 p1 = Picture.new
 p1_2 = Picture.new
 p1.meal = m1

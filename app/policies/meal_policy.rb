@@ -26,6 +26,10 @@ class MealPolicy < ApplicationPolicy
   end
 
   def destroy?
-    record.user == user
+    update?
+  end
+
+  def publish?
+    true
   end
 end

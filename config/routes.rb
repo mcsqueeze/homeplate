@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get 'users/:id/dashboard', to: "users#dashboard", as: :dashboard
   get 'users/:id/show', to: "users#show", as: :profile
 
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :meals do
     resources :pictures, only: [:new, :create, :destroy]
@@ -16,6 +17,7 @@ Rails.application.routes.draw do
   end
 
   resources :users, only: [:index]
+  patch 'meals/:id/publish' , to: "meals#publish", as: :publish_meal
 
 
   resources :orders, only: [:index, :show, :create, :destroy] do
