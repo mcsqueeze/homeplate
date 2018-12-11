@@ -34,11 +34,11 @@ class ApplicationPolicy
     false
   end
 
-  def change_usertype
+  def change_usertype?
     false
   end
 
-  def dashboard
+  def dashboard?
     false
   end
 
