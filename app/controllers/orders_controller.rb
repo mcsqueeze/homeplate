@@ -1,6 +1,7 @@
 class OrdersController < ApplicationController
   after_action :authorize_order, only: [:new, :show, :create, :destroy]
   def index
+
     @user = current_user
     #@orders = current_user.orders
     @orders = policy_scope(Order).where(user: current_user)
@@ -10,6 +11,7 @@ class OrdersController < ApplicationController
       @orders = policy_scope(Order).where(user: current_user)
     end
   end
+
 
   def new
     @order = Order.new
@@ -25,7 +27,6 @@ class OrdersController < ApplicationController
     @order.update(amount: @total, state: 'pending')
     @order
   end
-
 
   def create
     @user = current_user
