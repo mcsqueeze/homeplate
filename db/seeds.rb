@@ -23,7 +23,7 @@ u3.save!
 
 # Customer
 
-m1 = Meal.create(title: "Couscous", user: u1, published: true, description: "Delicious, savory chicken couscous with tfaya", maxservings: 24, category: "main course", price: 50)
+m1 = Meal.create!(title: "Couscous", user: u1, published: true, description: "Delicious, savory chicken couscous with tfaya", maxservings: 24, category: "main course", price: 50)
 p1 = Picture.new
 p1_2 = Picture.new
 p1.meal = m1
@@ -36,7 +36,7 @@ d1 = Date.new(2018,12,1)
 d2 = Date.new(2018,12,2)
 Order.create(pickuptime: d1, user: u1)
 
-m2 = Meal.create(title: "Rfissa", user: u1, published: false, description: "Scrumptous chicken with msimmon and helba", maxservings: 12, category: "main course", price: 45)
+m2 = Meal.create!(title: "Rfissa", user: u1, published: false, description: "Scrumptous chicken with msimmon and helba", maxservings: 12, category: "main course", price: 45)
 p2 = Picture.new
 p2.meal = m2
 p2.remote_url_url = "https://res.cloudinary.com/homeplate/image/upload/v1543920340/3360437195_4ea3d4441e.jpg"
@@ -44,7 +44,7 @@ p2.save
 d1 = Date.new(2018,12,1)
 Order.create(pickuptime: d1, user: u2)
 
-m3 = Meal.create(title: "Msimmon", user: u2, description: "Savory, fried, traditional bread", maxservings: 25, category: "side", price: 6)
+m3 = Meal.create!(title: "Msimmon", user: u2, description: "Savory, fried, traditional bread", maxservings: 25, category: "side", price: 6)
 p3 = Picture.new
 p3.meal = m3
 p3.remote_url_url = "https://res.cloudinary.com/homeplate/image/upload/v1543920377/IMG_6816_Fotor_Fotor.jpg"
