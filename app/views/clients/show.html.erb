@@ -6,7 +6,7 @@
    <div class="profileleft col-xs-6 col-sm-6 col-md-6">
     <h4>personal info:</h4>
       <div>
-        <%= cl_image_tag @current_user.photo, height: 100, width: 100, crop: :fill, class: "mediumavatar", default_image: "circled-user.png" %>
+        <%= cl_image_tag current_user.photo, height: 100, width: 100, crop: :fill, class: "mediumavatar", default_image: "circled-user.png" %>
       </div>
       <div>
         <ul>
@@ -30,7 +30,7 @@
   <!-- User info -->
    <div class="profileleft col-xs-6 col-sm-6 col-md-6">
     <h4>My reviews:</h4>
-      <% @user.cook_reviews.each do |review| %>
+      <% current_user.cook_reviews.each do |review| %>
       <ul>
         <li>Rating: <%= review.rating %>
         <br>
