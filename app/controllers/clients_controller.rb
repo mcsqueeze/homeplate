@@ -14,8 +14,8 @@ class ClientsController < ApplicationController
 
   def dashboard
     @meals = current_user.meals
-    @active_meals = current_user.meals.published
-    @inactive_meals = current_user.meals.unpublished
+    @active_meals = Meal.published(@meals)
+    @inactive_meals = Meal.unpublished(@meals)
   end
 
   def show

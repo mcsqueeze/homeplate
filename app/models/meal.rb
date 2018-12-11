@@ -22,11 +22,11 @@ class Meal < ApplicationRecord
   validates :description, presence: true, length: { minimum: 10 }
   validates :category, presence: true, inclusion: { in: ["appetizer", "main course", "dessert", "side", "other"]}
 
-  def self.published
-    Meal.where(published: true)
+  def self.published(meals)
+    meals.where(published: true)
   end
 
-  def self.unpublished
-    Meal.where(published: false)
+  def self.unpublished(meals)
+    meals.where(published: false)
   end
 end
