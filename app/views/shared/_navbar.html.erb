@@ -5,8 +5,8 @@
   <% end %>
 
       <div class="searchbar">
-  <%= form_tag meals_path, method: :get do %>
-    <%= text_field_tag :query,
+        <%= form_tag meals_path, method: :get do %>
+         <%= text_field_tag :query,
       params[:query],
       class: "form-control",
       placeholder: "search a city or dish (ex: chicken, casablanca...)"
@@ -27,7 +27,7 @@
 
       <!-- Links when logged in as customer-->
       <% if current_user.usertype == "customer" %>
-      <%= link_to "browse meals", "/meals", class: "navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to "Browse Meals", "/meals", class: "navbar-wagon-item navbar-wagon-link" %>
       <%= link_to "Become a Cook", change_usertype_path(current_user), method: :patch, class: "navbar-wagon-item navbar-wagon-link"%>
       <%= link_to "My Orders", orders_path, method: :get, class: "navbar-wagon-item navbar-wagon-link"%>
       <% end %>
@@ -35,7 +35,7 @@
       <!-- Links when logged in as cook-->
       <% if current_user.usertype == "cook" %>
       <%= link_to "Post a New Meal", "/meals/new", class: "navbar-wagon-item navbar-wagon-link" %>
-      <%= link_to "See my meals", dashboard_path(current_user), class: "navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to "See my Meals", dashboard_path(current_user), class: "navbar-wagon-item navbar-wagon-link" %>
       <%= link_to "Back to Customer Mode", change_usertype_path(current_user), method: :patch, class: "navbar-wagon-item navbar-wagon-link" %>
 
       <% end %>
