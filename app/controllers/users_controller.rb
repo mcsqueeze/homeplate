@@ -1,6 +1,4 @@
-class ClientsController < ApplicationController
-  after_action :authorize_user, only: [:index, :show]
-
+class UsersController < ApplicationController
   def index
     @users = User.where.not(latitude: nil, longitude: nil)
 
@@ -14,8 +12,6 @@ class ClientsController < ApplicationController
 
   def dashboard
     @meals = current_user.meals
-    @active_meals = Meal.published(@meals)
-    @inactive_meals = Meal.unpublished(@meals)
   end
 
   def show
@@ -37,9 +33,5 @@ class ClientsController < ApplicationController
 
   def user_params
     params.require(:user).permit(:id)
-  end
-
-  def authorize_user
-    authorize @user
   end
 end

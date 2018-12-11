@@ -4,10 +4,9 @@ class MealsController < ApplicationController
 
   def index
     if params[:query].present?
-      @meals = policy_scope(Meal).global_search(params[:query])
-      @meals = @meals.where(published: true)
+      @meals = Meal.published(policy_scope(Meal)).global_search(params[:query])
     else
-      @meals = policy_scope(Meal).order(created_at: :desc)
+      @meals = Meal.published(policy_scope(Meal)).order(created_at: :desc)
     end
   end
 
