@@ -1,15 +1,16 @@
 class OrdersController < ApplicationController
   after_action :authorize_order, only: [:new, :show, :create, :destroy]
   def index
-     @user = current_user
-     #@orders = current_user.orders
-     @orders = policy_scope(Order).where(user: current_user)
-     if @orders.nil?
-       redirect_to root_path
-       else
-         @orders = policy_scope(Order).where(user: current_user)
-      end
+
+    @user = current_user
+    #@orders = current_user.orders
+    @orders = policy_scope(Order).where(user: current_user)
+    if @orders.nil?
+      redirect_to root_path
+    else
+      @orders = policy_scope(Order).where(user: current_user)
     end
+  end
 
 
   def new
