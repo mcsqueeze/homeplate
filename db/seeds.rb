@@ -17,7 +17,7 @@ u3 = User.create(email: "gabriele@gmail.com", username: "gabriele", password: "m
 # Customer
 u4 = User.create(email: "hanae@gmail.com", password: "margaux", usertype: "customer")
 
-m1 = Meal.create(title: "Couscous", user: u1, description: "Delicious, savory chicken couscous with tfaya", maxservings: 24, category: "main course", price: 50)
+m1 = Meal.create(title: "Couscous", user: u1, published: true, description: "Delicious, savory chicken couscous with tfaya", maxservings: 24, category: "main course", price: 50)
 p1 = Picture.new
 p1_2 = Picture.new
 p1.meal = m1
@@ -46,7 +46,7 @@ p3.save
 d1 = Date.new(2018,12,1)
 Order.create(pickuptime: d1, user: u4)
 
-m4 = Meal.create(title: "Harsha", user: u2, description: "Buttery cornbread great with honey & cheese", maxservings: 20, category: "side", price: 4)
+m4 = Meal.create(title: "Harsha", user: u2, published: false, description: "Buttery cornbread great with honey & cheese", maxservings: 20, category: "side", price: 4)
 p4 = Picture.new
 p4.meal = m4
 p4.remote_url_url = "https://res.cloudinary.com/homeplate/image/upload/v1543920395/harcha.jpg"

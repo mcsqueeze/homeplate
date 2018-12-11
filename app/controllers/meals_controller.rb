@@ -4,19 +4,19 @@ class MealsController < ApplicationController
   def index
     if params[:query].present?
       sql_query = "title ILIKE :query OR category ILIKE :query OR description ILIKE :query"
-      @meals = Meal.where(sql_query, query: "%#{params[:query]}%")
+      @meals = Meal.published.where(sql_query, query: "%#{params[:query]}%")
     else
-      @meals = Meal.all
+      @meals = Meal.published.all
     end
   end
 
   def show
+
     @meal = Meal.find(params[:id])
     @order = Order.new
     @customer = current_user
     @cook = @meal.user
-
-
+    @item = Item.new
 
   end
 
@@ -34,6 +34,13 @@ class MealsController < ApplicationController
     end
   end
 
+  def unpublish
+    @meal = Meal.find(params[:id])
+    @meal.published = false
+  end
+
+
+
   def edit
   end
 
@@ -41,6 +48,7 @@ class MealsController < ApplicationController
   end
 
   def destroy
+    #let's not delete meals, just unpublish
   end
 
 
