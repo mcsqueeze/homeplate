@@ -1,16 +1,18 @@
 class UsersController < ApplicationController
-  after_action :authorize_user, only: [:index, :show, :change_usertype]
+  after_action :authorize_user, only: [:show, :change_usertype]
 
   def index
-    @users = User.where.not(latitude: nil, longitude: nil)
-
+    @users = policy_scope(User).where.not(latitude: nil, longitude: nil)
     @markers = @users.map do |user|
       {
         lat: user.latitude,
-        lng: user.longitude
-      }
-    end
+        lng: user.longitude,
+        infoWindow: {
+          content: render_to_string(partial: "/users/map_window", locals: { user: user })}
+        }
+      end
   end
+
 
   def dashboard
     @meals = current_user.meals
