@@ -4,8 +4,8 @@ Rails.application.routes.draw do
 
   root to: 'pages#home'
   get 'FAQ', to: 'pages#FAQ'
-  patch 'users/:id/change_usertype', to: "users#change_usertype", as: :change_usertype
-  get 'users/:id/dashboard', to: "users#dashboard", as: :dashboard
+  patch 'clients/:id/change_usertype', to: "clients#change_usertype", as: :change_usertype
+  get 'clients/:id/dashboard', to: "clients#dashboard", as: :dashboard
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :meals do
@@ -14,7 +14,7 @@ Rails.application.routes.draw do
     resources :items, only: [:create]
   end
 
-  resources :users, only: [:show, :index]
+  resources :clients, only: [:show, :index]
 
 
   resources :orders, only: [:index, :show, :create, :destroy] do

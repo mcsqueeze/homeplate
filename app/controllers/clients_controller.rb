@@ -1,4 +1,6 @@
-class UsersController < ApplicationController
+class ClientsController < ApplicationController
+  after_action :authorize_user, only: [:index, :show]
+
   def index
     @users = User.where.not(latitude: nil, longitude: nil)
 
@@ -35,5 +37,9 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:id)
+  end
+
+  def authorize_user
+    authorize @user
   end
 end

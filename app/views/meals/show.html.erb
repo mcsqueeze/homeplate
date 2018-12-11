@@ -42,7 +42,7 @@
         <p>Category:   <%= @meal.category %></p>
         <p>Available servings:   <%= @meal.maxservings %></p>
         <p>Price per portion:    <%= humanized_money_with_symbol(@meal.price) %></p>
-        <%= link_to 'View Cook Profile', user_path(@cook), class: "btn btn-success" %>
+        <%= link_to 'View Cook Profile', client_path(@cook), class: "btn btn-success" %>
   </div>
 
   <div class="mealreviews">
