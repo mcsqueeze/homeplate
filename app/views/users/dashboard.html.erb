@@ -1,77 +1,61 @@
-
 <div class="wrap">
-  <div col-xs-12 col-sm-4>
-  <div class="searchbar">
-  <%= form_tag meals_path, method: :get do %>
-    <%= text_field_tag :query,
-      params[:query],
-      class: "form-control",
-      placeholder: "find a meal nearby"%>
-  <% end %>
-  <%= link_to 'Map View', users_path, class: "btn btn-success" %>
-  </div>
 
-
-
-  <div class="container mt-3">
-
+  <div class="container-fluid">
     <!-- Cards -->
     <div class="row">
-    <h3>Current meals</h3>
+    <h3>My Published Meals (Active)</h3>
     <% if !@active_meals.nil?%>
     <% @active_meals.each do |meal| %>
-      <div class="col-xs-12 col-sm-6 col-md-4">
+      <div class="col-xs-12 col-sm-6 col-md-3">
         <div class="meal-card">
           <div class="meal-card-image" style="background-image: url('<%= cl_image_path meal.pictures.first.url.url %>');">
           </div>
             <div class="meal-card-content">
               <div class="meal-card-title">
-                <h4><%= link_to meal.title, meal_path(meal), :class => "text-dark" %></h4>
-                <p><%= meal.category %></p>
-              </div>
+                <h4><%= meal.title %></h4>
+                <p> <i class="fas fa-utensils"></i> <%= meal.category %></p>
+                </div>
               <div class="flex">
-                <p><i class="fas fa-utensils"></i>
-                Price: <%= humanized_money_with_symbol(meal.price) %>
+                <p>Price: <%= humanized_money_with_symbol(meal.price) %>
                 </p>
               </div>
             </div>
-            <div class="flex">
-            <div "meal-card-actions">
-              <%= link_to 'Details', meal_path(meal), :class => "ml-3 text-dark" %>
+            <%= link_to '', meal_path(meal), class: "card-link" %>
           </div>
-          </div>
-        </div>
       </div>
     <% end %>
-    <% end %>
-    </div>
-<div class="row">
-    <h3>Past meals</h3>
-    <% @inactive_meals.each do |meal| %>
-      <div class="col-xs-12 col-sm-6 col-md-4">
-        <div class="meal-card">
-          <div class="meal-card-image" style="background-image: url('<%= cl_image_path meal.pictures.first.url.url %>');">
-          </div>
-            <div class="meal-card-content">
-              <div class="meal-card-title">
-                <h4><%= link_to meal.title, meal_path(meal), :class => "text-dark" %></h4>
-                <p><%= meal.category %></p>
-              </div>
-              <div class="flex">
-                <p><i class="fas fa-utensils"></i>
-                Price: <%= humanized_money_with_symbol(meal.price) %>
-                </p>
-              </div>
-            </div>
-            <div class="flex">
-            <div "meal-card-actions">
-              <%= link_to 'Details', meal_path(meal), :class => "ml-3 text-dark" %>
-          </div>
-          </div>
-        </div>
-      </div>
     <% end %>
     </div>
 
+
+    <div class="row">
+      <h3>My Past Meals (Inactive)</h3>
+      <% @inactive_meals.each do |meal| %>
+      <div class="col-xs-12 col-sm-6 col-md-3">
+        <div class="meal-card">
+          <div class="meal-card-image" style="background-image: url('<%= cl_image_path meal.pictures.first.url.url %>');">
+          </div>
+            <div class="meal-card-content">
+              <div class="meal-card-title">
+                <h4><%= link_to meal.title, meal_path(meal), :class => "text-dark" %></h4>
+                <p><%= meal.category %></p>
+              </div>
+              <div class="flex">
+                <p><i class="fas fa-utensils"></i>
+                Price: <%= humanized_money_with_symbol(meal.price) %>
+                </p>
+              </div>
+            </div>
+            <div class="flex">
+            <div "meal-card-actions">
+          </div>
+          </div>
+          <%= link_to '', meal_path(meal), class: "card-link" %>
+
+        </div>
+      </div>
+    <% end %>
+    </div>
   </div>
+
 </div>
