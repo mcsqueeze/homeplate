@@ -31,14 +31,15 @@
 </div>
 <div class="profile-info">
   <h1 class="hvr-underline-from-center"><%= @meal.title %><span><%= @meal.category %></span></h1>
-      <div><% if @meal.published == false %>
-      <h3>This meal is not currently available</h3>
+      <div>
+        <% unless @meal.published %>
+          <h3>This meal is not currently available</h3>
+        <% end %>
       <div class= "button-show">
       <% if current_user.usertype == 'cook' %>
           <%= link_to @meal.published ? "Unpublish" : "Publish!", publish_meal_path(@meal), method: :patch, class: "btn btn-success orderbtn" %>
         <% end %>
       </div>
-    <%end %>
   <div class="col-xs-12">
 <div class="mealinfo">
         <h2>Description: <%= @meal.description %></h2>
