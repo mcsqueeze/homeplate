@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:index, :show]
   after_action :authorize_user, only: [:show, :change_usertype, :dashboard]
 
   def index

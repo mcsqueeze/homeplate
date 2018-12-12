@@ -8,6 +8,21 @@
 // }
 
 .cookinfo {
-  background-color: ivory;
   font-size: 16px;
+  text-align: center;
+  margin-bottom: 10px;
+  border-bottom: 20px solid #32b796;
+  padding: 0px;
+}
+
+
+
+.avatarcustomizedforpopup{
+  height: 60px;
+  width: 60px;
+  border-radius: 50%;
+}
+
+.map-button {
+float: left;
 }
