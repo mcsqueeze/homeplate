@@ -4,7 +4,7 @@ class MealsController < ApplicationController
 
   def index
     if params[:query].present?
-      @meals = policy_scope(Meal).published.global_search(params[:query])
+      @meals = policy_scope(Meal).global_search(params[:query])
       @cooks = @meals.map { |meal| meal.user unless meal.user.latitude.nil?}
 
         @markers = @cooks.map do |cook|
@@ -16,7 +16,7 @@ class MealsController < ApplicationController
         }
         end
     else
-      @meals = policy_scope(Meal).published.order(created_at: :desc)
+      @meals = policy_scope(Meal).order(created_at: :desc)
       @cooks = @meals.map { |meal| meal.user unless meal.user.latitude.nil?}
 
         @markers = @cooks.map do |cook|
@@ -36,6 +36,7 @@ class MealsController < ApplicationController
     @customer = current_user
     @cook = @meal.user
     @item = Item.new
+    unpublish_when_soldout
   end
 
   def new
@@ -63,6 +64,13 @@ class MealsController < ApplicationController
     @meal.save
 
     redirect_to meal_path(@meal)
+  end
+
+  def unpublish_when_soldout
+    if @meal.maxservings == 0
+      @meal.published = false
+    end
+
   end
 
   def edit

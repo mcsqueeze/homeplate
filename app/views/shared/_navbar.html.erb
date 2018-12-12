@@ -26,7 +26,7 @@
       <% if current_user.usertype == "customer" %>
       <%= link_to "Browse Meals", "/meals", class: "navbar-wagon-item navbar-wagon-link" %>
       <%= link_to "Become a Cook", change_usertype_path(current_user), method: :patch, class: "navbar-wagon-item navbar-wagon-link"%>
-      <%= link_to "View current order",order_path(current_user.orders.where(status: "pending")), method: :get, class: "navbar-wagon-item navbar-wagon-link"%>
+      <%= link_to "View cart",order_path(current_user.orders.where(status: "pending")), method: :get, class: "navbar-wagon-item navbar-wagon-link"%>
       <%= link_to "My Orders", orders_path, method: :get, class: "navbar-wagon-item navbar-wagon-link"%>
       <% end %>
 
