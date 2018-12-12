@@ -5,6 +5,7 @@
     <link href="https://fonts.googleapis.com/css?family=Vibur" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="icon" href="https://img.icons8.com/ios-glyphs/50/000000/chef-hat.png"><link>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <title>HomePlate</title>
     <%= csrf_meta_tags %>
     <%= action_cable_meta_tag %>
@@ -16,7 +17,9 @@
     <%= render 'shared/flashes' %>
     <%= yield %>
     <%= javascript_include_tag 'application' %>
+
     <%= yield :scripts %>
+
   </body>
 </html>
 
