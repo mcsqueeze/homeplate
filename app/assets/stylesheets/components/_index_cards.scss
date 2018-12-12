@@ -22,10 +22,26 @@
   background-size: cover;
 }
 
+.small-meal-card-image {
+  height: 60px;
+  background-position: center;
+  background-size: cover;
+}
+
 .meal-card-content {
   height: 180px;
   padding: 24px;
   background-color: white;
+}
+
+.small-meal-card-content {
+  height: 110px;
+  padding: 2px;
+  background-color: white;
+  font-size: 14px;
+    h4{
+      font-size: 16px;
+    }
 }
 
 .meal-card-actions {
@@ -97,10 +113,14 @@ a:hover {
   background: black;
   opacity: 0;
 }
-  .card-link:hover {
+
+.card-link:hover {
   opacity: 0.1;
 }
+
 .container-fluid {
   padding-left: 90px;
   padding-right: 90px;
+  padding-bottom: 90px;
 }
+

@@ -1,13 +1,16 @@
 <h1>Your Order</h1>
+
+<% if @order.nil? %>
+<p>Your order is empty</p>
+<% else %>
   <ul>
-    <li>Status: <%= @order.state %></li>
     <% @order.items.each do |item| %>
     <li>Item: <%= item.meal.title %> Quantity : <%= item.quantity %> </li>
     <% end %>
   <ul>
 
   <p>Order total: <%= @total %></p>
-
+  <% end %>
 
   <div class="buttons">
     <%= link_to 'Proceed to payment', payment_order_path, class: "btn btn-primary" %>
@@ -20,3 +23,5 @@
     <div class="buttons">
     <%= link_to 'add more meals', meals_path, class: "btn btn-primary" %>
   </div>
+
+
