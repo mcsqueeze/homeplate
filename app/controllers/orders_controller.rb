@@ -2,8 +2,13 @@ class OrdersController < ApplicationController
   after_action :authorize_order, only: [:new, :show, :create, :destroy]
 
   def index
-    @user = current_user
     @orders = policy_scope(Order).where(user: current_user)
+    @reviews_by_user = Review.where(user: current_user)
+
+    @meals_reviewed_by_user = []
+    @reviews_by_user.each do |review|
+      @meals_reviewed_by_user << review.meal
+    end
   end
 
   def new
