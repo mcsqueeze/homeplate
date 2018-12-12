@@ -12,7 +12,6 @@ class ReviewsController < ApplicationController
   end
 
   def create
-
     @review = Review.new(review_params)
     @review.user = current_user
     @meal = Meal.find(params[:meal_id])
@@ -20,6 +19,7 @@ class ReviewsController < ApplicationController
     @review.cook = @meal.user
     @review.save
     if @review.save
+      @review.meal.reviewed = true
     flash[:notice] = "You have successfully submitted your review!"
     redirect_to orders_path
     else
@@ -36,7 +36,7 @@ class ReviewsController < ApplicationController
   private
 
   def review_params
-    params.require(:review).permit(:rating,:content)
+    params.require(:review).permit(:rating, :content)
   end
 end
 
