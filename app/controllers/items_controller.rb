@@ -3,7 +3,8 @@ class ItemsController < ApplicationController
   end
 
   def create
-    order = current_order()
+    order = current_order
+
     if order.id.nil?
       order = Order.create(user: current_user, state: "pending")
     end
@@ -14,19 +15,31 @@ class ItemsController < ApplicationController
 
     order.items.each do |item|
       authorize item
-      if item.meal_id == meal.id
+      if item.meal == meal
         item.quantity += params[:quantity].to_i
-        item.save
-        quantity_added = true
+
+        if meal.maxservings < item.quantity
+          flash[:alert] = "Sorry,there are only #{meal.maxservings} servings available :("
+          redirect_to meal_path(meal) and return
+        else
+          item.save
+          quantity_added = true
+          redirect_to order_path(order) and return
+        end
       end
     end
 
     unless quantity_added
-      new_item = Item.create(meal: meal, order: order, quantity: params[:quantity])
-            authorize new_item
+      if meal.maxservings >= params[:quantity].to_i
+        new_item = Item.create(meal: meal, order: order, quantity: params[:quantity])
+        authorize new_item
+        redirect_to order_path(order) and return
+      else
+        flash[:alert] = "Maximum #{meal.maxservings}"
+        authorize policy_scope(Item)
+        redirect_to meal_path(meal)
+      end
     end
-
-    redirect_to order_path(order)
   end
 
   def show

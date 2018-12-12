@@ -19,9 +19,13 @@ class ReviewsController < ApplicationController
     @review.meal = @meal
     @review.cook = @meal.user
     @review.save
-    flash[:success] = "You have successfully submitted your review!"
+    if @review.save
+    flash[:notice] = "You have successfully submitted your review!"
     redirect_to orders_path
-
+    else
+    flash[:alert] = "Please fill all required fields."
+    render :new
+    end
     authorize @review
 
   end

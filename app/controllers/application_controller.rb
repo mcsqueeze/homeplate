@@ -27,6 +27,14 @@ class ApplicationController < ActionController::Base
     meals_path
   end
 
+  # def earnings
+  #   @items = Item.All
+  #   @cook = User.params[:id]
+  #   @cook_items_ordered = @items.where(meal_id)
+
+
+  #   end
+
   def after_sign_up_path_for(resource)
     meals_path
   end
