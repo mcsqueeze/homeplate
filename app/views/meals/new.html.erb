@@ -1,9 +1,10 @@
 <div class="banner_meal">
 <div class="container newform">
+  <br>
 <div class="row newmealbackground">
-  <div class="formimage">
-  </div>
-<div class="col-xs-12 col-sm-offset-4 col-sm-4">
+<div class="formimage">
+</div>
+<div class="col-xs-12 col-sm-4 col-sm-offset-4">
   <%= simple_form_for(@meal) do |f| %>
   <% if @meal.errors.any? %>
     <% @meal.errors.full_messages.each do |m| %>
@@ -25,6 +26,7 @@
 </div>
 </div>
 </div>
+
 
 
 
