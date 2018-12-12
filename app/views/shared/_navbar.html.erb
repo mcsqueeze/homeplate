@@ -1,7 +1,7 @@
 <div class="navbar-wagon">
   <!-- Logo -->
   <%= link_to root_path, class: "navbar-wagon-brand" do %>
-    <%= image_tag "https://img.icons8.com/ios-glyphs/50/000000/chef-hat.png", height: 50 %>
+    <%= cl_image_tag'chef.svg', :height=>50, :crop =>'scale' %>
   <% end %>
 
       <div class="searchbar">
@@ -74,7 +74,7 @@
 
         <% else %>
 
-          <%= cl_image_tag current_user.photo, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", 'data-toggle': "dropdown" %>
+          <%= cl_image_tag current_user.photo, class: "avatarcustomized dropdown-toggle", id: "navbar-wagon-menu", 'data-toggle': "dropdown" %>
           <div class="badge"><%= current_user.usertype %></div>
 
           <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
