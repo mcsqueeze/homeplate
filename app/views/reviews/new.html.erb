@@ -11,12 +11,13 @@
     <% end %>
   <% end %>
   <h2>Review this meal</h2>
-    <%= f.label :rating %>
-    <%= f.text_field :rating %>
+    <div class="buttons-inline">
+    <%= f.input :rating, label: "Rating:", as: :radio_buttons, collection: (1..5), class: "buttons-inline" %>
+    </div>
     <br>
-    <%= f.label :content %>
-    <%= f.text_field :content %>
+    <%= f.input :content, label: "Description:" %>
     <%= f.submit "Submit Review", class: "btn btn-primary" %>
   <% end %>
   </div>
   </div>
+

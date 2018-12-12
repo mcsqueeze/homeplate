@@ -20,6 +20,10 @@ class UsersController < ApplicationController
 
     @active_meals = @meals.published
     @inactive_meals = @meals.unpublished
+    @ratings = []
+    @user.cook_reviews.each do |review|
+      @ratings << review.rating
+    end
 
   end
 
@@ -31,6 +35,14 @@ class UsersController < ApplicationController
     @inactive_meals = @meals.unpublished
 
     @cook = User.find(params[:id])
+
+    @ratings = []
+    @user.cook_reviews.each do |review|
+      @ratings << review.rating
+    end
+    @average_rating = ((@ratings.sum) / @ratings.count.to_f)
+
+
 
   end
 
