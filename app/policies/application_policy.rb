@@ -1,9 +1,9 @@
 class ApplicationPolicy
   attr_reader :user, :record
 
-  def initialize(user, scope)
+  def initialize(user, record)
     @user = user
-    @scope = scope
+    @record = record
   end
 
   def index?

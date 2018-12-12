@@ -27,7 +27,6 @@ class ReviewsController < ApplicationController
     render :new
     end
     authorize @review
-
   end
 
   def destroy
