@@ -5,8 +5,28 @@ class MealsController < ApplicationController
   def index
     if params[:query].present?
       @meals = policy_scope(Meal).published.global_search(params[:query])
+      @cooks = @meals.map { |meal| meal.user unless meal.user.latitude.nil?}
+
+        @markers = @cooks.map do |cook|
+        {
+          lng: cook.longitude,
+          lat: cook.latitude,
+          infoWindow: {
+            content: render_to_string(partial: "/users/map_window", locals: { user: cook })}
+        }
+        end
     else
       @meals = policy_scope(Meal).published.order(created_at: :desc)
+      @cooks = @meals.map { |meal| meal.user unless meal.user.latitude.nil?}
+
+        @markers = @cooks.map do |cook|
+        {
+          lng: cook.longitude,
+          lat: cook.latitude,
+          infoWindow: {
+            content: render_to_string(partial: "/users/map_window", locals: { user: cook })}
+        }
+        end
     end
   end
 
