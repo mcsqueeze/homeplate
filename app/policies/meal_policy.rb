@@ -22,7 +22,7 @@ class MealPolicy < ApplicationPolicy
   end
 
   def edit?
-    update?
+    record.user == user
   end
 
   def destroy?
