@@ -34,7 +34,9 @@
   <!-- User info -->
    <div class="profileleft col-xs-6 col-sm-6 col-md-6">
     <h4>My reviews:</h4>
+    <% if !@average_rating.nil? %>
       <h6>Overall rating: <%= @average_rating %> </h6>
+      <p>Your reviews</p>
       <% current_user.cook_reviews.each do |review| %>
       <ul>
         <li>Rating: <%= review.rating %>
@@ -45,6 +47,9 @@
         <br>
         Date: <%= review.created_at %></li>
       </ul>
+      <% end %>
+      <%else %>
+      <p>You don't have any reviews yet.</p>
       <% end %>
     </div>
     <div class="profileleft col-xs-6 col-sm-6 col-md-6">
