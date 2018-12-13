@@ -19,7 +19,7 @@
                  <p>Name: <%= current_user.try(:first_name) %> <%= current_user.try(:last_name) %></p>
                 <!--  <li>birthday :<%= current_user.try(:birthday) %></li> -->
                  <p>Email: <%= current_user.try(:email) %></p>
-                 <p>password : ******</p>
+                <!--  <li>password : ******</li> -->
                  <p>Member Since: <%= current_user.created_at.strftime("%d/%m/%Y") %></p>
                  <p>Username: <%= current_user.try(:username) %></p>
                  <!-- <li>description :<%= current_user.try(:description) %></li> -->
@@ -101,7 +101,7 @@
       <div class="mealreviewsheaders">
         <h4>My Earnings</h4>
       </div>
-      <div class="myreviewscontent">
+      <div class="myreviewscontentchart">
         <h1>1,800 DHS</h1>
         <h3>December 2018 Earnings</h3>
         <canvas id="earningsChart" width="400" height="400"></canvas>
