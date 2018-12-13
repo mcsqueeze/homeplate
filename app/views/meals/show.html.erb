@@ -46,7 +46,9 @@
         <h4>Available servings:   <%= @meal.maxservings %></h4>
         <h4>Price per portion:    <%= humanized_money_with_symbol(@meal.price) %></h4>
         <div class= "button-show">
+          <% if @meal.user == current_user %>
         <%= link_to 'Edit this meal', edit_meal_path(@meal), class: "btn btn-success" %>
+        <% end %>
   </div>
   </div>
 
@@ -72,7 +74,7 @@
     </div>
              <!-- content -->
     <div class="mealreviews">
-    <h2><%= "past reviews for my meal:"  %></h2>
+    <h2><%= @cook.username.capitalize %>'s past reviews</h2>
     <% @cook.cook_reviews.each do |review|%>
       <ul>
          <li><%=review.rating %></li>

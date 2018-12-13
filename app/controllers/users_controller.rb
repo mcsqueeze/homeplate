@@ -19,8 +19,8 @@ class UsersController < ApplicationController
     @user = current_user
     @meals = current_user.meals
 
-    @active_meals = @meals.published
-    @inactive_meals = @meals.unpublished
+    @active_meals = @meals.where(published: true)
+    @inactive_meals = @meals.where(published: false)
     @ratings = []
     @user.cook_reviews.each do |review|
       @ratings << review.rating
@@ -32,8 +32,8 @@ class UsersController < ApplicationController
     @meals = current_user.meals
     @user = current_user
 
-    @active_meals = @meals.published
-    @inactive_meals = @meals.unpublished
+    @active_meals = @meals.where(published: true)
+    @inactive_meals = @meals.where(published: false)
 
     @cook = User.find(params[:id])
 
@@ -41,8 +41,11 @@ class UsersController < ApplicationController
     @user.cook_reviews.each do |review|
       @ratings << review.rating
     end
+    if !@rating.nil?
     @average_rating = (((@ratings.sum) / @ratings.count.to_f)*100).round / 100.0
-
+    else
+      @average_rating = nil
+    end
 
 
   end
