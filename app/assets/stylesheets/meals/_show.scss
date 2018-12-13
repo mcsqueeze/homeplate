@@ -1,13 +1,18 @@
 .container-show {
   padding-left: 90px;
   padding-right: 90px;
+  padding-top: 20px;
 }
 
 .profile-card {
-  background-color: #222222;
   margin-bottom: 20px;
   width: 100%;
-
+  border: 1px lightgrey solid;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
     }
 
 .profile-pic {
@@ -25,14 +30,12 @@
 
 
 .profile-info {
-    color: #BDBDBD;
     padding: 25px;
       position: relative;
       margin-top: 15px;
         }
 
 .profile-info h2 {
-  color: #E8E8E8;
     letter-spacing: 4px;
     padding-bottom: 12px;
         }
@@ -40,8 +43,6 @@
 .profile-info span {
   display: block;
     font-size: 12px;
-    color: #4CB493;
-  letter-spacing: 2px;
       }
 
 .profile-info a {
@@ -59,8 +60,6 @@
 .profile-card:hover .profile-info hr  {
   opacity: 1;
     }
-
-
 
 
 /* Underline From Center */
@@ -101,7 +100,8 @@
   border-radius: 0;
 }
 
-.button-show {
-  width: 220px;
-  margin-left: 42%;
+
+.mealreviews {
+  border: 1px lightgrey solid;
+
 }
