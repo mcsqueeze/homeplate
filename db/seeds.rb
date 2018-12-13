@@ -11,15 +11,25 @@ puts 'Creating meals...'
 require 'date'
 
 
-u1 = User.new(email: "margaux@gmail.com", username: "margaux", password: "margaux", usertype: "cook", address: "42 Boulevard de la Résistance, Casablanca")
-u1.remote_photo_url = "https://res.cloudinary.com/homeplate/image/upload/v1544030876/mcsqueeze.jpg"
+u1 = User.new(email: "hayat@gmail.com", username: "Hayat", password: "123456", usertype: "cook", phonenumber: "06 78 54 76 43", address: "42 Boulevard de la Résistance, Casablanca")
+u1.remote_photo_url = "https://res.cloudinary.com/homeplate/image/upload/v1544722516/KHALIL.jpg"
 u1.save!
-u2 = User.new(email: "anna@gmail.com", username: "anna", password: "margaux", usertype: "cook", address: "12 Rue Arfoud, Rabat")
-u2.remote_photo_url = "https://res.cloudinary.com/homeplate/image/upload/v1544030876/mcsqueeze.jpg"
+
+u2 = User.new(email: "Mohammed@gmail.com", username: "Mohammed", password: "123456", usertype: "cook", phonenumber: "06 78 54 76 43", address: "12 Rue Arfoud, Rabat")
+u2.remote_photo_url = "https://res.cloudinary.com/homeplate/image/upload/v1544722517/adherents_raja_1.jpg"
 u2.save!
-u3 = User.new(email: "gabriele@gmail.com", username: "gabriele", password: "margaux", usertype: "cook", address: "4 Rue Tanger, Rabat")
-u3.remote_photo_url = "https://res.cloudinary.com/homeplate/image/upload/v1544030876/mcsqueeze.jpg"
+
+u3 = User.new(email: "mouna@gmail.com", username: "Mouna", password: "123456", usertype: "cook", phonenumber: "06 78 54 76 43", address: "4 Rue Tanger, Rabat")
+u3.remote_photo_url = "https://res.cloudinary.com/homeplate/image/upload/v1544722516/Choumicha.jpg"
 u3.save!
+
+u4 = User.new(email: "rachida@gmail.com", username: "Rachida", password: "123456", usertype: "cook", phonenumber: "06 78 54 76 43", address: "4 Rue Tanger, Rabat")
+u4.remote_photo_url = "https://res.cloudinary.com/homeplate/image/upload/v1544722516/ayesha.jpg"
+u4.save!
+
+u5 = User.new(email: "salah@gmail.com", username: "Salah", password: "123456", usertype: "cook", phonenumber: "06 78 54 76 43", address: "4 Rue Tanger, Rabat")
+u5.remote_photo_url = "https://res.cloudinary.com/homeplate/image/upload/v1544722517/loudmila.jpg"
+u5.save!
 
 # Customer
 
@@ -54,15 +64,15 @@ p3.save
 d1 = Date.new(2018,12,1)
 Order.create(pickuptime: d1, user: u2)
 
-m4 = Meal.create(title: "Harsha", user: u2, published: true, description: "Buttery cornbread great with honey & cheese", maxservings: 20, category: "side", price: 4)
+m4 = Meal.create(title: "Harsha", user: u3, published: true, description: "Buttery cornbread great with honey & cheese", maxservings: 20, category: "side", price: 4)
 p4 = Picture.new
 p4.meal = m4
 p4.remote_url_url = "https://res.cloudinary.com/homeplate/image/upload/v1543920395/harcha.jpg"
 p4.save
 d1 = Date.new(2018,12,1)
-Order.create(pickuptime: d1, user: u3)
+Order.create(pickuptime: d1, user: u1)
 
-m5 = Meal.create(title: "Beef & Prune Tajine", published: true, user: u3, description: "Stewed and tender beef with plump prunes in a savoury sauce", maxservings: 10, category: "main course", price: 35)
+m5 = Meal.create(title: "Beef & Prune Tajine", published: true, user: u4, description: "Stewed and tender beef with plump prunes in a savoury sauce", maxservings: 10, category: "main course", price: 35)
 p5 = Picture.new
 p5.meal = m5
 p5.remote_url_url = "https://res.cloudinary.com/homeplate/image/upload/v1543920260/morrocan_beef_tagine_15.png"
@@ -70,7 +80,7 @@ p5.save
 d1 = Date.new(2018,12,1)
 Order.create(pickuptime: d1, user: u3)
 
-m6 = Meal.create(title: "Lemon Chicken Tagine", published: true, user: u3, description: "Marinated chicken with preserved lemon for a tangy citrus kick", maxservings: 15, category: "main course", price: 40)
+m6 = Meal.create(title: "Lemon Chicken Tagine", published: true, user: u5, description: "Marinated chicken with preserved lemon for a tangy citrus kick", maxservings: 15, category: "main course", price: 40)
 p6 = Picture.new
 p6.meal = m6
 p6.remote_url_url = "https://res.cloudinary.com/homeplate/image/upload/v1543920232/spiced-chicken-tagine-with-preserved-lemon-and-olives.jpg"
@@ -78,8 +88,24 @@ p6.save
 d1 = Date.new(2018,12,1)
 Order.create(pickuptime: d1, user: u3)
 
+m7 = Meal.create(title: "Hummus", published: true, user: u5, description: "Crushed chickpeas with sesame cream", maxservings: 15, category: "side", price: 5)
+p7 = Picture.new
+p7.meal = m7
+p7.remote_url_url = "https://res.cloudinary.com/homeplate/image/upload/v1544723146/hummus-horizontal-jpg-1525126330.jpg"
+p7.save
+d1 = Date.new(2018,12,1)
+Order.create(pickuptime: d1, user: u1)
+
+m8 = Meal.create(title: "Zaalouk", published: true, user: u5, description: "Mixed stir vegetables", maxservings: 15, category: "side", price: 10)
+p8 = Picture.new
+p8.meal = m8
+p8.remote_url_url = "https://res.cloudinary.com/homeplate/image/upload/v1544723189/Zaalouk-with-crispy-halloumi-527ab3c.jpg"
+p8.save
+d1 = Date.new(2018,12,1)
+Order.create(pickuptime: d1, user: u2)
+
 orders = Order.all
-meals = [m1, m2, m3, m4, m5, m6]
+meals = [m1, m2, m3, m4, m5, m6, m7, m8]
 orders.each do |order|
   3.times do
     item = Item.new

@@ -4,7 +4,7 @@
 
       <h1>Payment number <%= @order.id %></h1>
       <br>
-      <%= form_tag payment_order_path(@order) , {:method => "post"}, do %>
+      <%= form_tag payment_order_path(@order) , {:method => "post"} do %>
         <article>
           <label class="amount">
             <span>Amount: <%= humanized_money_with_symbol(@order.amount) %></span>
