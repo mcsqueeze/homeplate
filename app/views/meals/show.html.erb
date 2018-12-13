@@ -76,7 +76,6 @@
                                   <%= submit_tag("Add to Order", class: "btn btn-success orderbtn") %>
                                   </div>
                               <% end %>
-
                             </div>
                           <% end %>
                           </div>
@@ -104,9 +103,13 @@
       <div class="mealreviews">
 
         <div class="mealreviewsheaders">
+
           <div>
-          <%= cl_image_tag @cook.photo, class: "mediumavatar"%>
+            <%= link_to profile_path(@cook) do %>
+              <%= cl_image_tag @cook.photo, class: "mediumavatar"%>
+            <% end %>
           </div>
+
           <div>
           <% if @meal.user == current_user %>
             <h2> My Public Profile</h2>
@@ -131,7 +134,6 @@
         </div>
 
       </div>
-
       <!-- this cook's other meals -->
       <div class="mealreviews">
 
@@ -164,8 +166,9 @@
           </div>
         <% end %>
         </div>
-
       </div>
+
+
     </div>
   </div>
 </div>

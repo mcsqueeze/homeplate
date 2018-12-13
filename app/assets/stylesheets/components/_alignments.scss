@@ -1,0 +1,18 @@
+.customflexbox{
+  display:flex
+}
+
+.customitemalignedright{
+  text-align:right;
+}
+
+.alignedbuttonsbox{
+  display:flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.coloredh1{
+text-align: center;
+}

@@ -1,33 +1,65 @@
-<div class="row">
+<div class="container-show">
+  <div class="row">
+    <div class="col-xs-12">
+
       <% if @orders == [] %>
-      <p> <%=  "you have no order yet" %> </p>
+        <p> <%=  "you have no order yet" %> </p>
+
       <% else %>
-  <div class="col-xs-12 col-sm-6 col-md-4">
-    <div class="card-order">
-      <div class="card-content-order">
-    <h1>My Orders</h1>
-    <% @orders.reverse.each do |order| %>
-    <div class="meal-card-order">
-      <p>Date: <%= order.updated_at %></p>
-      <% order.items.each do |item| %>
-      <p> <%= link_to item.meal.title, meal_path(item.meal) %>  Quantity: <%=item.quantity %> </p>
+        <h1 class="coloredh1">My Orders</h1>
+            <% @orders.reverse.each do |order| %>
 
-      <p>Cook: <%= link_to item.meal.user.username, profile_path(item.meal.user) %>
 
-      <% if !@meals_reviewed_by_user.include? item.meal %>
-      <%= link_to "Leave this cook a review", new_meal_review_path(item.meal)  %></p>
-      <% else %>
-      <p>You have already reviewed this meal!</p>
-      <% end %>
-      <p> Sub-total <%= humanized_money_with_symbol(item.meal.price * item.quantity) %></p>
-      <% end %>
-      <p>Order total: <%= humanized_money_with_symbol(order.amount_cents/100)  %></p>
-    <% end %>
-      <% end %>
-    </div>
-  </div>
-  </div>
+              <!-- order card -->
+              <div class="col-xs-4">
+                <div class="mealreviews">
 
+                  <div class="mealreviewsheaders">
+                  <h4>Date: <%= order.updated_at.strftime("%d/%m/%Y") %></h4>
+                  </div>
+
+                  <div class="#mealreviewscontentleft">
+                  <% order.items.each do |item| %>
+
+                        <ul>
+                        <li><%= link_to item.meal.title, meal_path(item.meal) %>: <%=item.quantity %> </li>
+                        </ul>
+
+                        <div class = "alignedbuttonsbox">
+                          <%= cl_image_tag item.meal.user.photo, class: "avatarcustomized" %>
+                          <%= item.meal.user.username%>
+
+                            <% if !@meals_reviewed_by_user.include? item.meal %>
+                            <p><%= link_to "Leave this cook a review", new_meal_review_path(item.meal), class: "btn  btn-success" %></p>
+                            <% else %>
+                            <p>You have already reviewed this meal!</p>
+                            <% end %>
+                        </div>
+
+                        <br>
+
+                        <div class="customitemalignedright">
+                        <p > Sub-total <%= humanized_money_with_symbol(item.meal.price * item.quantity)%> </p>
+                        </div>
+
+                    <% end %>
+
+                    <br>
+
+                      <div class="customitemalignedright">
+                      <h4> Order total: <%= humanized_money_with_symbol(order.amount_cents/100)%> </h4>
+                      <p> Payment status: <%= order.state%> </p>
+
+                        <% if order.state != "paid" %>
+                        <%= link_to "Proceed to Payment", payment_order_path(order), class: "btn  btn-success" %></p>
+                        <%end %>
+                      </div>
+                  </div>
+            </div>
+          </div>
+<!-- end of order card if there are any -->
+        <% end %>
+      <% end %>
     </div>
   </div>
 </div>
