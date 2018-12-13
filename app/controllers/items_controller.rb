@@ -47,6 +47,16 @@ class ItemsController < ApplicationController
   end
 
   def destroy
+    # @item = current_user.orders.find(params[:id])
+
+    # @order.destroy
+    #   if @order.destroyed?
+    #     flash[:notice] = "your order was deleted successfully :)"
+    #     redirect_to meals_path
+    #   else
+    #     flash[:notice] = "there was an error, please try again :("
+    #     redirect_to order_path(@order)
+    #   end
   end
 
   def update

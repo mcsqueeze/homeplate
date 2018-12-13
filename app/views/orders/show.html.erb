@@ -1,27 +1,62 @@
-<h1>Your Cart</h1>
+        <% if @order.id.nil? %>
+        <div class= "no-order">
+          <h1>Your basket is empty.</h1>
+          <h1><i class="fas fa-shopping-basket"></i></h1>
+          <div>
+           <%= link_to 'Browse Meals', meals_path, class: "btn btn-success" %>
+          </div>
+        </div>
 
-<% if @order.nil? %>
-<p>Your order is empty</p>
-<% else %>
-  <ul>
-    <% @order.items.each do |item| %>
-    <li>Item: <%= item.meal.title %> Quantity : <%= item.quantity %> </li>
+        <% else %>
+        <section id="cart">
+
+          <div class="container">
+
+
+              <% @order.items.each do |item| %>
+
+            <article class="product">
+                <header>
+                <div class="meal-card-image" style="background-image: url('<%= cl_image_path item.meal.pictures.first.url.url %>');">
+                  </div>
+                </header>
+                <div class="content">
+                   <h1><%= item.meal.title %></h1>
+                   <p><%= item.meal.description %></p>
+                </div>
+                  <footer class="content">
+                    <span class="qt-minus">-</span>
+                    <span class="qt"> <%= item.quantity %></span>
+                    <span class="qt-plus">+</span>
+
+                    <h2 class="full-price">
+                        <%= item.meal.price * item.quantity %>
+                    </h2>
+                    <h2 class= "full-price delete">
+                      <%= link_to 'Delete', order_path, method: :delete %>
+                      </h2>
+
+                </footer>
+
+            </article>
+<% end %>
+        </section>
+
+    </div>
+    <footer id="site-footer">
+        <div class="container clearfix">
+            <div class="right">
+                <h1 class="total">Total: <span><%= @total %></span>DHS</h1>
+                 <div class="buttons">
+                  <%= link_to 'Checkout', payment_order_path, class: "btn-ordershow" %>
+                  </div>
+            </div>
+        </div>
+
+    </footer>
+
     <% end %>
-  <ul>
 
-  <p>Order total: <%= @total %></p>
-  <% end %>
 
-  <div class="buttons">
-    <%= link_to 'Proceed to payment', payment_order_path, class: "btn btn-primary" %>
-  </div>
-
-    <div class="buttons">
-    <%= link_to 'Delete order', order_path, method: :delete, class: "btn btn-primary" %>
-  </div>
-
-    <div class="buttons">
-    <%= link_to 'add more meals', meals_path, class: "btn btn-primary" %>
-  </div>
 
 

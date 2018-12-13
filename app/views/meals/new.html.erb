@@ -13,8 +13,9 @@
   <% end %>
   <h1>Post a New Meal</h1>
   <br>
-    <%= f.input :title %> <%= f.input :price_cents %>
-    <%= f.input :category, label: 'Category: Appetizer, Main Dish, Side, Dessert, Other'%>
+    <%= f.input :title %>
+    <%= f.input :price, label: "Price"%>
+    <%= f.input :category, as: :select, label: "Category", collection: ["appetizer", "main course", "dessert", "side", "other"]%>
     <%= f.input :description, label: 'Meal Description' %>
     <%= f.input :maxservings, label: 'Max Servings' %>
     <%= f.input :shelflife, label: 'Shelf Life (Days)' %>

@@ -82,7 +82,7 @@ class MealsController < ApplicationController
     @user = current_user
     @meal = Meal.find(params[:id])
     @meal.user = current_user
-    if @meal.update
+    if @meal.update(meal_params)
       redirect_to dashboard_path(@user)
     else
       render :edit
