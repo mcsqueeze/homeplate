@@ -1,8 +1,11 @@
 <div class="container-show">
-
   <div class="row">
-    <div class="col-xs-6">
 
+    <!-- left column -->
+    <div class="col-xs-6">
+      <div class="coloredh1">
+        <h1>The Meal</h2>
+      </div>
     <!-- meal card -->
       <div class="profile-card text-center">
 
@@ -39,7 +42,7 @@
 
         <!-- meal details -->
         <div class="profile-info">
-          <h1 class="hvr-underline-from-center"><%= @meal.title %><span><%= @meal.category %></span></h1>
+          <h1 class="hvr-underline-from-center"><%= @meal.title %></h1>
               <div>
                     <div class="mealinfo">
                         <h2> <%= @meal.description %></h2>
@@ -47,64 +50,75 @@
                         <h4>Price per portion:    <%= humanized_money_with_symbol(@meal.price) %></h4>
 
                         <!-- buttons and options -->
-
-                        <% if user_signed_in? && current_user.usertype == 'cook'   %>
-                            <div class= "button-show">
-                            <%= link_to @meal.published ? "Unpublish" : "Publish!", publish_meal_path(@meal), method: :patch, class: "btn btn-success orderbtn" %>
-                            </div>
-                        <% end %>
-
-
                         <% unless @meal.published %>
                           <h3>This meal is not currently available</h3>
                         <% end %>
 
-                        <% if @meal.user == current_user %>
-                          <div class= "button-show">
-                          <%= link_to 'Edit this meal', edit_meal_path(@meal), class: "btn btn-success" %>
+                        <% if user_signed_in? && @meal.user == current_user   %>
+                          <div class="alignedbuttonsbox">
+                              <div>
+                              <%= link_to @meal.published ? "Unpublish" : "Publish!", publish_meal_path(@meal), method: :patch, class: "btn btn-success orderbtn" %>
+                              </div>
+
+                              <div>
+                              <%= link_to 'Edit this meal', edit_meal_path(@meal), class: "btn btn-success" %>
+                              </div>
                           </div>
                         <% end %>
 
-                    </div>
-                  <div>
-                    <% if user_signed_in? && current_user.usertype == 'customer' %>
-                    <h2>Please select number of servings:</h2>
-                      <div>
-                        <%= form_tag(meal_items_path(@meal), method: "post") do %>
-                        <%= number_field_tag(:quantity, options = {max: @meal.maxservings}) %>
-                            <div class= "button-show">
-                            <%= submit_tag("Add to Order", class: "btn btn-success orderbtn") %>
+                        <div>
+                          <% if user_signed_in? && current_user.usertype == 'customer' && @meal.user != current_user %>
+                          <h2>Please select number of servings:</h2>
+                            <div>
+                              <%= form_tag(meal_items_path(@meal), method: "post") do %>
+                              <%= number_field_tag(:quantity, options = {max: @meal.maxservings}) %>
+                                  <div>
+                                  <%= submit_tag("Add to Order", class: "btn btn-success orderbtn") %>
+                                  </div>
+                              <% end %>
                             </div>
-                        <% end %>
-                      </div>
-                    <% end %>
+                          <% end %>
+                          </div>
 
-                    <% if !user_signed_in? %>
-                      <div class= "btn">
-                        <%= link_to 'Sign in to order', new_user_session_path, class: "btn  btn-success" %>
-                      </div>
-                    <% end %>
+                        <% if !user_signed_in? %>
+                          <div>
+                            <%= link_to 'Sign in to order', new_user_session_path, class: "btn  btn-success" %>
+                          </div>
+                        <% end %>
                 </div>
             </div>
         </div>
       </div>
     </div>
 
-    <!-- cook profile -->
+
+    <!-- right column -->
     <div class="col-xs-6">
+
+      <div class="coloredh1">
+        <h1>The Cook</h2>
+      </div>
+
+      <!-- cook profile -->
       <div class="mealreviews">
 
         <div class="mealreviewsheaders">
-          <h2> cook: <%= @cook.username.capitalize %></h2>
-          <div class="mediumavatar">
-          <%= cl_image_tag @cook.photo, height: 100, width: 100, crop: :fill, default_image: "circled-user" %>
+          <div>
+          <%= cl_image_tag @cook.photo, class: "mediumavatar"%>
+          </div>
+          <div>
+          <% if @meal.user == current_user %>
+            <h2> My Public Profile</h2>
+          <% else %>
+            <h2> <%= @cook.username.capitalize %></h2>
+          <% end %>
           </div>
         </div>
 
-        <% if @cook.cook_reviews.nil? %>
+        <div class="mealreviewscontent">
+        <% if @cook.cook_reviews == [] %>
         <p>this cook has no review yet</p>
         <% else  %>
-
         <p>past reviews:</p>
         <% @cook.cook_reviews.each do |review|%>
           <ul>
@@ -113,9 +127,45 @@
           </ul>
           <% end %>
         <% end %>
+        </div>
+
+      </div>
+
+      <!-- this cook's other meals -->
+      <div class="mealreviews">
+
+        <div class="mealreviewsheaders">
+          <% if @meal.user == current_user %>
+            <h2> My Other Meals</h2>
+          <% else %>
+            <h2> <%= @cook.username.capitalize%>'s Other Meals</h2>
+          <% end %>
+        </div>
+
+        <div>
+        <% @cook.meals.each do |meal| %>
+          <div class="col-xs-2 col-sm-3 col-md-3">
+            <div class="small-meal-card">
+              <div class="small-meal-card-image" style="background-image: url('<%= cl_image_path meal.pictures.first.url.url %>');">
+              </div>
+                <div class="small-meal-card-content">
+                  <div class="meal-card-title">
+                    <h4><%= link_to meal.title, meal_path(meal), :class => "text-dark" %></h4>
+                    <p><%= meal.category %></p>
+                  </div>
+                  <div class="flex">
+                    <p><i class="fas fa-utensils"></i>
+                    Price: <%= humanized_money_with_symbol(meal.price) %>
+                    </p>
+                  </div>
+                </div>
+            </div>
+          </div>
+        <% end %>
+        </div>
+
       </div>
     </div>
-
   </div>
 </div>
 

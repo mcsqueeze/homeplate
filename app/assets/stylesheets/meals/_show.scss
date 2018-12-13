@@ -6,14 +6,45 @@
 
 .profile-card {
   margin-bottom: 20px;
+  border-top: 5px solid turquoise;
   width: 100%;
-  border: 1px lightgrey solid;
+  min-height: 85vh;
   padding: 10px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  box-shadow: 0 5px 5px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
     }
+
+.mealreviews{
+  min-height: 40vh;
+  border-top: 5px solid turquoise;
+}
+
+.mealreviewsheaders{
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.mealreviewscontent{
+  text-align: center;
+  flex-direction: column;
+}
+
+.coloredh1{
+text-align: center;
+}
+
+.alignedbuttonsbox{
+  display:flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+}
 
 .profile-pic {
   border-radius: 50%;
@@ -36,7 +67,6 @@
         }
 
 .profile-info h2 {
-    letter-spacing: 4px;
     padding-bottom: 12px;
         }
 
@@ -101,7 +131,3 @@
 }
 
 
-.mealreviews {
-  border: 1px lightgrey solid;
-
-}
