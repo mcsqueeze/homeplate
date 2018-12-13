@@ -19,7 +19,7 @@
                  <p>Name: <%= current_user.try(:first_name) %> <%= current_user.try(:last_name) %></p>
                 <!--  <li>birthday :<%= current_user.try(:birthday) %></li> -->
                  <p>Email: <%= current_user.try(:email) %></p>
-                <!--  <li>password : ******</li> -->
+                 <p>password : ******</p>
                  <p>Member Since: <%= current_user.created_at.strftime("%d/%m/%Y") %></p>
                  <p>Username: <%= current_user.try(:username) %></p>
                  <!-- <li>description :<%= current_user.try(:description) %></li> -->
