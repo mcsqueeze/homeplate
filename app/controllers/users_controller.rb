@@ -41,6 +41,7 @@ class UsersController < ApplicationController
     @user.cook_reviews.each do |review|
       @ratings << review.rating
     end
+
     if !@rating.nil?
     @average_rating = (((@ratings.sum) / @ratings.count.to_f)*100).round / 100.0
     else

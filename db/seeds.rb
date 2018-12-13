@@ -27,7 +27,7 @@ u4 = User.new(email: "rachida@gmail.com", username: "Rachida", password: "123456
 u4.remote_photo_url = "https://res.cloudinary.com/homeplate/image/upload/v1544722516/ayesha.jpg"
 u4.save!
 
-u5 = User.new(email: "salah@gmail.com", username: "Salah", password: "123456", usertype: "cook", phonenumber: "06 78 54 76 43", address: "4 Rue Tanger, Rabat")
+u5 = User.new(email: "hafida@gmail.com", username: "Hafida", password: "123456", usertype: "cook", phonenumber: "06 78 54 76 43", address: "4 Rue Tanger, Rabat")
 u5.remote_photo_url = "https://res.cloudinary.com/homeplate/image/upload/v1544722517/loudmila.jpg"
 u5.save!
 

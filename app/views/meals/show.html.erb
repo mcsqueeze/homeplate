@@ -106,8 +106,12 @@
         <div class="mealreviewsheaders">
 
           <div>
+            <% if user_signed_in? %>
             <%= link_to profile_path(@cook) do %>
-              <%= cl_image_tag @cook.photo, class: "mediumavatar"%>
+            <%= cl_image_tag @cook.photo, class: "mediumavatar"%>
+            <% end %>
+            <% else %>
+            <%= cl_image_tag @cook.photo, class: "mediumavatar"%>
             <% end %>
           </div>
 
@@ -133,11 +137,10 @@
           <% end %>
         <% end %>
         </div>
-
       </div>
+      <br>
       <!-- this cook's other meals -->
       <div class="mealreviews">
-
         <div class="mealreviewsheaders">
           <% if @meal.user == current_user %>
             <h2> My Other Meals</h2>
