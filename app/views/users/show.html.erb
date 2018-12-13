@@ -11,11 +11,10 @@
         <!-- User info -->
 
           <h4>Personal Info</h4>
-
+          <br>
               <%= cl_image_tag current_user.photo, height: 100, width: 100, crop: :fill, class: "mediumavatar", default_image: "circled-user.png" %>
 
-
-            <div class="mealreviewscontent">
+            <div>
 
                  <p>Name: <%= current_user.try(:first_name) %> <%= current_user.try(:last_name) %></p>
                 <!--  <li>birthday :<%= current_user.try(:birthday) %></li> -->
@@ -30,13 +29,13 @@
                  <!-- <li>user id <%= current_user.id %></li> -->
             </div>
 
-            <div>
+            <div class="btn btn-user-show">
                 <%= link_to 'Update Profile', edit_user_registration_path, class: "btn btn-success" %>
             </div>
 
          </div>
         </div>
-
+        <br>
  <!-- active meals -->
     <div class="mealreviews">
       <h4>Your current meals:</h4>
@@ -60,7 +59,7 @@
         </div>
       <% end %>
     </div>
-
+<br>
 
   <!-- inactive meals -->
    <div class="mealreviews">
@@ -91,7 +90,10 @@
  </div>
 
    <!-- Right column -->
-   <div class="col-xs-6">
+   <br>
+   <br>
+   <br>
+   <div class="col-xs-6 top-margin-user-show">
 
     <!-- Earnings -->
     <div class="mealreviews">
@@ -99,7 +101,6 @@
       <div class="mealreviewsheaders">
         <h4>My Earnings</h4>
       </div>
-
       <div class="myreviewscontent">
         <h1>1,800 DHS</h1>
         <h3>December 2018 Earnings</h3>
@@ -107,7 +108,7 @@
       </div>
 
    </div>
-
+<br>
     <!-- Meal reviews -->
     <div class="mealreviews">
 
