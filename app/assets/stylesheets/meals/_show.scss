@@ -20,6 +20,7 @@
 .mealreviews{
   min-height: 40vh;
   border-top: 5px solid turquoise;
+  padding: 10px;
 }
 
 .mealreviewsheaders{
@@ -35,15 +36,8 @@
   flex-direction: column;
 }
 
-.coloredh1{
-text-align: center;
-}
-
-.alignedbuttonsbox{
-  display:flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-evenly;
+#mealreviewscontentleft{
+  text-align:left;
 }
 
 .profile-pic {

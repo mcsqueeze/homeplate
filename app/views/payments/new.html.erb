@@ -1,18 +1,27 @@
-<h1>Payments#new</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 confirmcenter margintop">
 
-<h4>Payment number <%= @order.id %></h4>
-<%= form_tag payment_order_path(@order) , {:method => "post"} do %>
-  <article>
-    <label class="amount">
-      <span>Amount: <%= humanized_money_with_symbol(@order.amount) %></span>
-    </label>
-  </article>
+      <h1>Payment number <%= @order.id %></h1>
+      <br>
+      <%= form_tag payment_order_path(@order) , {:method => "post"}, do %>
+        <article>
+          <label class="amount">
+            <span>Amount: <%= humanized_money_with_symbol(@order.amount) %></span>
+          </label>
+        </article>
 
-  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-    data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-    data-name="My order"
-    data-email="<%= current_user.email %>"
-    data-amount="<%= @order.amount_cents %>"
-    data-currency="<%= @order.amount.currency %>"></script>
+        <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+          data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+          data-name="My order"
+          data-email="<%= current_user.email %>"
+          data-amount="<%= @order.amount_cents %>"
+          data-currency="<%= @order.amount.currency %>"></script>
 
-  <% end %>
+        <% end %>
+
+      </div>
+  </div>
+</div>
+
+
