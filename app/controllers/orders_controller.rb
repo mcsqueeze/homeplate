@@ -35,14 +35,14 @@ class OrdersController < ApplicationController
   end
 
   def destroy
-    @order = current_user.orders.find(params[:id])
+    @order = current_user.orders.last
     @order.state = "deleted"
     @order.destroy
       if @order.destroyed?
-        flash[:notice] = "your order was deleted successfully :)"
+        flash[:notice] = "Your order was deleted successfully! :)"
         redirect_to meals_path
       else
-        flash[:notice] = "there was an error, please try again :("
+        flash[:notice] = "There was an error. Please try again. :("
         redirect_to order_path(@order)
       end
   end
