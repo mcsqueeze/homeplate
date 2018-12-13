@@ -142,3 +142,6 @@
  </div>
 <% end %>
 </div>
+<% content_for :scripts do %>
+  <%= javascript_pack_tag "chart" %>
+<% end %>
