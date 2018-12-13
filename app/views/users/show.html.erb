@@ -54,19 +54,8 @@
     </div>
     <div class="profileleft col-xs-6 col-sm-6 col-md-6">
     <h4>My earnings:</h4>
-      <h6>Total earnings: <%= @average_rating %> </h6>
-      <% current_user.cook_reviews.each do |review| %>
-      <ul>
-        <li>Rating: <%= review.rating %>
-        <br>
-        Details: <%= review.content %>
-        <br>
-        Meal: <%= review.meal.title %>
-        <br>
-        Date: <%= review.created_at %></li>
-      </ul>
-      <% end %>
-    </div>
+
+
 
    </div>
 
