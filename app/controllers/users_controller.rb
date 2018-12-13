@@ -47,7 +47,6 @@ class UsersController < ApplicationController
       @average_rating = nil
     end
 
-
   end
 
   def change_usertype
