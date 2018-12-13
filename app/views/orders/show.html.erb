@@ -9,12 +9,8 @@
 
         <% else %>
         <section id="cart">
-
           <div class="container">
-
-
               <% @order.items.each do |item| %>
-
             <article class="product">
                 <header>
                 <div class="meal-card-image" style="background-image: url('<%= cl_image_path item.meal.pictures.first.url.url %>');">
@@ -25,9 +21,7 @@
                    <p><%= item.meal.description %></p>
                 </div>
                   <footer class="content">
-                    <span class="qt-minus">-</span>
-                    <span class="qt"> <%= item.quantity %></span>
-                    <span class="qt-plus">+</span>
+                    <span>Quanity: <%= item.quantity %></span>
 
                     <h2 class="full-price">
                         <%= item.meal.price * item.quantity %>
@@ -35,13 +29,11 @@
                     <h2 class= "full-price delete">
                       <%= link_to 'Delete', order_path, method: :delete %>
                       </h2>
-
                 </footer>
 
             </article>
-<% end %>
+          <% end %>
         </section>
-
     </div>
     <footer id="site-footer">
         <div class="container clearfix">
@@ -49,12 +41,12 @@
                 <h1 class="total">Total: <span><%= @total %></span>DHS</h1>
                  <div class="buttons">
                   <%= link_to 'Checkout', payment_order_path, class: "btn-ordershow" %>
+                  <br>
+                  <%= link_to 'Back to Meals', meals_path, class: "btn-ordershow" %>
                   </div>
             </div>
         </div>
-
     </footer>
-
     <% end %>
 
 
