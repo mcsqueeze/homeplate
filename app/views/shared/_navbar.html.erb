@@ -1,18 +1,21 @@
 <div class="navbar-wagon">
-  <!-- Logo -->
-  <%= link_to root_path, class: "navbar-wagon-brand" do %>
-    <%= cl_image_tag'chef.svg', :height=>50, :crop =>'scale' %>
-  <% end %>
-  <div class = "brandnavbar" >HomePlate</div>
+  <!-- Logo and searchbar-->
+  <div class="navbar-wagon-left">
 
-      <div class="searchbar">
-        <%= form_tag meals_path, method: :get do %>
-         <%= text_field_tag :query,
-      params[:query],
-      class: "form-control",
-      placeholder: "search a city or dish (ex: chicken, casablanca...)"
+    <%= link_to root_path, class: "navbar-wagon-brand" do %>
+    <%= cl_image_tag'chef.svg', :height=>50, :crop =>'scale' %>
+    <% end %>
+
+    <div class="searchbar">
+      <%= form_tag meals_path, method: :get do %>
+       <%= text_field_tag :query,
+    params[:query],
+    class: "form-control",
+    placeholder: "search a city or dish (ex: chicken, casablanca...)"
     %>
-  <% end %>
+    <% end %>
+    </div>
+
   </div>
 
   <!-- Right Navigation -->
@@ -48,7 +51,7 @@
       <div class="navbar-wagon-item">
         <div class="dropdown">
           <!-- if user uploads photo, then photo. if not, default image -->
-          <%= cl_image_tag "circled-user.png", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", 'data-toggle': "dropdown" %>
+          <%= cl_image_tag "circled-user", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", 'data-toggle': "dropdown" %>
           <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
 
             <li>
