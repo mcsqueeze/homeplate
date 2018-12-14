@@ -116,21 +116,21 @@
       <div class="mealreviewsheaders">
       <h4>My Reviews</h4>
       </div>
-
-      <div class="mealreviewscontent">
+      <div class="mealreviewsheaders">
         <% if !@average_rating.nil? %>
-          <h6>Overall rating: <%= @average_rating %> </h6>
-          <p>My reviews</p>
+          <h4>Overall rating: </h4> <strong> <span style="color: #27b896; font-size: 30px;"><%= '*' * @average_rating.to_i %></span> </strong>
+      </div>
+      <div class="mealreviewscontent columnalignment">
+
             <% current_user.cook_reviews.each do |review| %>
-            <ul>
-              <li>Rating: <%= review.rating %>
+              <div class="innermealreviews customitemalignedleft" >Rating: <strong> <span style="color: #27b896; font-size: 25px;"><%= '*' * review.rating.to_i %></span> </strong>
               <br>
-              Details: <%= review.content %>
+              <strong>  <%= review.meal.title %> </strong>
               <br>
-              Meal: <%= review.meal.title %>
+              <%= review.content %>
               <br>
-              Date: <%= review.created_at %></li>
-            </ul>
+              Bought On: <%= review.created_at.strftime("%d/%m/%Y") %></div>
+
             <% end %>
         <%else %>
           <p>You don't have any reviews yet.</p>
