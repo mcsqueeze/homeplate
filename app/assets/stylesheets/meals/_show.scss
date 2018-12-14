@@ -18,9 +18,10 @@
     }
 
 .mealreviews{
-  min-height: 40vh;
+  min-height: 15vh;
   border-top: 5px solid turquoise;
   padding: 10px;
+  margin-bottom: 20px;
 }
 
 .mealreviewsheaders{
@@ -33,7 +34,7 @@
 
 .mealreviewscontent{
   text-align: center;
-  flex-direction: column;
+  display: flex;
 }
 
 #mealreviewscontentleft{
@@ -124,4 +125,11 @@
   border-radius: 0;
 }
 
+.myreviewscontentchart {
+  height: 750px;
+  width: 620px;
+}
 
+#fancychart{
+  flex-direction: column;
+}

@@ -31,23 +31,24 @@ u4 = User.new(email: "rachida@gmail.com", username: "Rachida", password: "123456
 u4.remote_photo_url = "https://res.cloudinary.com/homeplate/image/upload/v1544722516/ayesha.jpg"
 u4.save!
 
-u5 = User.new(email: "jacques@gmail.com", username: "Jacques", password: "123456", usertype: "cook", phonenumber: "06 78 54 76 43", address: "BIM Abdelkrim Khattabi, Mohammedia, Grand Casablanca 29, Morocco")
+
+u5 = User.new(email: "jacques@gmail.com", username: "Jacques", password: "123456", usertype: "cook", phonenumber: "06 78 54 76 43", address: "4 Rue Tanger, Rabat")
 u5.remote_photo_url = "https://res.cloudinary.com/homeplate/image/upload/v1544777993/JACQUES-1600X938-V2.jpg"
 u5.save!
 
-u6 = User.new(email: "mounia@gmail.com", username: "Mounia", password: "123456", usertype: "cook", phonenumber: "06 78 54 76 43", address: "Chrono Pizza, 76 Boulevard d’Anfa, Casablanca, Grand Casablanca 20, Morocco")
+u6 = User.new(email: "mounia@gmail.com", username: "Mounia", password: "123456", usertype: "cook", phonenumber: "06 78 54 76 43", address: "4 Rue Tanger, Rabat")
 u6.remote_photo_url = "https://res.cloudinary.com/homeplate/image/upload/v1544777755/zfkNiosF.jpg"
 u6.save!
 
-u7 = User.new(email: "rabab@gmail.com", username: "Rabab", password: "123456", usertype: "customer", phonenumber: "06 78 54 76 43", address: "The Boston Consulting Group, 104, bd Abdellatif Ben Kadour, Casablanca, Grand Casablanca 20, Morocco")
+u7 = User.new(email: "rabab@gmail.com", username: "Rabab", password: "123456", usertype: "customer", phonenumber: "06 78 54 76 43", address: "4 Rue Tanger, Rabat")
 u7.remote_photo_url = "https://res.cloudinary.com/homeplate/image/upload/v1544777800/lKCxCYSD_400x400.jpg"
 u7.save!
 
-u8 = User.new(email: "fadwa@gmail.com", username: "Fadwa", password: "123456", usertype: "customer", phonenumber: "06 78 54 76 43", address: "Boulevard Mohamed Zerktouni, Casablanca, Grand Casablanca 20, Morocco")
+u8 = User.new(email: "fadwa@gmail.com", username: "Fadwa", password: "123456", usertype: "customer", phonenumber: "06 78 54 76 43", address: "42 Boulevard de la Résistance, Casablanca")
 u8.remote_photo_url = "https://res.cloudinary.com/homeplate/image/upload/v1544778113/asa-hutchinson.jpg"
 u8.save!
 
-u9 = User.new(email: "abdel@gmail.com", username: "Abdel", password: "123456", usertype: "customer", phonenumber: "06 78 54 76 43", address: "Boulevard Mohamed Zerktouni, Casablanca, Grand Casablanca 20, Morocco")
+u9 = User.new(email: "abdel@gmail.com", username: "Abdel", password: "123456", usertype: "customer", phonenumber: "06 78 54 76 43", address: "42 Boulevard de la Résistance, Casablanca")
 u9.remote_photo_url = "https://res.cloudinary.com/homeplate/image/upload/v1544778198/amr.jpg"
 u9.save!
 

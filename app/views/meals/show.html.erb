@@ -106,8 +106,12 @@
         <div class="mealreviewsheaders">
 
           <div>
+            <% if user_signed_in? %>
             <%= link_to profile_path(@cook) do %>
-              <%= cl_image_tag @cook.photo, class: "mediumavatar"%>
+            <%= cl_image_tag @cook.photo, class: "mediumavatar"%>
+              <% end %>
+            <% else %>
+            <%= cl_image_tag @cook.photo, class: "mediumavatar"%>
             <% end %>
           </div>
 
@@ -118,23 +122,36 @@
             <h2> <%= @cook.username.capitalize %></h2>
           <% end %>
           </div>
+
         </div>
 
-        <div class="mealreviewscontent">
+        <div class="mealreviewscontent" id="mealreviewscontentleft">
+          <ul>
+             <li>name :<%= @cook.try(:first_name) %> <%= @cook.try(:last_name) %> </li>
+              <li>member since :<%= @cook.created_at.strftime("%d/%m/%Y") %></li>
+          </ul>
+        </div>
+
+        <div class="mealreviewsheaders">
+          <h2>Reviews from customer</h2>
+        </div>
+
+        <div class="mealreviewscontent" id="mealreviewscontentleft">
         <% if @cook.cook_reviews == [] %>
         <p>this cook has no review yet</p>
         <% else  %>
         <p>past reviews:</p>
         <% @cook.cook_reviews.each do |review|%>
-          <ul>
-             <li><%=review.rating %></li>
-             <li><%=review.content %></li>
-          </ul>
+            <ul>
+               <li><%=review.rating %></li>
+               <li><%=review.content %></li>
+            </ul>
           <% end %>
         <% end %>
         </div>
 
       </div>
+
       <!-- this cook's other meals -->
       <div class="mealreviews">
 
@@ -146,9 +163,9 @@
           <% end %>
         </div>
 
-        <div>
+        <div class="mealreviewscontent">
         <% @cook.meals.each do |meal| %>
-          <div class="col-xs-2 col-sm-3 col-md-3">
+          <div class="col-xs-3">
             <div class="small-meal-card">
               <div class="small-meal-card-image" style="background-image: url('<%= cl_image_path meal.pictures.first.url.url %>');">
               </div>
@@ -167,6 +184,7 @@
           </div>
         <% end %>
         </div>
+
       </div>
 
 
