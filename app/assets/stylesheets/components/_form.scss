@@ -22,10 +22,21 @@ h2 {
 #signup-form{
   margin-top: 58px;
   background-color: white ;
+  opacity: .9;
+  height: 100%vh;
 }
 
 .centered-signup{
   margin-left: 45px;
+  opacity: .9;
+}
+.form-actions {
+  font-size: 30px;
 }
 
+#quantity {
+  line-height: 35px !important;
+  width: 100px;
+  border: 1px solid gray;
+}
 

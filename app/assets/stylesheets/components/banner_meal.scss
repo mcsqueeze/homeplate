@@ -10,9 +10,31 @@
 
 .banner_meal {
   height: 100vh;
+  background: url(https://res.cloudinary.com/homeplate/image/upload/v1544195970/brooke-lark-261287-unsplash.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
   display: flex;
-  justify-content: space-around;
-  align-items: center;
-  background-image: url(https://res.cloudinary.com/homeplate/image/upload/c_crop,h_2867,r_7,w_2924,x_2351,y_1851/v1544604615/dan-gold-298710-unsplash.jpg);
-  background-position: cover;
+  // justify-content: space-around;
+  // align-items: center;
+  // background-image: url(https://res.cloudinary.com/homeplate/image/upload/v1544195970/brooke-lark-261287-unsplash.jpg);
+  // background-position: cover;
+  // background-repeat: no-repeat center ;
+  // height: 100%;
+  // width: 100%;
 }
+.banner_meal-signup {
+
+  background: url(https://res.cloudinary.com/homeplate/image/upload/v1544195970/brooke-lark-261287-unsplash.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+}
+
+// .banner_meal-bottom {
+//   height: 50vh;
+//   margin-top: 150px;
+//   background: url(https://res.cloudinary.com/homeplate/image/upload/v1544195970/brooke-lark-261287-unsplash.jpg);
+//   background-repeat: no-repeat;
+//   background-size: cover;
+//   display: flex;
+// }

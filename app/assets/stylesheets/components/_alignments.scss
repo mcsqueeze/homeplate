@@ -18,6 +18,15 @@
   justify-content: space-evenly;
 }
 
+.alignedbuttonsboxcenter{
+  display:flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
 .coloredh1{
 text-align: center;
 }
+
+

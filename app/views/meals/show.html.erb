@@ -70,11 +70,11 @@
                         <div>
                           <% if user_signed_in? && current_user.usertype == 'customer' && @meal.user != current_user %>
                           <h2>Please select number of servings:</h2>
-                            <div>
+                            <div >
                               <%= form_tag(meal_items_path(@meal), method: "post") do %>
-                              <%= number_field_tag(:quantity, nil, min: 0, max: @meal.maxservings) %>
-                                  <div>
-                                  <%= submit_tag("Add to Order", class: "btn btn-success orderbtn") %>
+                                  <div class='alignedbuttonsbox'>
+                                  <%= number_field_tag(:quantity, nil, min: 0, max: @meal.maxservings) %>
+                                  <%= submit_tag("Add to Order", class: "btn btn-success") %>
                                   </div>
                               <% end %>
                             </div>
@@ -126,7 +126,7 @@
 
         <div class="mealreviewscontent">
         <% if @cook.cook_reviews == [] %>
-        <p>this cook has no review yet</p>
+        <p>This cook has no reviews yet.</p>
         <% else  %>
         <p>past reviews:</p>
         <% @cook.cook_reviews.each do |review|%>
