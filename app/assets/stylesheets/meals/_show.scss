@@ -17,29 +17,7 @@
   box-shadow: 0 5px 5px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
     }
 
-.mealreviews{
-  min-height: 15vh;
-  border-top: 5px solid turquoise;
-  padding: 10px;
-  margin-bottom: 20px;
-}
 
-.mealreviewsheaders{
-  padding: 10px;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
-}
-
-.mealreviewscontent{
-  text-align: center;
-  display: flex;
-}
-
-#mealreviewscontentleft{
-  text-align:left;
-}
 
 .profile-pic {
   border-radius: 50%;

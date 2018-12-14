@@ -127,7 +127,6 @@
 
         <div class="mealreviewscontent" id="mealreviewscontentleft">
           <ul>
-             <li>name :<%= @cook.try(:first_name) %> <%= @cook.try(:last_name) %> </li>
               <li>member since :<%= @cook.created_at.strftime("%d/%m/%Y") %></li>
           </ul>
         </div>
@@ -140,12 +139,12 @@
         <% if @cook.cook_reviews == [] %>
         <p>This cook has no reviews yet.</p>
         <% else  %>
-        <p>past reviews:</p>
+
         <% @cook.cook_reviews.each do |review|%>
-            <ul>
-               <li><%=review.rating %></li>
-               <li><%=review.content %></li>
-            </ul>
+            <div class="innermealreviews customitemalignedleft" >
+               <strong> <span style="color: #27b896; font-size: 25px;"><%= '*' * review.rating.to_i %></span> </strong>
+               <p>"<%=review.content %>"</p>
+            </div>
           <% end %>
         <% end %>
         </div>

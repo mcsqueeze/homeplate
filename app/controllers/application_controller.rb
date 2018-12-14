@@ -31,6 +31,7 @@ class ApplicationController < ActionController::Base
     meals_path
   end
 
+
   private
 
   def skip_pundit?
