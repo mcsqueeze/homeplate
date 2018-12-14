@@ -33,6 +33,8 @@
     </div>
 
  <!-- active meals -->
+
+ <% if current_user.usertype == "cook" %>
     <div class="mealreviews">
 
       <div class="mealreviewsheaders">
@@ -140,6 +142,7 @@
     </div>
 
     </div>
+<% end  %>
    <!-- end of right column -->
 
 <% else %>
