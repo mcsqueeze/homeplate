@@ -14,7 +14,7 @@ u1 = User.new(email: "maria@gmail.com", first_name: "Maria", username: "ChefMari
 u1.remote_photo_url = "https://res.cloudinary.com/homeplate/image/upload/v1544784872/maria_photo.jpg"
 u1.save!
 
-u2 = User.new(email: "Mohammed@gmail.com", username: "Mohammed", password: "123456", usertype: "cook", phonenumber: "06 78 54 76 43", address: "33 Rue Najib Mahfoud, Casablanca")
+u2 = User.new(email: "Mohammed@gmail.com", username: "Mohammed", password: "123456", usertype: "cook", phonenumber: "06 78 54 76 43", address: "52 Boulevard d’Anfa, Casablanca")
 u2.remote_photo_url = "https://res.cloudinary.com/homeplate/image/upload/v1544722517/adherents_raja_1.jpg"
 u2.save!
 
@@ -26,7 +26,7 @@ u4 = User.new(email: "rachida@gmail.com", username: "Rachida", password: "123456
 u4.remote_photo_url = "https://res.cloudinary.com/homeplate/image/upload/v1544722516/ayesha.jpg"
 u4.save!
 
-u5 = User.new(email: "jacques@gmail.com", username: "Jacques", password: "123456", usertype: "cook", phonenumber: "06 78 54 76 43", address: "3 Rue Ahmed El Mokri, Casablanca")
+u5 = User.new(email: "jacques@gmail.com", username: "Jacques", password: "123456", usertype: "cook", phonenumber: "06 78 54 76 43", address: "64B Boulevard de l’Atlantide, Casablanca, Morocco")
 u5.remote_photo_url = "https://res.cloudinary.com/homeplate/image/upload/v1544777993/JACQUES-1600X938-V2.jpg"
 u5.save!
 

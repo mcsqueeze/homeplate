@@ -156,9 +156,9 @@
 
         <div class="mealreviewsheaders">
           <% if @meal.user == current_user %>
-            <h2> My Other Meals</h2>
+            <h2> My Meals</h2>
           <% else %>
-            <h2> <%= @cook.username.capitalize%>'s Other Meals</h2>
+            <h2> <%= @cook.username.capitalize%>'s Meals</h2>
           <% end %>
         </div>
 

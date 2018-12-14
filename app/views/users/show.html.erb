@@ -154,34 +154,54 @@
   <!-- cook public info -->
 
 <h1>More info on your cook: <%= @cook.username %> </h1>
-  <div class="row profilerow">
-
-   <div class="profileleft col-xs-6 col-sm-6 col-md-6">
-    <h2>basic info:</h2>
+        <!-- User info left column -->
+  <div class="col-xs-6">
+    <div class="mealreviews">
+      <div class="mealreviewsheaders">
+        <h2>basic info:</h2>
         <div>
           <%= cl_image_tag @cook.photo, height: 100, width: 100, crop: :fill, class: "mediumavatar", default_image: "circled-user.png" %>
         </div>
+      </div>
 
-        <div>
-          <ul>
-             <li>name :<%= @cook.try(:first_name) %> <%= @cook.try(:last_name) %> </li>
-              <li>member since :<%= @cook.created_at.strftime("%d/%m/%Y") %></li>
-              <li>user id :<%= @cook.id %></li>
-          </ul>
-        </div>
-   </div>
 
-   <div class="profileright col-xs-6 col-sm-6 col-md-6">
-        <div class="mealreviews">
-            <h2><%= "#{@cook.username.capitalize}'s past reviews"  %></h2>
-            <% @cook.cook_reviews.each do |review|%>
-              <ul>
-                 <li><%=review.rating %></li>
-                 <li><%=review.content %></li>
-              </ul>
-              <% end %>
-        </div>
+      <div class="mealreviewscontentleft">
+          <p>Username: <%= current_user.try(:username) %></p>
+          <p>member since :<%= @cook.created_at.strftime("%d/%m/%Y") %></p>
+      </div>
    </div>
+  </div>
+
+        <!-- public profile reviews right column -->
+  <div class="col-xs-6">
+    <div class="mealreviews">
+
+      <div class="mealreviewsheaders">
+      <h4><%= @cook.username.capitalize%>'s Reviews</h4>
+      </div>
+      <div class="mealreviewsheaders">
+        <% if !@average_rating.nil? %>
+          <h4>Overall rating: </h4> <strong> <span style="color: #27b896; font-size: 30px;"><%= '*' * @average_rating.to_i %></span> </strong>
+      </div>
+      <div class="mealreviewscontent columnalignment">
+
+            <% @cook.cook_reviews.each do |review| %>
+              <div class="innermealreviews customitemalignedleft" >Rating: <strong> <span style="color: #27b896; font-size: 25px;"><%= '*' * review.rating.to_i %></span> </strong>
+              <br>
+              <strong>  <%= review.meal.title %> </strong>
+              <br>
+              <%= review.content %>
+              <br>
+              Bought On: <%= review.created_at.strftime("%d/%m/%Y") %></div>
+
+            <% end %>
+        <%else %>
+          <p><%= @cook.username.capitalize%> don't have any reviews yet.</p>
+        <% end %>
+      </div>
+
+    </div>
+  </div>
 
 <% end %>
  </div>
