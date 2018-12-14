@@ -1,6 +1,6 @@
+require 'date'
+
 puts 'Cleaning database...'
-
-
 Item.destroy_all
 Picture.destroy_all
 Review.destroy_all
@@ -8,15 +8,10 @@ Meal.destroy_all
 Order.destroy_all
 User.destroy_all
 
-
-
 puts 'Creating meals...'
 
-require 'date'
-
-
-u1 = User.new(email: "hayat@gmail.com", username: "Hayat", password: "123456", usertype: "cook", phonenumber: "06 78 54 76 43", address: "42 Boulevard de la Résistance, Casablanca")
-u1.remote_photo_url = "https://res.cloudinary.com/homeplate/image/upload/v1544722516/KHALIL.jpg"
+u1 = User.new(email: "maria@gmail.com", first_name: "Maria", username: "ChefMaria", password: "123456", usertype: "cook", phonenumber: "06 78 54 76 43", address: "42 Boulevard de la Résistance, Casablanca")
+u1.remote_photo_url = "https://res.cloudinary.com/homeplate/image/upload/v1544784872/maria_photo.jpg"
 u1.save!
 
 u2 = User.new(email: "Mohammed@gmail.com", username: "Mohammed", password: "123456", usertype: "cook", phonenumber: "06 78 54 76 43", address: "33 Rue Najib Mahfoud, Casablanca")
@@ -27,33 +22,30 @@ u3 = User.new(email: "mouna@gmail.com", username: "Mouna", password: "123456", u
 u3.remote_photo_url = "https://res.cloudinary.com/homeplate/image/upload/v1544722516/Choumicha.jpg"
 u3.save!
 
-u4 = User.new(email: "rachida@gmail.com", username: "Rachida", password: "123456", usertype: "cook", phonenumber: "06 78 54 76 43", address: "33 Rue Najib Mahfoud, Casablanca")
+u4 = User.new(email: "rachida@gmail.com", username: "Rachida", password: "123456", usertype: "cook", phonenumber: "06 78 54 76 43", address: "76 Boulevard d’Anfa, Casablanca")
 u4.remote_photo_url = "https://res.cloudinary.com/homeplate/image/upload/v1544722516/ayesha.jpg"
 u4.save!
 
-
-u5 = User.new(email: "jacques@gmail.com", username: "Jacques", password: "123456", usertype: "cook", phonenumber: "06 78 54 76 43", address: "33 Rue Najib Mahfoud, Casablanca")
+u5 = User.new(email: "jacques@gmail.com", username: "Jacques", password: "123456", usertype: "cook", phonenumber: "06 78 54 76 43", address: "3 Rue Ahmed El Mokri, Casablanca")
 u5.remote_photo_url = "https://res.cloudinary.com/homeplate/image/upload/v1544777993/JACQUES-1600X938-V2.jpg"
 u5.save!
 
-u6 = User.new(email: "mounia@gmail.com", username: "Mounia", password: "123456", usertype: "cook", phonenumber: "06 78 54 76 43", address: "33 Rue Najib Mahfoud, Casablanca")
+u6 = User.new(email: "mounia@gmail.com", username: "Mounia", password: "123456", usertype: "cook", phonenumber: "06 78 54 76 43", address: "270 Boulevard Mohamed Zerktouni, Casablanca")
 u6.remote_photo_url = "https://res.cloudinary.com/homeplate/image/upload/v1544777755/zfkNiosF.jpg"
 u6.save!
 
-u7 = User.new(email: "rabab@gmail.com", username: "Rabab", password: "123456", usertype: "customer", phonenumber: "06 78 54 76 43", address: "33 Rue Najib Mahfoud, Casablanca")
-u7.remote_photo_url = "https://res.cloudinary.com/homeplate/image/upload/v1544777800/lKCxCYSD_400x400.jpg"
+u7 = User.new(email: "anna@gmail.com", username: "missanna", password: "123456", usertype: "customer", phonenumber: "06 78 54 76 43")
+u7.remote_photo_url = "https://res.cloudinary.com/homeplate/image/upload/v1544784872/fuchtman_photo.jpg"
 u7.save!
 
-u8 = User.new(email: "fadwa@gmail.com", username: "Fadwa", password: "123456", usertype: "customer", phonenumber: "06 78 54 76 43", address: "42 Boulevard de la Résistance, Casablanca")
+u8 = User.new(email: "fadwa@gmail.com", username: "Fadwa", password: "123456", usertype: "customer", phonenumber: "06 78 54 76 43")
 u8.remote_photo_url = "https://res.cloudinary.com/homeplate/image/upload/v1544778113/asa-hutchinson.jpg"
 u8.save!
 
-u9 = User.new(email: "abdel@gmail.com", username: "Abdel", password: "123456", usertype: "customer", phonenumber: "06 78 54 76 43", address: "Rue Brahim Nakhai, Casablanca")
+
+u9 = User.new(email: "abdel@gmail.com", username: "Abdel", password: "123456", usertype: "customer", phonenumber: "06 78 54 76 43")
 u9.remote_photo_url = "https://res.cloudinary.com/homeplate/image/upload/v1544778198/amr.jpg"
 u9.save!
-
-
-
 
 # Customer
 
@@ -75,7 +67,7 @@ d2 = Date.new(2018,12,2)
 Order.create(pickuptime: d1, user: u1)
 
 
-m2 = Meal.create(title: "Rfissa", user: u1, published: true, description: "Scrumptous chicken with msimmon and helba", maxservings: 12, category: "main course", price: 45)
+m2 = Meal.create(title: "Rfissa", user: u1, published: false, description: "Scrumptous chicken with msimmon and helba", maxservings: 12, category: "main course", price: 45)
 p2 = Picture.new
 p2.meal = m2
 p2.remote_url_url = "https://res.cloudinary.com/homeplate/image/upload/v1543920340/3360437195_4ea3d4441e.jpg"
@@ -230,7 +222,6 @@ r20 = Review.create(rating: "4", content: "good value, good taste.", meal: m7, c
 r21 = Review.create(rating: "4.5", content: "i definitely recommend this cook.", meal: m3, cook: u2, user:u9)
 
 r22 = Review.create(rating: "4.5", content: "best cook ever!", meal: m1, cook: u1, user:u9)
-
 
 orders = Order.all
 meals = [m1, m2, m3, m4, m5, m6, m7, m8]
