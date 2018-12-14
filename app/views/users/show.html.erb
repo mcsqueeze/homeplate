@@ -1,44 +1,45 @@
 <div class="container-show">
   <div class="row">
     <% if params[:id].to_i == current_user.id %>
+      <h1>Your profile</h1>
 
     <!-- left column -->
     <div class="col-xs-6">
-
-      <h1>Your profile</h1>
-      <div class="mealreviewsheaders">
-        <div class="mealreviews">
         <!-- User info -->
 
-          <h4>Personal Info</h4>
-          <br>
-              <%= cl_image_tag current_user.photo, height: 100, width: 100, crop: :fill, class: "mediumavatar", default_image: "circled-user.png" %>
-
-            <div>
-
-                 <p>Name: <%= current_user.try(:first_name) %> <%= current_user.try(:last_name) %></p>
-                <!--  <li>birthday :<%= current_user.try(:birthday) %></li> -->
-                 <p>Email: <%= current_user.try(:email) %></p>
-                <!--  <li>password : ******</li> -->
-                 <p>Member Since: <%= current_user.created_at.strftime("%d/%m/%Y") %></p>
-                 <p>Username: <%= current_user.try(:username) %></p>
-                 <!-- <li>description :<%= current_user.try(:description) %></li> -->
-                 <p>Phone number :<%= current_user.try(:phonenumber) %></p>
-                 <p>Address: <%= current_user.try(:address) %></p>
-                 <!-- <li>verified ? <%= current_user.try(:verified) %></li> -->
-                 <!-- <li>user id <%= current_user.id %></li> -->
-            </div>
-
-            <div class="btn btn-user-show">
-                <%= link_to 'Update Profile', edit_user_registration_path, class: "btn btn-success" %>
-            </div>
-
-         </div>
+    <div class="mealreviews">
+      <div class="mealreviewsheaders">
+        <h4>Personal Info</h4>
+        <div>
+        <%= cl_image_tag current_user.photo, height: 100, width: 100, crop: :fill, class: "mediumavatar", default_image: "circled-user.png" %>
         </div>
-        <br>
+      </div>
+      <div class="mealreviewscontentleft">
+           <p>Name: <%= current_user.try(:first_name) %> <%= current_user.try(:last_name) %></p>
+          <!--  <li>birthday :<%= current_user.try(:birthday) %></li> -->
+           <p>Email: <%= current_user.try(:email) %></p>
+          <!--  <li>password : ******</li> -->
+           <p>Member Since: <%= current_user.created_at.strftime("%d/%m/%Y") %></p>
+           <p>Username: <%= current_user.try(:username) %></p>
+           <!-- <li>description :<%= current_user.try(:description) %></li> -->
+           <p>Phone number :<%= current_user.try(:phonenumber) %></p>
+           <p>Address: <%= current_user.try(:address) %></p>
+           <!-- <li>verified ? <%= current_user.try(:verified) %></li> -->
+           <!-- <li>user id <%= current_user.id %></li> -->
+      </div>
+      <div class= "customitemalignedright">
+          <%= link_to 'Update Profile', edit_user_registration_path, class: "btn btn-success" %>
+      </div>
+    </div>
+
  <!-- active meals -->
     <div class="mealreviews">
-      <h4>Your current meals:</h4>
+
+      <div class="mealreviewsheaders">
+      <h4>My current meals:</h4>
+      </div>
+
+      <div class="mealreviewscontent">
       <% @active_meals.each do |meal| %>
         <div class="col-xs-2 col-sm-3 col-md-3">
           <div class="small-meal-card">
@@ -58,12 +59,17 @@
           </div>
         </div>
       <% end %>
+      </div>
     </div>
-<br>
 
   <!-- inactive meals -->
    <div class="mealreviews">
-      <h4>Your past meals:</h4>
+
+      <div class="mealreviewsheaders">
+        <h4>My past meals:</h4>
+      </div>
+
+      <div class="mealreviewscontent">
       <% @inactive_meals.each do |meal| %>
         <div class="col-xs-2 col-sm-3 col-md-3">
           <div class="small-meal-card">
@@ -83,32 +89,27 @@
           </div>
         </div>
       <% end %>
+      </div>
     </div>
-
-
-
  </div>
 
    <!-- Right column -->
-   <br>
-   <br>
-   <br>
-   <div class="col-xs-6 top-margin-user-show">
+   <div class="col-xs-6">
 
     <!-- Earnings -->
     <div class="mealreviews">
 
-      <div class="mealreviewsheaders">
+      <div class="mealreviewsheaders" >
         <h4>My Earnings</h4>
       </div>
-      <div class="myreviewscontentchart">
+      <div class="mealreviewscontent" id="fancychart">
         <h1>1,800 DHS</h1>
         <h3>December 2018 Earnings</h3>
-        <canvas id="earningsChart" width="400" height="400"></canvas>
+        <canvas id="earningsChart" ></canvas>
       </div>
 
    </div>
-<br>
+
     <!-- Meal reviews -->
     <div class="mealreviews">
 
@@ -119,7 +120,7 @@
       <div class="mealreviewscontent">
         <% if !@average_rating.nil? %>
           <h6>Overall rating: <%= @average_rating %> </h6>
-          <p>Your reviews</p>
+          <p>My reviews</p>
             <% current_user.cook_reviews.each do |review| %>
             <ul>
               <li>Rating: <%= review.rating %>
@@ -137,10 +138,6 @@
       </div>
 
     </div>
-
-
-
-
 
     </div>
    <!-- end of right column -->
@@ -163,6 +160,7 @@
              <li>name :<%= @cook.try(:first_name) %> <%= @cook.try(:last_name) %> </li>
               <li>member since :<%= @cook.created_at.strftime("%d/%m/%Y") %></li>
               <li>user id :<%= @cook.id %></li>
+          </ul>
         </div>
    </div>
 

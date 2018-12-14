@@ -70,11 +70,11 @@
                         <div>
                           <% if user_signed_in? && current_user.usertype == 'customer' && @meal.user != current_user %>
                           <h2>Please select number of servings:</h2>
-                            <div>
+                            <div >
                               <%= form_tag(meal_items_path(@meal), method: "post") do %>
-                              <%= number_field_tag(:quantity, nil, min: 0, max: @meal.maxservings) %>
-                                  <div>
-                                  <%= submit_tag("Add to Order", class: "btn btn-success orderbtn") %>
+                                  <div class='alignedbuttonsbox'>
+                                  <%= number_field_tag(:quantity, nil, min: 0, max: @meal.maxservings) %>
+                                  <%= submit_tag("Add to Order", class: "btn btn-success") %>
                                   </div>
                               <% end %>
                             </div>
@@ -109,7 +109,7 @@
             <% if user_signed_in? %>
             <%= link_to profile_path(@cook) do %>
             <%= cl_image_tag @cook.photo, class: "mediumavatar"%>
-            <% end %>
+              <% end %>
             <% else %>
             <%= cl_image_tag @cook.photo, class: "mediumavatar"%>
             <% end %>
@@ -122,25 +122,39 @@
             <h2> <%= @cook.username.capitalize %></h2>
           <% end %>
           </div>
+
         </div>
 
-        <div class="mealreviewscontent">
+        <div class="mealreviewscontent" id="mealreviewscontentleft">
+          <ul>
+             <li>name :<%= @cook.try(:first_name) %> <%= @cook.try(:last_name) %> </li>
+              <li>member since :<%= @cook.created_at.strftime("%d/%m/%Y") %></li>
+          </ul>
+        </div>
+
+        <div class="mealreviewsheaders">
+          <h2>Reviews from customer</h2>
+        </div>
+
+        <div class="mealreviewscontent" id="mealreviewscontentleft">
         <% if @cook.cook_reviews == [] %>
-        <p>this cook has no review yet</p>
+        <p>This cook has no reviews yet.</p>
         <% else  %>
         <p>past reviews:</p>
         <% @cook.cook_reviews.each do |review|%>
-          <ul>
-             <li><%=review.rating %></li>
-             <li><%=review.content %></li>
-          </ul>
+            <ul>
+               <li><%=review.rating %></li>
+               <li><%=review.content %></li>
+            </ul>
           <% end %>
         <% end %>
         </div>
+
       </div>
-      <br>
+
       <!-- this cook's other meals -->
       <div class="mealreviews">
+
         <div class="mealreviewsheaders">
           <% if @meal.user == current_user %>
             <h2> My Other Meals</h2>
@@ -149,9 +163,9 @@
           <% end %>
         </div>
 
-        <div>
+        <div class="mealreviewscontent">
         <% @cook.meals.each do |meal| %>
-          <div class="col-xs-2 col-sm-3 col-md-3">
+          <div class="col-xs-3">
             <div class="small-meal-card">
               <div class="small-meal-card-image" style="background-image: url('<%= cl_image_path meal.pictures.first.url.url %>');">
               </div>
@@ -170,6 +184,7 @@
           </div>
         <% end %>
         </div>
+
       </div>
 
 

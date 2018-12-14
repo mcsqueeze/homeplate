@@ -12,15 +12,19 @@ margin-bottom: 5px;
   width: 220px;
 }
 
-.btn-lg {
-  margin-top: 140px;
-}
 
 .btn-homepage {
   margin-top: 100px;
   text-color: black;
   text-align: center;
   margin-left: 180px;
+  font-size: 30px;
+}
+.btn-homepage-lg {
+
+  text-color: black;
+  text-align: center;
+  border-radius: 10%;
   font-size: 30px;
 }
 
@@ -32,3 +36,9 @@ margin-bottom: 5px;
 .btn-user-show {
   margin-left: 525px;
 }
+
+
+.inlinebutton {
+  display: inline-block;
+}
+
