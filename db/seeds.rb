@@ -14,11 +14,11 @@ u1 = User.new(email: "maria@gmail.com", first_name: "Maria", username: "ChefMari
 u1.remote_photo_url = "https://res.cloudinary.com/homeplate/image/upload/v1544784872/maria_photo.jpg"
 u1.save!
 
-u2 = User.new(email: "Mohammed@gmail.com", username: "Mohammed", password: "123456", usertype: "cook", phonenumber: "06 78 54 76 43", address: "12 Rue Arfoud, Rabat")
+u2 = User.new(email: "Mohammed@gmail.com", username: "Mohammed", password: "123456", usertype: "cook", phonenumber: "06 78 54 76 43", address: "33 Rue Najib Mahfoud, Casablanca")
 u2.remote_photo_url = "https://res.cloudinary.com/homeplate/image/upload/v1544722517/adherents_raja_1.jpg"
 u2.save!
 
-u3 = User.new(email: "mouna@gmail.com", username: "Mouna", password: "123456", usertype: "cook", phonenumber: "06 78 54 76 43", address: "4 Rue Tanger, Rabat")
+u3 = User.new(email: "mouna@gmail.com", username: "Mouna", password: "123456", usertype: "cook", phonenumber: "06 78 54 76 43", address: "33 Rue Najib Mahfoud, Casablanca")
 u3.remote_photo_url = "https://res.cloudinary.com/homeplate/image/upload/v1544722516/Choumicha.jpg"
 u3.save!
 
@@ -41,6 +41,7 @@ u7.save!
 u8 = User.new(email: "fadwa@gmail.com", username: "Fadwa", password: "123456", usertype: "customer", phonenumber: "06 78 54 76 43")
 u8.remote_photo_url = "https://res.cloudinary.com/homeplate/image/upload/v1544778113/asa-hutchinson.jpg"
 u8.save!
+
 
 u9 = User.new(email: "abdel@gmail.com", username: "Abdel", password: "123456", usertype: "customer", phonenumber: "06 78 54 76 43")
 u9.remote_photo_url = "https://res.cloudinary.com/homeplate/image/upload/v1544778198/amr.jpg"
