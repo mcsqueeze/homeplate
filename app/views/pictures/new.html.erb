@@ -1,7 +1,9 @@
-<div class="banner">
-  <div id="signup-form" class="container">
-    <div class="row">
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 confirmcenter margintop">
       <div class="col-xs-12 col-sm-4 col-sm-offset-4">
+
+
           <%= simple_form_for [@meal, @picture] do |p| %>
           <% if @picture.errors.any? %>
             <% @picture.errors.full_messages.each do |m| %>
@@ -12,7 +14,7 @@
             <%= p.file_field :url %>
             <%= p.input :url_cache, as: :hidden %>
             <br>
-            <%= p.submit "add this picture", class: "btn btn-primary" %>
+            <%= p.submit "add this picture", class: "btn btn-success" %>
           <% end %>
 
       </div>
