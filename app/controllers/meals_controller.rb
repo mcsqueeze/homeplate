@@ -5,28 +5,20 @@ class MealsController < ApplicationController
   def index
     if params[:query].present?
       @meals = policy_scope(Meal).global_search(params[:query])
-      @cooks = @meals.map { |meal| meal.user unless meal.user.latitude.nil?}
-
-        @markers = @cooks.map do |cook|
-        {
-          lng: cook.longitude,
-          lat: cook.latitude,
-          infoWindow: {
-            content: render_to_string(partial: "/users/map_window", locals: { user: cook })}
-        }
-        end
     else
       @meals = policy_scope(Meal).order(created_at: :desc)
-      @cooks = @meals.map { |meal| meal.user unless meal.user.latitude.nil?}
+    end
 
-        @markers = @cooks.map do |cook|
-        {
-          lng: cook.longitude,
-          lat: cook.latitude,
-          infoWindow: {
-            content: render_to_string(partial: "/users/map_window", locals: { user: cook })}
+    @cooks = @meals.map { |meal| meal.user unless meal.user.nil? && meal.user.latitude.nil? }
+
+    @markers = @cooks.map do |cook|
+      {
+        lng: cook.longitude,
+        lat: cook.latitude,
+        infoWindow: {
+          content: render_to_string(partial: "/users/map_window", locals: { user: cook })
         }
-        end
+      }
     end
   end
 
@@ -67,15 +59,11 @@ class MealsController < ApplicationController
   end
 
   def unpublish_when_soldout
-    if @meal.maxservings == 0
-      @meal.published = false
-    end
-
+    @meal.published = false if @meal.maxservings.zero?
   end
 
   def edit
     @meal = Meal.find(params[:id])
-
   end
 
   def update
@@ -90,13 +78,13 @@ class MealsController < ApplicationController
   end
 
   def destroy
-    #let's not delete meals, just unpublish
+    # let's not delete meals, just unpublish
   end
 
   def dashboard
   end
 
- private
+  private
 
   def meal_params
     params.require(:meal).permit(:id, :title, :user, :description, :address, :published, :price, :category, pictures_attributes: [:id, :meal_id, :url])
