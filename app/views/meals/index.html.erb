@@ -10,7 +10,7 @@
             </div>
 
             <% @meals.where(published: true).each do |meal| %>
-              <div class="col-xs-6 col-sm-4">
+              <div class="col-xs-12 col-sm-6 col-md-4">
                 <div class="meal-card">
                   <div class="meal-card-image" style="background-image: url('<%= cl_image_path meal.pictures.first.url.url %>');">
                   </div>

@@ -3,7 +3,7 @@
   <div class="navbar-wagon-left">
 
     <%= link_to root_path, class: "navbar-wagon-brand" do %>
-    <%= cl_image_tag'chef.svg', :height=>50, :crop =>'scale' %>
+    <%= cl_image_tag'chef.svg'%>
     <% end %>
 
     <div class="searchbar">
@@ -18,9 +18,8 @@
 
   </div>
 
-  <!-- Right Navigation -->
+  <!-- Right Navigation on md and lg -->
   <div class="navbar-wagon-right hidden-xs hidden-sm">
-
 
 
     <% if user_signed_in? %>
@@ -44,24 +43,16 @@
 
       <!-- Links seen by all-->
       <%= link_to "FAQ", "/FAQ", class: "navbar-wagon-item navbar-wagon-link" %>
-       <% if current_user.photo == nil  %>
 
-
-      <!-- Avatar with dropdown menu -->
+      <% if current_user.photo == nil  %> <!-- if user doesnt upload photo => default image -->
       <div class="navbar-wagon-item">
         <div class="dropdown">
-          <!-- if user uploads photo, then photo. if not, default image -->
           <%= cl_image_tag "circled-user", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", 'data-toggle': "dropdown" %>
           <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
 
             <li>
               <%= link_to profile_path(current_user) do %>
                 <i class="fa fa-user"></i> <%= t(".profile", default: "Profile") %>
-              <% end %>
-            </li>
-            <li>
-              <%= link_to "#" do %>
-                <i class="fa fa-cog"></i>  <%= t(".settings", default: "Settings") %>
               <% end %>
             </li>
             <li>
@@ -74,8 +65,7 @@
           </div>
         </div>
 
-        <% else %>
-
+      <% else %> <!-- if user has a photo, then userpic -->
           <%= cl_image_tag current_user.photo, class: "avatarcustomized dropdown-toggle", id: "navbar-wagon-menu", 'data-toggle': "dropdown" %>
           <div class="badge"><%= current_user.usertype %></div>
 
@@ -87,57 +77,57 @@
               <% end %>
             </li>
             <li>
-              <%= link_to "#" do %>
-                <i class="fa fa-cog"></i>  <%= t(".settings", default: "Settings") %>
-              <% end %>
-            </li>
-            <li>
               <%= link_to destroy_user_session_path, method: :delete do %>
                 <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
               <% end %>
             </li>
           </ul>
-
-
-
-        </div>
-      </div>
       <% end %>
-    <% else %>
-      <!-- Login link (when logged out) -->
+
+    <% else %>  <!-- case if user signed out -->
+
       <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
       <%= link_to t(".sign_up", default: "Sign up"), new_user_registration_path, class: "navbar-wagon-item navbar-wagon-link" %>
     <% end %>
   </div>
 
+
   <!-- Dropdown list appearing on mobile only -->
 
-  <!-- When user is signed out -->
-  <% if user_signed_in? %>
-    <div class="navbar-wagon-item hidden-md hidden-lg">
-      <div class="dropdown">
-        <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
-        <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-          <li><a href="clients/[:id]">Profile</a></li>
-          <li><a href="/meals">View Meals</a></li>
-          <li><a href="/users/sign_out">Log Out</a></li>
-        </ul>
-      </div>
-    </div>
 
-  <% else %>
-    <div class="navbar-wagon-item hidden-md hidden-lg">
-      <div class="dropdown">
-        <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
-        <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-          <li><a href="/meals">View Meals</a></li>
-          <li><a href="/users/sign_up">Sign up</a></li>
-          <li><a href="/users/sign_in">Log In</a></li>
-        </ul>
-      </div>
-    </div>
-  <% end %>
 
+
+    <div class="navbar-wagon-item hidden-md hidden-lg">
+      <% if user_signed_in? %> <!-- When user is signed in -->
+        <div class="dropdown">
+          <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
+          <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
+            <li> <%= link_to profile_path(current_user) do %>
+                <i class="fa fa-user"></i> <%= t(".profile", default: "Profile") %>
+              <% end %></li>
+            <li><a href="/meals">View Meals</a></li>
+            <li><%= link_to change_usertype_path(current_user), method: :patch do %>
+                <i class="fas fa-exchange-alt"></i>  <%= t(".change status cook/customer", default: "switch status") %>
+              <% end %></li>
+            <li><%= link_to destroy_user_session_path, method: :delete do %>
+                <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
+              <% end %></li>
+          </ul>
+        </div>
+
+
+
+      <% else %> <!-- When user is signed out -->
+        <div class="dropdown">
+          <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
+          <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
+            <li><a href="/meals">View Meals</a></li>
+            <li><a href="/users/sign_up">Sign up</a></li>
+            <li><a href="/users/sign_in">Log In</a></li>
+          </ul>
+        </div>
+      <% end %>
+    </div>
 
 </div>
 

@@ -1,59 +1,50 @@
-<div class="banner_meal-signup">
-
-  <div id="signup-form" class="container newform">
+<div class="banner_meal">
+  <div class="container" >
     <div class="row">
-      <br>
-      <br>
-      <div class="col-xs-12 col-sm-6 col-sm-offset-3">
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= f.error_notification %>
-       <h1 class= "centered signup">Sign up</h1>
-        <div class="form-inputs">
+      <div class="col-xs-12 col-sm-6 col-sm-offset-3" id= 'signup-form' >
 
-          <%= f.input :email,
-                      required: true,
-                      autofocus: true ,
-                      input_html: { autocomplete: "email" }%>
-          <%= f.input :username,
-                      required: true,
-                      autofocus: true ,
-                      input_html: { autocomplete: "username" }%>
-          <%= f.input :password,
-                      required: true,
-                      hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                      input_html: { autocomplete: "new-password" } %>
-          <%= f.input :password_confirmation,
-                      required: true,
-                      input_html: { autocomplete: "new-password" } %>
-          <%= f.input :usertype,
-                      as: :radio_buttons,
-                      boolean_style: :inline,
-                      collection: ['cook', 'customer'],
-                      required: true %>
-          <%= f.input :address,
-                      required: true,
-                      autofocus: true ,
-                      input_html: { autocomplete: "address" }%>
-          <%= f.label :photo %>
-          <%= f.file_field :photo,
-                      required: true %>
-          <%= f.hidden_field :photo_cache %>
-        </div>
-       <br>
-       <br>
-        <div class="form-actions">
-          <%= f.button :submit, "Sign up", class: "btn btn-success"  %>
-        </div>
-      <% end %>
-      <p>* required field</p>
-      <br>
-      <%= render "devise/shared/links" %>
-      <br>
-      <br>
+          <h1 >Sign up</h1>
+
+            <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+            <%= f.error_notification %>
+            <div class="form-inputs">
+
+              <%= f.input :email,
+                          required: true,
+                          autofocus: true ,
+                          input_html: { autocomplete: "email" }%>
+              <%= f.input :username,
+                          required: true,
+                          autofocus: true ,
+                          input_html: { autocomplete: "username" }%>
+              <%= f.input :password,
+                          required: true,
+                          hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                          input_html: { autocomplete: "new-password" } %>
+              <%= f.input :password_confirmation,
+                          required: true,
+                          input_html: { autocomplete: "new-password" } %>
+              <%= f.input :usertype,
+                          as: :radio_buttons,
+                          boolean_style: :inline,
+                          collection: ['cook', 'customer'],
+                          required: true %>
+              <%= f.input :address,
+                          required: true,
+                          autofocus: true ,
+                          input_html: { autocomplete: "address" }%>
+              <%= f.label :photo %>
+              <%= f.file_field :photo,
+                          required: true %>
+              <%= f.hidden_field :photo_cache %>
+            </div>
+
+            <div class="form-actions">
+              <%= f.button :submit, "Sign up", class: "btn btn-success"  %>
+            </div>
+              <%= render "devise/shared/links" %>
+            <% end %>
+      </div>
     </div>
   </div>
 </div>
-</div>
-
-
-
