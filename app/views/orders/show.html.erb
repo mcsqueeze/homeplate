@@ -1,4 +1,4 @@
-<div class="container-show">
+<div class="container">
   <div class="row">
     <div class="col-xs-12">
 
@@ -13,48 +13,38 @@
 
         <% else %>
         <section id="cart">
-          <div class="container">
+          <div>
               <% @order.items.each do |item| %>
             <article class="product">
                 <header>
                 <div class="meal-card-image" style="background-image: url('<%= cl_image_path item.meal.pictures.first.url.url %>');">
-                  </div>
+                </div>
                 </header>
-                <div class="content">
+                <div class="meal-card-content">
                    <h1><%= item.meal.title %></h1>
                    <p><%= item.meal.description %></p>
                 </div>
-                  <footer class="content">
-                    <span>Quanity: <%= item.quantity %></span>
-
-                    <h2 class="full-price">
-                        <%= item.meal.price * item.quantity %>
-                    </h2>
-                    <h2 class= "full-price delete">
+                  <div>
+                    <span> Quantity: <%= item.quantity %></span>
+                    <h2> total: <%= item.meal.price * item.quantity %> </h2>
+                    <h2 class= "btn btn-danger">
                       <%= link_to 'Delete', order_path, method: :delete %>
-                      </h2>
-                </footer>
-
+                    </h2>
+                </div>
             </article>
           <% end %>
         </section>
     </div>
-    <footer id="site-footer">
-        <div class="container clearfix">
-            <div class="right">
-                <h1 class="total">Total: <span><%= @total %></span>DHS</h1>
-                 <div class="buttons">
-                  <%= link_to 'Checkout', payment_order_path, class: "btn-ordershow" %>
-                  <br>
-                  <%= link_to 'Back to Meals', meals_path, class: "btn-ordershow" %>
-                  </div>
-            </div>
-        </div>
-    </footer>
+    <div>
+      <div>
+        <%= link_to 'Checkout', payment_order_path, class: "btn btn-success" %>
+      </div>
+      <div>
+        <%= link_to 'Back to Meals', meals_path, class: "btn btn-success" %>
+      </div>
+    </div>
     <% end %>
 
     </div>
   </div>
 </div>
-
-
