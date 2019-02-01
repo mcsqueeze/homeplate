@@ -12,38 +12,40 @@
         </div>
 
         <% else %>
-        <section id="cart">
-          <div>
-              <% @order.items.each do |item| %>
-            <article class="product">
-                <header>
-                <div class="meal-card-image" style="background-image: url('<%= cl_image_path item.meal.pictures.first.url.url %>');">
-                </div>
-                </header>
-                <div class="meal-card-content">
-                   <h1><%= item.meal.title %></h1>
-                   <p><%= item.meal.description %></p>
-                </div>
-                  <div>
-                    <span> Quantity: <%= item.quantity %></span>
-                    <h2> total: <%= item.meal.price * item.quantity %> </h2>
-                    <h2 class= "btn btn-danger">
-                      <%= link_to 'Delete', order_path, method: :delete %>
-                    </h2>
-                </div>
-            </article>
-          <% end %>
-        </section>
-    </div>
-    <div>
-      <div>
-        <%= link_to 'Checkout', payment_order_path, class: "btn btn-success" %>
-      </div>
-      <div>
-        <%= link_to 'Back to Meals', meals_path, class: "btn btn-success" %>
-      </div>
-    </div>
-    <% end %>
+        <div>
+                <% @order.items.each do |item| %>
+                <article class="product">
+                  <header>
+                  <div class="meal-card-image" style="background-image: url('<%= cl_image_path item.meal.pictures.first.url.url %>');">
+                  </div>
+                  </header>
+                    <div>
+                      <h1><%= item.meal.title %></h1>
+                      <p><%= item.meal.description %></p>
+                      <p> Quantity: <%= item.quantity %></p>
+                      <p> total: <%= item.meal.price * item.quantity %> </p>
+                    </div>
+                </article>
+                <% end %>
+
+            <div class= "coloredh1">
+              <h1>Total: <%= @total %>DHS</h1>
+            </div>
+
+            <div class= "alignedbuttonsboxcenter">
+              <div>
+                <%= link_to 'Delete order', order_path, method: :delete, class: "btn btn-danger"%>
+              </div>
+              <div>
+                <%= link_to 'Checkout', payment_order_path, class: "btn btn-success" %>
+              </div>
+              <div>
+                <%= link_to 'Back to Meals', meals_path, class: "btn btn-success" %>
+              </div>
+            </div>
+
+          </div>
+        <% end %>
 
     </div>
   </div>
