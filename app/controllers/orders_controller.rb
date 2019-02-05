@@ -40,10 +40,10 @@ class OrdersController < ApplicationController
     @order.destroy
       if @order.destroyed?
         flash[:notice] = "Your order was deleted successfully! :)"
-        redirect_to meals_path
+        redirect_back(fallback_location: root_path)
       else
         flash[:notice] = "There was an error. Please try again. :("
-        redirect_to order_path(@order)
+        redirect_back(fallback_location: root_path)
       end
   end
 

@@ -138,6 +138,12 @@
                 <li><%= link_to change_usertype_path(current_user), method: :patch do %>
                     <i class="fas fa-exchange-alt"></i>  <%= t(".change status cook/customer", default: "switch status") %>
                   <% end %></li>
+                <li><%= link_to new_meal_path do %>
+                    <i class="fas fa-plus-circle"></i>  <%= t(".post new meal", default: "post a new meal") %>
+                  <% end %></li>
+                <li><%= link_to dashboard_path(current_user) do %>
+                    <i class="fas fa-folder-open"></i>  <%= t(".my meals", default: "my meals") %>
+                  <% end %></li>
                 <li><%= link_to destroy_user_session_path, method: :delete do %>
                     <i class="fas fa-sign-out-alt"></i>  <%= t(".sign_out", default: "Log out") %>
                   <% end %></li>

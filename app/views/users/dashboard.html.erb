@@ -1,8 +1,8 @@
 <div class="container">
     <!-- Cards -->
     <div class="row">
+    <% if !@active_meals.empty?%>
     <h3>My Published Meals (Active)</h3>
-    <% if !@active_meals.nil?%>
     <% @active_meals.each do |meal| %>
       <div class="col-xs-12 col-sm-6 col-md-3">
         <div class="meal-card">
@@ -22,36 +22,42 @@
           </div>
       </div>
     <% end %>
+    <% else %>
+    <div class="text-center">
+    <h3>You have not posted any meal yet</h3>
+    <%= link_to "post a new meal", new_meal_path, :class => "btn btn-success" %>
+    </div>
     <% end %>
     </div>
   <br>
 
     <div class="row">
-      <h3>My Past Meals (Inactive)</h3>
-      <% @inactive_meals.each do |meal| %>
-      <div class="col-xs-12 col-sm-6 col-md-3">
-        <div class="meal-card">
-          <div class="meal-card-image" style="background-image: url('<%= cl_image_path meal.pictures.first.url.url %>');">
-          </div>
-            <div class="meal-card-content">
-              <div class="meal-card-title">
-                <h4><%= link_to meal.title, meal_path(meal), :class => "text-dark" %></h4>
-                <p><%= meal.category %></p>
+      <% if !@inactive_meals.empty?%>
+        <h3>My Past Meals (Inactive)</h3>
+        <% @inactive_meals.each do |meal| %>
+        <div class="col-xs-12 col-sm-6 col-md-3">
+          <div class="meal-card">
+            <div class="meal-card-image" style="background-image: url('<%= cl_image_path meal.pictures.first.url.url %>');">
+            </div>
+              <div class="meal-card-content">
+                <div class="meal-card-title">
+                  <h4><%= link_to meal.title, meal_path(meal), :class => "text-dark" %></h4>
+                  <p><%= meal.category %></p>
+                </div>
+                <div class="flex">
+                  <p><i class="fas fa-utensils"></i>
+                  Price: <%= humanized_money_with_symbol(meal.price) %>
+                  </p>
+                </div>
               </div>
               <div class="flex">
-                <p><i class="fas fa-utensils"></i>
-                Price: <%= humanized_money_with_symbol(meal.price) %>
-                </p>
-              </div>
+              <div "meal-card-actions">
             </div>
-            <div class="flex">
-            <div "meal-card-actions">
+            </div>
+            <%= link_to '', meal_path(meal), class: "card-link" %>
           </div>
-          </div>
-          <%= link_to '', meal_path(meal), class: "card-link" %>
-
         </div>
-      </div>
+      <% end %>
     <% end %>
     </div>
 </div>

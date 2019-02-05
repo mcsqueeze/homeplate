@@ -1,31 +1,28 @@
 <div class="banner_meal">
-<div class="container newform">
-  <br>
-<div class="row newmealbackground">
-<div class="formimage">
-</div>
-<div class="col-xs-12 col-sm-4 col-sm-offset-4">
-  <%= simple_form_for(@meal) do |f| %>
-  <% if @meal.errors.any? %>
-    <% @meal.errors.full_messages.each do |m| %>
-      <p><%= m %></p>
-    <% end %>
-  <% end %>
-  <h1>Post a New Meal</h1>
-  <br>
-    <%= f.input :title %>
-    <%= f.input :price, label: "Price"%>
-    <%= f.input :category, as: :select, label: "Category", collection: ["appetizer", "main course", "dessert", "side", "other"]%>
-    <%= f.input :description, label: 'Meal Description' %>
-    <%= f.input :maxservings, label: 'Max Servings' %>
-    <%= f.input :shelflife, label: 'Shelf Life (Days)' %>
-    <br>
-    <%= f.submit "Submit Meal", class: "btn btn-success" %>
-  <% end %>
-  <br>
-</div>
-</div>
-</div>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-sm-offset-2" id="signup-form">
+        <%= simple_form_for(@meal) do |f| %>
+        <% if @meal.errors.any? %>
+          <% @meal.errors.full_messages.each do |m| %>
+            <p><%= m %></p>
+          <% end %>
+        <% end %>
+        <h1>Post a New Meal</h1>
+
+          <%= f.input :title %>
+          <%= f.input :price, label: "Price"%>
+          <%= f.input :category, as: :select, label: "Category", collection: ["appetizer", "main course", "dessert", "side", "other"]%>
+          <%= f.input :description, label: 'Meal Description' %>
+          <%= f.input :maxservings, label: 'Max Servings' %>
+          <%= f.input :shelflife, label: 'Shelf Life (Days)' %>
+
+          <%= f.submit "Submit Meal", class: "btn btn-success" %>
+        <% end %>
+
+      </div>
+    </div>
+  </div>
 </div>
 
 
