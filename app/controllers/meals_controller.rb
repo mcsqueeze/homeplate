@@ -59,7 +59,7 @@ class MealsController < ApplicationController
   end
 
   def unpublish_when_soldout
-    @meal.published = false if @meal.maxservings.zero?
+    @meal.published = false if @meal.maxservings.nil?
   end
 
   def edit
@@ -87,7 +87,7 @@ class MealsController < ApplicationController
   private
 
   def meal_params
-    params.require(:meal).permit(:id, :title, :user, :description, :address, :published, :price, :category, pictures_attributes: [:id, :meal_id, :url])
+    params.require(:meal).permit(:id, :title, :user, :description, :address, :published, :price, :maxservings, :category, pictures_attributes: [:id, :meal_id, :url])
   end
 
   def authorize_meal
