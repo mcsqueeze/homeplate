@@ -42,8 +42,8 @@ class UsersController < ApplicationController
       @ratings << review.rating
     end
 
-    if !@ratings.nil?
-      @average_rating = (((@ratings.sum) / @ratings.count.to_f) * 100).round / 100.0
+    if !@ratings.empty?
+      @average_rating = ((@ratings.sum / @ratings.count.to_f) * 100).round / 100.0
     else
       @average_rating = nil
     end

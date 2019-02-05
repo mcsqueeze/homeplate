@@ -42,23 +42,27 @@
       </div>
 
       <div class="mealreviewscontent">
-      <% @active_meals.each do |meal| %>
-          <div class="small-meal-card">
-            <div class="small-meal-card-image" style="background-image: url('<%= cl_image_path meal.pictures.first.url.url %>');">
-            </div>
-              <div class="small-meal-card-content">
-                <div class="meal-card-title">
-                  <h4><%= link_to meal.title, meal_path(meal), :class => "text-dark" %></h4>
-                  <p><%= meal.category %></p>
+        <% if @active_meals.empty? %>
+          <p>You don't have any active meal</p>
+        <% else %>
+          <% @active_meals.each do |meal| %>
+              <div class="small-meal-card">
+                <div class="small-meal-card-image" style="background-image: url('<%= cl_image_path meal.pictures.first.url.url %>');">
                 </div>
-                <div class="flex">
-                  <p><i class="fas fa-utensils"></i>
-                  Price: <%= humanized_money_with_symbol(meal.price) %>
-                  </p>
-                </div>
+                  <div class="small-meal-card-content">
+                    <div class="meal-card-title">
+                      <h4><%= link_to meal.title, meal_path(meal), :class => "text-dark" %></h4>
+                      <p><%= meal.category %></p>
+                    </div>
+                    <div class="flex">
+                      <p><i class="fas fa-utensils"></i>
+                      Price: <%= humanized_money_with_symbol(meal.price) %>
+                      </p>
+                    </div>
+                  </div>
               </div>
-          </div>
-      <% end %>
+          <% end %>
+        <% end %>
       </div>
     </div>
 
